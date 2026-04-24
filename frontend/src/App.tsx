@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/auth/LoginPage";
 import RegisterPage from "./pages/auth/RegisterPage";
 import AddServicePage from "./pages/provider/AddServicePage";
@@ -8,10 +9,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
 
-        {/* Halaman khusus Provider */}
         <Route
           path="/provider/services"
           element={
@@ -20,9 +21,6 @@ function App() {
             </ProtectedRoute>
           }
         />
-
-        {/* Homepage sementara */}
-        <Route path="/" element={<div className="p-10 text-xl">Home Page</div>} />
       </Routes>
     </BrowserRouter>
   );
