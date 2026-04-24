@@ -2,6 +2,7 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import authRoutes from "./routes/auth";
+import serviceRoutes from "./routes/service";
 import { authMiddleware } from "./middleware/auth";
 
 const app = express();
@@ -13,6 +14,7 @@ app.use(cors({
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
+app.use("/api/services", serviceRoutes);
 
 app.get("/api/me", authMiddleware, (req: any, res: any) => {
   res.json(req.user);
