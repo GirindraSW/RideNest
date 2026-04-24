@@ -23,6 +23,7 @@ export default function LoginPage() {
     try {
       const res = await api.post<AuthResponse>("/auth/login", form);
       setAuth(res.data.user, res.data.token);
+      setLoading(false);
       if (res.data.user.role === "PROVIDER") {
         navigate("/provider/services");
       } else {
