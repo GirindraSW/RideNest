@@ -3,70 +3,60 @@ import { prisma } from "../lib/prisma";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-const JWT_SECRET = "SECRET_KEY"; 
+const JWT_SECRET = process.env.JWT_SECRET || "ridenest_fallback_secret";
 
-// REGISTER USER
-export const registerUser = async (req: Request, res: Response) => {
+export const register = async (req: Request, res: Response) => {
   try {
-    const { name, email, password, phone } = req.body;
+    const { name, email, password, phone, role, companyName, address } = req.body;
+
+    const existingUser = await prisma.user.findUnique({
+      where: { email },
+    });
+
+    if (existingUser) {
+      return res.status(409).json({ message: "Email sudah terdaftar" });
+    }
+
+    if (!name || !email || !password) {
+      return res.status(400).json({ message: "Nama, email, dan password wajib diisi" });
+    }
 
     const hashedPassword = await bcrypt.hash(password, 10);
+    const normalizedRole = role === "PROVIDER" ? "PROVIDER" : "USER";
 
     const user = await prisma.user.create({
       data: {
         name,
         email,
         password: hashedPassword,
-        phone
-      }
-    });
-
-    res.status(201).json({
-      message: "User berhasil dibuat",
-      user
-    });
-
-  } catch (error) {
-    res.status(500).json({ message: "Server error", error });
-  }
-};
-
-// REGISTER PROVIDER
-export const registerProvider = async (req: Request, res: Response) => {
-  try {
-    const { name, email, password, companyName, address } = req.body;
-
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    const user = await prisma.user.create({
-      data: {
-        name,
-        email,
-        password: hashedPassword,
-        role: "PROVIDER",
-        provider: {
-          create: {
-            companyName,
-            address
-          }
-        }
+        phone: phone || null,
+        role: normalizedRole,
+        ...(normalizedRole === "PROVIDER"
+          ? {
+              provider: {
+                create: {
+                  companyName: companyName || name,
+                  address: address || null,
+                  phone: phone || null,
+                },
+              },
+            }
+          : {}),
       },
       include: {
-        provider: true
-      }
+        provider: true,
+      },
     });
 
     res.status(201).json({
-      message: "Provider berhasil dibuat",
-      user
+      message: "Registrasi berhasil",
+      user,
     });
-
   } catch (error) {
     res.status(500).json({ message: "Server error", error });
   }
 };
 
-// LOGIN
 export const login = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
@@ -88,7 +78,7 @@ export const login = async (req: Request, res: Response) => {
     const token = jwt.sign(
       {
         id: user.id,
-        role: user.role
+        role: user.role,
       },
       JWT_SECRET,
       { expiresIn: "1d" }
@@ -96,9 +86,8 @@ export const login = async (req: Request, res: Response) => {
 
     res.json({
       message: "Login berhasil",
-      token
+      token,
     });
-
   } catch (error) {
     res.status(500).json({ message: "Server error", error });
   }
