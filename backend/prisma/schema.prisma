@@ -11,6 +11,7 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+
 }
 
 
@@ -81,10 +82,42 @@ model Service {
   createdAt    DateTime        @default(now())
   updatedAt    DateTime        @updatedAt
 
-  provider  Provider  @relation(fields: [providerId], references: [id], onDelete: Cascade)
-  bookings  Booking[]
+  provider     Provider             @relation(fields: [providerId], references: [id], onDelete: Cascade)
+  bookings     Booking[]
+  schedule     ServiceSchedule?
+  blockedDates ServiceBlockedDate[]
 
   @@map("services")
+}
+
+model ServiceSchedule {
+  id        String   @id @default(uuid())
+  serviceId String   @unique
+  mon       Boolean  @default(true)
+  tue       Boolean  @default(true)
+  wed       Boolean  @default(true)
+  thu       Boolean  @default(true)
+  fri       Boolean  @default(true)
+  sat       Boolean  @default(true)
+  sun       Boolean  @default(true)
+  updatedAt DateTime @updatedAt
+
+  service Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+
+  @@map("service_schedules")
+}
+
+model ServiceBlockedDate {
+  id        String   @id @default(uuid())
+  serviceId String
+  date      DateTime @db.Date
+  note      String?
+  createdAt DateTime @default(now())
+
+  service Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+
+  @@unique([serviceId, date])
+  @@map("service_blocked_dates")
 }
 
 model Booking {

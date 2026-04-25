@@ -162,6 +162,27 @@ exports.Prisma.ServiceScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.ServiceScheduleScalarFieldEnum = {
+  id: 'id',
+  serviceId: 'serviceId',
+  mon: 'mon',
+  tue: 'tue',
+  wed: 'wed',
+  thu: 'thu',
+  fri: 'fri',
+  sat: 'sat',
+  sun: 'sun',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ServiceBlockedDateScalarFieldEnum = {
+  id: 'id',
+  serviceId: 'serviceId',
+  date: 'date',
+  note: 'note',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.BookingScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
@@ -207,6 +228,8 @@ exports.Prisma.ModelName = {
   User: 'User',
   Provider: 'Provider',
   Service: 'Service',
+  ServiceSchedule: 'ServiceSchedule',
+  ServiceBlockedDate: 'ServiceBlockedDate',
   Booking: 'Booking'
 };
 

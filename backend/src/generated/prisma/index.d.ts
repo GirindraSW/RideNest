@@ -29,6 +29,16 @@ export type Provider = $Result.DefaultSelection<Prisma.$ProviderPayload>
  */
 export type Service = $Result.DefaultSelection<Prisma.$ServicePayload>
 /**
+ * Model ServiceSchedule
+ * 
+ */
+export type ServiceSchedule = $Result.DefaultSelection<Prisma.$ServiceSchedulePayload>
+/**
+ * Model ServiceBlockedDate
+ * 
+ */
+export type ServiceBlockedDate = $Result.DefaultSelection<Prisma.$ServiceBlockedDatePayload>
+/**
  * Model Booking
  * 
  */
@@ -213,6 +223,26 @@ export class PrismaClient<
     * ```
     */
   get service(): Prisma.ServiceDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.serviceSchedule`: Exposes CRUD operations for the **ServiceSchedule** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ServiceSchedules
+    * const serviceSchedules = await prisma.serviceSchedule.findMany()
+    * ```
+    */
+  get serviceSchedule(): Prisma.ServiceScheduleDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.serviceBlockedDate`: Exposes CRUD operations for the **ServiceBlockedDate** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ServiceBlockedDates
+    * const serviceBlockedDates = await prisma.serviceBlockedDate.findMany()
+    * ```
+    */
+  get serviceBlockedDate(): Prisma.ServiceBlockedDateDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.booking`: Exposes CRUD operations for the **Booking** model.
@@ -667,6 +697,8 @@ export namespace Prisma {
     User: 'User',
     Provider: 'Provider',
     Service: 'Service',
+    ServiceSchedule: 'ServiceSchedule',
+    ServiceBlockedDate: 'ServiceBlockedDate',
     Booking: 'Booking'
   };
 
@@ -686,7 +718,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "provider" | "service" | "booking"
+      modelProps: "user" | "provider" | "service" | "serviceSchedule" | "serviceBlockedDate" | "booking"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -912,6 +944,154 @@ export namespace Prisma {
           }
         }
       }
+      ServiceSchedule: {
+        payload: Prisma.$ServiceSchedulePayload<ExtArgs>
+        fields: Prisma.ServiceScheduleFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ServiceScheduleFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceSchedulePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ServiceScheduleFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceSchedulePayload>
+          }
+          findFirst: {
+            args: Prisma.ServiceScheduleFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceSchedulePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ServiceScheduleFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceSchedulePayload>
+          }
+          findMany: {
+            args: Prisma.ServiceScheduleFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceSchedulePayload>[]
+          }
+          create: {
+            args: Prisma.ServiceScheduleCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceSchedulePayload>
+          }
+          createMany: {
+            args: Prisma.ServiceScheduleCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ServiceScheduleCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceSchedulePayload>[]
+          }
+          delete: {
+            args: Prisma.ServiceScheduleDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceSchedulePayload>
+          }
+          update: {
+            args: Prisma.ServiceScheduleUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceSchedulePayload>
+          }
+          deleteMany: {
+            args: Prisma.ServiceScheduleDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ServiceScheduleUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ServiceScheduleUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceSchedulePayload>[]
+          }
+          upsert: {
+            args: Prisma.ServiceScheduleUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceSchedulePayload>
+          }
+          aggregate: {
+            args: Prisma.ServiceScheduleAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateServiceSchedule>
+          }
+          groupBy: {
+            args: Prisma.ServiceScheduleGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ServiceScheduleGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ServiceScheduleCountArgs<ExtArgs>
+            result: $Utils.Optional<ServiceScheduleCountAggregateOutputType> | number
+          }
+        }
+      }
+      ServiceBlockedDate: {
+        payload: Prisma.$ServiceBlockedDatePayload<ExtArgs>
+        fields: Prisma.ServiceBlockedDateFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ServiceBlockedDateFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceBlockedDatePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ServiceBlockedDateFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceBlockedDatePayload>
+          }
+          findFirst: {
+            args: Prisma.ServiceBlockedDateFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceBlockedDatePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ServiceBlockedDateFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceBlockedDatePayload>
+          }
+          findMany: {
+            args: Prisma.ServiceBlockedDateFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceBlockedDatePayload>[]
+          }
+          create: {
+            args: Prisma.ServiceBlockedDateCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceBlockedDatePayload>
+          }
+          createMany: {
+            args: Prisma.ServiceBlockedDateCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ServiceBlockedDateCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceBlockedDatePayload>[]
+          }
+          delete: {
+            args: Prisma.ServiceBlockedDateDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceBlockedDatePayload>
+          }
+          update: {
+            args: Prisma.ServiceBlockedDateUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceBlockedDatePayload>
+          }
+          deleteMany: {
+            args: Prisma.ServiceBlockedDateDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ServiceBlockedDateUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ServiceBlockedDateUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceBlockedDatePayload>[]
+          }
+          upsert: {
+            args: Prisma.ServiceBlockedDateUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ServiceBlockedDatePayload>
+          }
+          aggregate: {
+            args: Prisma.ServiceBlockedDateAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateServiceBlockedDate>
+          }
+          groupBy: {
+            args: Prisma.ServiceBlockedDateGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ServiceBlockedDateGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ServiceBlockedDateCountArgs<ExtArgs>
+            result: $Utils.Optional<ServiceBlockedDateCountAggregateOutputType> | number
+          }
+        }
+      }
       Booking: {
         payload: Prisma.$BookingPayload<ExtArgs>
         fields: Prisma.BookingFieldRefs
@@ -1085,6 +1265,8 @@ export namespace Prisma {
     user?: UserOmit
     provider?: ProviderOmit
     service?: ServiceOmit
+    serviceSchedule?: ServiceScheduleOmit
+    serviceBlockedDate?: ServiceBlockedDateOmit
     booking?: BookingOmit
   }
 
@@ -1229,10 +1411,12 @@ export namespace Prisma {
 
   export type ServiceCountOutputType = {
     bookings: number
+    blockedDates: number
   }
 
   export type ServiceCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     bookings?: boolean | ServiceCountOutputTypeCountBookingsArgs
+    blockedDates?: boolean | ServiceCountOutputTypeCountBlockedDatesArgs
   }
 
   // Custom InputTypes
@@ -1251,6 +1435,13 @@ export namespace Prisma {
    */
   export type ServiceCountOutputTypeCountBookingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: BookingWhereInput
+  }
+
+  /**
+   * ServiceCountOutputType without action
+   */
+  export type ServiceCountOutputTypeCountBlockedDatesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ServiceBlockedDateWhereInput
   }
 
 
@@ -3823,6 +4014,8 @@ export namespace Prisma {
     updatedAt?: boolean
     provider?: boolean | ProviderDefaultArgs<ExtArgs>
     bookings?: boolean | Service$bookingsArgs<ExtArgs>
+    schedule?: boolean | Service$scheduleArgs<ExtArgs>
+    blockedDates?: boolean | Service$blockedDatesArgs<ExtArgs>
     _count?: boolean | ServiceCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["service"]>
 
@@ -3883,6 +4076,8 @@ export namespace Prisma {
   export type ServiceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     provider?: boolean | ProviderDefaultArgs<ExtArgs>
     bookings?: boolean | Service$bookingsArgs<ExtArgs>
+    schedule?: boolean | Service$scheduleArgs<ExtArgs>
+    blockedDates?: boolean | Service$blockedDatesArgs<ExtArgs>
     _count?: boolean | ServiceCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ServiceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3897,6 +4092,8 @@ export namespace Prisma {
     objects: {
       provider: Prisma.$ProviderPayload<ExtArgs>
       bookings: Prisma.$BookingPayload<ExtArgs>[]
+      schedule: Prisma.$ServiceSchedulePayload<ExtArgs> | null
+      blockedDates: Prisma.$ServiceBlockedDatePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -4309,6 +4506,8 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     provider<T extends ProviderDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProviderDefaultArgs<ExtArgs>>): Prisma__ProviderClient<$Result.GetResult<Prisma.$ProviderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     bookings<T extends Service$bookingsArgs<ExtArgs> = {}>(args?: Subset<T, Service$bookingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    schedule<T extends Service$scheduleArgs<ExtArgs> = {}>(args?: Subset<T, Service$scheduleArgs<ExtArgs>>): Prisma__ServiceScheduleClient<$Result.GetResult<Prisma.$ServiceSchedulePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    blockedDates<T extends Service$blockedDatesArgs<ExtArgs> = {}>(args?: Subset<T, Service$blockedDatesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ServiceBlockedDatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4772,6 +4971,49 @@ export namespace Prisma {
   }
 
   /**
+   * Service.schedule
+   */
+  export type Service$scheduleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceSchedule
+     */
+    select?: ServiceScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceSchedule
+     */
+    omit?: ServiceScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceScheduleInclude<ExtArgs> | null
+    where?: ServiceScheduleWhereInput
+  }
+
+  /**
+   * Service.blockedDates
+   */
+  export type Service$blockedDatesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceBlockedDate
+     */
+    select?: ServiceBlockedDateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceBlockedDate
+     */
+    omit?: ServiceBlockedDateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceBlockedDateInclude<ExtArgs> | null
+    where?: ServiceBlockedDateWhereInput
+    orderBy?: ServiceBlockedDateOrderByWithRelationInput | ServiceBlockedDateOrderByWithRelationInput[]
+    cursor?: ServiceBlockedDateWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ServiceBlockedDateScalarFieldEnum | ServiceBlockedDateScalarFieldEnum[]
+  }
+
+  /**
    * Service without action
    */
   export type ServiceDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4787,6 +5029,2187 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: ServiceInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ServiceSchedule
+   */
+
+  export type AggregateServiceSchedule = {
+    _count: ServiceScheduleCountAggregateOutputType | null
+    _min: ServiceScheduleMinAggregateOutputType | null
+    _max: ServiceScheduleMaxAggregateOutputType | null
+  }
+
+  export type ServiceScheduleMinAggregateOutputType = {
+    id: string | null
+    serviceId: string | null
+    mon: boolean | null
+    tue: boolean | null
+    wed: boolean | null
+    thu: boolean | null
+    fri: boolean | null
+    sat: boolean | null
+    sun: boolean | null
+    updatedAt: Date | null
+  }
+
+  export type ServiceScheduleMaxAggregateOutputType = {
+    id: string | null
+    serviceId: string | null
+    mon: boolean | null
+    tue: boolean | null
+    wed: boolean | null
+    thu: boolean | null
+    fri: boolean | null
+    sat: boolean | null
+    sun: boolean | null
+    updatedAt: Date | null
+  }
+
+  export type ServiceScheduleCountAggregateOutputType = {
+    id: number
+    serviceId: number
+    mon: number
+    tue: number
+    wed: number
+    thu: number
+    fri: number
+    sat: number
+    sun: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ServiceScheduleMinAggregateInputType = {
+    id?: true
+    serviceId?: true
+    mon?: true
+    tue?: true
+    wed?: true
+    thu?: true
+    fri?: true
+    sat?: true
+    sun?: true
+    updatedAt?: true
+  }
+
+  export type ServiceScheduleMaxAggregateInputType = {
+    id?: true
+    serviceId?: true
+    mon?: true
+    tue?: true
+    wed?: true
+    thu?: true
+    fri?: true
+    sat?: true
+    sun?: true
+    updatedAt?: true
+  }
+
+  export type ServiceScheduleCountAggregateInputType = {
+    id?: true
+    serviceId?: true
+    mon?: true
+    tue?: true
+    wed?: true
+    thu?: true
+    fri?: true
+    sat?: true
+    sun?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ServiceScheduleAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ServiceSchedule to aggregate.
+     */
+    where?: ServiceScheduleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ServiceSchedules to fetch.
+     */
+    orderBy?: ServiceScheduleOrderByWithRelationInput | ServiceScheduleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ServiceScheduleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ServiceSchedules from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ServiceSchedules.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ServiceSchedules
+    **/
+    _count?: true | ServiceScheduleCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ServiceScheduleMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ServiceScheduleMaxAggregateInputType
+  }
+
+  export type GetServiceScheduleAggregateType<T extends ServiceScheduleAggregateArgs> = {
+        [P in keyof T & keyof AggregateServiceSchedule]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateServiceSchedule[P]>
+      : GetScalarType<T[P], AggregateServiceSchedule[P]>
+  }
+
+
+
+
+  export type ServiceScheduleGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ServiceScheduleWhereInput
+    orderBy?: ServiceScheduleOrderByWithAggregationInput | ServiceScheduleOrderByWithAggregationInput[]
+    by: ServiceScheduleScalarFieldEnum[] | ServiceScheduleScalarFieldEnum
+    having?: ServiceScheduleScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ServiceScheduleCountAggregateInputType | true
+    _min?: ServiceScheduleMinAggregateInputType
+    _max?: ServiceScheduleMaxAggregateInputType
+  }
+
+  export type ServiceScheduleGroupByOutputType = {
+    id: string
+    serviceId: string
+    mon: boolean
+    tue: boolean
+    wed: boolean
+    thu: boolean
+    fri: boolean
+    sat: boolean
+    sun: boolean
+    updatedAt: Date
+    _count: ServiceScheduleCountAggregateOutputType | null
+    _min: ServiceScheduleMinAggregateOutputType | null
+    _max: ServiceScheduleMaxAggregateOutputType | null
+  }
+
+  type GetServiceScheduleGroupByPayload<T extends ServiceScheduleGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ServiceScheduleGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ServiceScheduleGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ServiceScheduleGroupByOutputType[P]>
+            : GetScalarType<T[P], ServiceScheduleGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ServiceScheduleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    serviceId?: boolean
+    mon?: boolean
+    tue?: boolean
+    wed?: boolean
+    thu?: boolean
+    fri?: boolean
+    sat?: boolean
+    sun?: boolean
+    updatedAt?: boolean
+    service?: boolean | ServiceDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["serviceSchedule"]>
+
+  export type ServiceScheduleSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    serviceId?: boolean
+    mon?: boolean
+    tue?: boolean
+    wed?: boolean
+    thu?: boolean
+    fri?: boolean
+    sat?: boolean
+    sun?: boolean
+    updatedAt?: boolean
+    service?: boolean | ServiceDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["serviceSchedule"]>
+
+  export type ServiceScheduleSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    serviceId?: boolean
+    mon?: boolean
+    tue?: boolean
+    wed?: boolean
+    thu?: boolean
+    fri?: boolean
+    sat?: boolean
+    sun?: boolean
+    updatedAt?: boolean
+    service?: boolean | ServiceDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["serviceSchedule"]>
+
+  export type ServiceScheduleSelectScalar = {
+    id?: boolean
+    serviceId?: boolean
+    mon?: boolean
+    tue?: boolean
+    wed?: boolean
+    thu?: boolean
+    fri?: boolean
+    sat?: boolean
+    sun?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ServiceScheduleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "serviceId" | "mon" | "tue" | "wed" | "thu" | "fri" | "sat" | "sun" | "updatedAt", ExtArgs["result"]["serviceSchedule"]>
+  export type ServiceScheduleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    service?: boolean | ServiceDefaultArgs<ExtArgs>
+  }
+  export type ServiceScheduleIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    service?: boolean | ServiceDefaultArgs<ExtArgs>
+  }
+  export type ServiceScheduleIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    service?: boolean | ServiceDefaultArgs<ExtArgs>
+  }
+
+  export type $ServiceSchedulePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ServiceSchedule"
+    objects: {
+      service: Prisma.$ServicePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      serviceId: string
+      mon: boolean
+      tue: boolean
+      wed: boolean
+      thu: boolean
+      fri: boolean
+      sat: boolean
+      sun: boolean
+      updatedAt: Date
+    }, ExtArgs["result"]["serviceSchedule"]>
+    composites: {}
+  }
+
+  type ServiceScheduleGetPayload<S extends boolean | null | undefined | ServiceScheduleDefaultArgs> = $Result.GetResult<Prisma.$ServiceSchedulePayload, S>
+
+  type ServiceScheduleCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ServiceScheduleFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ServiceScheduleCountAggregateInputType | true
+    }
+
+  export interface ServiceScheduleDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ServiceSchedule'], meta: { name: 'ServiceSchedule' } }
+    /**
+     * Find zero or one ServiceSchedule that matches the filter.
+     * @param {ServiceScheduleFindUniqueArgs} args - Arguments to find a ServiceSchedule
+     * @example
+     * // Get one ServiceSchedule
+     * const serviceSchedule = await prisma.serviceSchedule.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ServiceScheduleFindUniqueArgs>(args: SelectSubset<T, ServiceScheduleFindUniqueArgs<ExtArgs>>): Prisma__ServiceScheduleClient<$Result.GetResult<Prisma.$ServiceSchedulePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ServiceSchedule that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ServiceScheduleFindUniqueOrThrowArgs} args - Arguments to find a ServiceSchedule
+     * @example
+     * // Get one ServiceSchedule
+     * const serviceSchedule = await prisma.serviceSchedule.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ServiceScheduleFindUniqueOrThrowArgs>(args: SelectSubset<T, ServiceScheduleFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ServiceScheduleClient<$Result.GetResult<Prisma.$ServiceSchedulePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ServiceSchedule that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceScheduleFindFirstArgs} args - Arguments to find a ServiceSchedule
+     * @example
+     * // Get one ServiceSchedule
+     * const serviceSchedule = await prisma.serviceSchedule.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ServiceScheduleFindFirstArgs>(args?: SelectSubset<T, ServiceScheduleFindFirstArgs<ExtArgs>>): Prisma__ServiceScheduleClient<$Result.GetResult<Prisma.$ServiceSchedulePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ServiceSchedule that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceScheduleFindFirstOrThrowArgs} args - Arguments to find a ServiceSchedule
+     * @example
+     * // Get one ServiceSchedule
+     * const serviceSchedule = await prisma.serviceSchedule.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ServiceScheduleFindFirstOrThrowArgs>(args?: SelectSubset<T, ServiceScheduleFindFirstOrThrowArgs<ExtArgs>>): Prisma__ServiceScheduleClient<$Result.GetResult<Prisma.$ServiceSchedulePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ServiceSchedules that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceScheduleFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ServiceSchedules
+     * const serviceSchedules = await prisma.serviceSchedule.findMany()
+     * 
+     * // Get first 10 ServiceSchedules
+     * const serviceSchedules = await prisma.serviceSchedule.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const serviceScheduleWithIdOnly = await prisma.serviceSchedule.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ServiceScheduleFindManyArgs>(args?: SelectSubset<T, ServiceScheduleFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ServiceSchedulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ServiceSchedule.
+     * @param {ServiceScheduleCreateArgs} args - Arguments to create a ServiceSchedule.
+     * @example
+     * // Create one ServiceSchedule
+     * const ServiceSchedule = await prisma.serviceSchedule.create({
+     *   data: {
+     *     // ... data to create a ServiceSchedule
+     *   }
+     * })
+     * 
+     */
+    create<T extends ServiceScheduleCreateArgs>(args: SelectSubset<T, ServiceScheduleCreateArgs<ExtArgs>>): Prisma__ServiceScheduleClient<$Result.GetResult<Prisma.$ServiceSchedulePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ServiceSchedules.
+     * @param {ServiceScheduleCreateManyArgs} args - Arguments to create many ServiceSchedules.
+     * @example
+     * // Create many ServiceSchedules
+     * const serviceSchedule = await prisma.serviceSchedule.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ServiceScheduleCreateManyArgs>(args?: SelectSubset<T, ServiceScheduleCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ServiceSchedules and returns the data saved in the database.
+     * @param {ServiceScheduleCreateManyAndReturnArgs} args - Arguments to create many ServiceSchedules.
+     * @example
+     * // Create many ServiceSchedules
+     * const serviceSchedule = await prisma.serviceSchedule.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ServiceSchedules and only return the `id`
+     * const serviceScheduleWithIdOnly = await prisma.serviceSchedule.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ServiceScheduleCreateManyAndReturnArgs>(args?: SelectSubset<T, ServiceScheduleCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ServiceSchedulePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ServiceSchedule.
+     * @param {ServiceScheduleDeleteArgs} args - Arguments to delete one ServiceSchedule.
+     * @example
+     * // Delete one ServiceSchedule
+     * const ServiceSchedule = await prisma.serviceSchedule.delete({
+     *   where: {
+     *     // ... filter to delete one ServiceSchedule
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ServiceScheduleDeleteArgs>(args: SelectSubset<T, ServiceScheduleDeleteArgs<ExtArgs>>): Prisma__ServiceScheduleClient<$Result.GetResult<Prisma.$ServiceSchedulePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ServiceSchedule.
+     * @param {ServiceScheduleUpdateArgs} args - Arguments to update one ServiceSchedule.
+     * @example
+     * // Update one ServiceSchedule
+     * const serviceSchedule = await prisma.serviceSchedule.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ServiceScheduleUpdateArgs>(args: SelectSubset<T, ServiceScheduleUpdateArgs<ExtArgs>>): Prisma__ServiceScheduleClient<$Result.GetResult<Prisma.$ServiceSchedulePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ServiceSchedules.
+     * @param {ServiceScheduleDeleteManyArgs} args - Arguments to filter ServiceSchedules to delete.
+     * @example
+     * // Delete a few ServiceSchedules
+     * const { count } = await prisma.serviceSchedule.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ServiceScheduleDeleteManyArgs>(args?: SelectSubset<T, ServiceScheduleDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ServiceSchedules.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceScheduleUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ServiceSchedules
+     * const serviceSchedule = await prisma.serviceSchedule.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ServiceScheduleUpdateManyArgs>(args: SelectSubset<T, ServiceScheduleUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ServiceSchedules and returns the data updated in the database.
+     * @param {ServiceScheduleUpdateManyAndReturnArgs} args - Arguments to update many ServiceSchedules.
+     * @example
+     * // Update many ServiceSchedules
+     * const serviceSchedule = await prisma.serviceSchedule.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ServiceSchedules and only return the `id`
+     * const serviceScheduleWithIdOnly = await prisma.serviceSchedule.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ServiceScheduleUpdateManyAndReturnArgs>(args: SelectSubset<T, ServiceScheduleUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ServiceSchedulePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ServiceSchedule.
+     * @param {ServiceScheduleUpsertArgs} args - Arguments to update or create a ServiceSchedule.
+     * @example
+     * // Update or create a ServiceSchedule
+     * const serviceSchedule = await prisma.serviceSchedule.upsert({
+     *   create: {
+     *     // ... data to create a ServiceSchedule
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ServiceSchedule we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ServiceScheduleUpsertArgs>(args: SelectSubset<T, ServiceScheduleUpsertArgs<ExtArgs>>): Prisma__ServiceScheduleClient<$Result.GetResult<Prisma.$ServiceSchedulePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ServiceSchedules.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceScheduleCountArgs} args - Arguments to filter ServiceSchedules to count.
+     * @example
+     * // Count the number of ServiceSchedules
+     * const count = await prisma.serviceSchedule.count({
+     *   where: {
+     *     // ... the filter for the ServiceSchedules we want to count
+     *   }
+     * })
+    **/
+    count<T extends ServiceScheduleCountArgs>(
+      args?: Subset<T, ServiceScheduleCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ServiceScheduleCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ServiceSchedule.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceScheduleAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ServiceScheduleAggregateArgs>(args: Subset<T, ServiceScheduleAggregateArgs>): Prisma.PrismaPromise<GetServiceScheduleAggregateType<T>>
+
+    /**
+     * Group by ServiceSchedule.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceScheduleGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ServiceScheduleGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ServiceScheduleGroupByArgs['orderBy'] }
+        : { orderBy?: ServiceScheduleGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ServiceScheduleGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetServiceScheduleGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ServiceSchedule model
+   */
+  readonly fields: ServiceScheduleFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ServiceSchedule.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ServiceScheduleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    service<T extends ServiceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ServiceDefaultArgs<ExtArgs>>): Prisma__ServiceClient<$Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ServiceSchedule model
+   */
+  interface ServiceScheduleFieldRefs {
+    readonly id: FieldRef<"ServiceSchedule", 'String'>
+    readonly serviceId: FieldRef<"ServiceSchedule", 'String'>
+    readonly mon: FieldRef<"ServiceSchedule", 'Boolean'>
+    readonly tue: FieldRef<"ServiceSchedule", 'Boolean'>
+    readonly wed: FieldRef<"ServiceSchedule", 'Boolean'>
+    readonly thu: FieldRef<"ServiceSchedule", 'Boolean'>
+    readonly fri: FieldRef<"ServiceSchedule", 'Boolean'>
+    readonly sat: FieldRef<"ServiceSchedule", 'Boolean'>
+    readonly sun: FieldRef<"ServiceSchedule", 'Boolean'>
+    readonly updatedAt: FieldRef<"ServiceSchedule", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ServiceSchedule findUnique
+   */
+  export type ServiceScheduleFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceSchedule
+     */
+    select?: ServiceScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceSchedule
+     */
+    omit?: ServiceScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceScheduleInclude<ExtArgs> | null
+    /**
+     * Filter, which ServiceSchedule to fetch.
+     */
+    where: ServiceScheduleWhereUniqueInput
+  }
+
+  /**
+   * ServiceSchedule findUniqueOrThrow
+   */
+  export type ServiceScheduleFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceSchedule
+     */
+    select?: ServiceScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceSchedule
+     */
+    omit?: ServiceScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceScheduleInclude<ExtArgs> | null
+    /**
+     * Filter, which ServiceSchedule to fetch.
+     */
+    where: ServiceScheduleWhereUniqueInput
+  }
+
+  /**
+   * ServiceSchedule findFirst
+   */
+  export type ServiceScheduleFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceSchedule
+     */
+    select?: ServiceScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceSchedule
+     */
+    omit?: ServiceScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceScheduleInclude<ExtArgs> | null
+    /**
+     * Filter, which ServiceSchedule to fetch.
+     */
+    where?: ServiceScheduleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ServiceSchedules to fetch.
+     */
+    orderBy?: ServiceScheduleOrderByWithRelationInput | ServiceScheduleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ServiceSchedules.
+     */
+    cursor?: ServiceScheduleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ServiceSchedules from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ServiceSchedules.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ServiceSchedules.
+     */
+    distinct?: ServiceScheduleScalarFieldEnum | ServiceScheduleScalarFieldEnum[]
+  }
+
+  /**
+   * ServiceSchedule findFirstOrThrow
+   */
+  export type ServiceScheduleFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceSchedule
+     */
+    select?: ServiceScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceSchedule
+     */
+    omit?: ServiceScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceScheduleInclude<ExtArgs> | null
+    /**
+     * Filter, which ServiceSchedule to fetch.
+     */
+    where?: ServiceScheduleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ServiceSchedules to fetch.
+     */
+    orderBy?: ServiceScheduleOrderByWithRelationInput | ServiceScheduleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ServiceSchedules.
+     */
+    cursor?: ServiceScheduleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ServiceSchedules from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ServiceSchedules.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ServiceSchedules.
+     */
+    distinct?: ServiceScheduleScalarFieldEnum | ServiceScheduleScalarFieldEnum[]
+  }
+
+  /**
+   * ServiceSchedule findMany
+   */
+  export type ServiceScheduleFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceSchedule
+     */
+    select?: ServiceScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceSchedule
+     */
+    omit?: ServiceScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceScheduleInclude<ExtArgs> | null
+    /**
+     * Filter, which ServiceSchedules to fetch.
+     */
+    where?: ServiceScheduleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ServiceSchedules to fetch.
+     */
+    orderBy?: ServiceScheduleOrderByWithRelationInput | ServiceScheduleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ServiceSchedules.
+     */
+    cursor?: ServiceScheduleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ServiceSchedules from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ServiceSchedules.
+     */
+    skip?: number
+    distinct?: ServiceScheduleScalarFieldEnum | ServiceScheduleScalarFieldEnum[]
+  }
+
+  /**
+   * ServiceSchedule create
+   */
+  export type ServiceScheduleCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceSchedule
+     */
+    select?: ServiceScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceSchedule
+     */
+    omit?: ServiceScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceScheduleInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ServiceSchedule.
+     */
+    data: XOR<ServiceScheduleCreateInput, ServiceScheduleUncheckedCreateInput>
+  }
+
+  /**
+   * ServiceSchedule createMany
+   */
+  export type ServiceScheduleCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ServiceSchedules.
+     */
+    data: ServiceScheduleCreateManyInput | ServiceScheduleCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ServiceSchedule createManyAndReturn
+   */
+  export type ServiceScheduleCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceSchedule
+     */
+    select?: ServiceScheduleSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceSchedule
+     */
+    omit?: ServiceScheduleOmit<ExtArgs> | null
+    /**
+     * The data used to create many ServiceSchedules.
+     */
+    data: ServiceScheduleCreateManyInput | ServiceScheduleCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceScheduleIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ServiceSchedule update
+   */
+  export type ServiceScheduleUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceSchedule
+     */
+    select?: ServiceScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceSchedule
+     */
+    omit?: ServiceScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceScheduleInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ServiceSchedule.
+     */
+    data: XOR<ServiceScheduleUpdateInput, ServiceScheduleUncheckedUpdateInput>
+    /**
+     * Choose, which ServiceSchedule to update.
+     */
+    where: ServiceScheduleWhereUniqueInput
+  }
+
+  /**
+   * ServiceSchedule updateMany
+   */
+  export type ServiceScheduleUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ServiceSchedules.
+     */
+    data: XOR<ServiceScheduleUpdateManyMutationInput, ServiceScheduleUncheckedUpdateManyInput>
+    /**
+     * Filter which ServiceSchedules to update
+     */
+    where?: ServiceScheduleWhereInput
+    /**
+     * Limit how many ServiceSchedules to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ServiceSchedule updateManyAndReturn
+   */
+  export type ServiceScheduleUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceSchedule
+     */
+    select?: ServiceScheduleSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceSchedule
+     */
+    omit?: ServiceScheduleOmit<ExtArgs> | null
+    /**
+     * The data used to update ServiceSchedules.
+     */
+    data: XOR<ServiceScheduleUpdateManyMutationInput, ServiceScheduleUncheckedUpdateManyInput>
+    /**
+     * Filter which ServiceSchedules to update
+     */
+    where?: ServiceScheduleWhereInput
+    /**
+     * Limit how many ServiceSchedules to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceScheduleIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ServiceSchedule upsert
+   */
+  export type ServiceScheduleUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceSchedule
+     */
+    select?: ServiceScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceSchedule
+     */
+    omit?: ServiceScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceScheduleInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ServiceSchedule to update in case it exists.
+     */
+    where: ServiceScheduleWhereUniqueInput
+    /**
+     * In case the ServiceSchedule found by the `where` argument doesn't exist, create a new ServiceSchedule with this data.
+     */
+    create: XOR<ServiceScheduleCreateInput, ServiceScheduleUncheckedCreateInput>
+    /**
+     * In case the ServiceSchedule was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ServiceScheduleUpdateInput, ServiceScheduleUncheckedUpdateInput>
+  }
+
+  /**
+   * ServiceSchedule delete
+   */
+  export type ServiceScheduleDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceSchedule
+     */
+    select?: ServiceScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceSchedule
+     */
+    omit?: ServiceScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceScheduleInclude<ExtArgs> | null
+    /**
+     * Filter which ServiceSchedule to delete.
+     */
+    where: ServiceScheduleWhereUniqueInput
+  }
+
+  /**
+   * ServiceSchedule deleteMany
+   */
+  export type ServiceScheduleDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ServiceSchedules to delete
+     */
+    where?: ServiceScheduleWhereInput
+    /**
+     * Limit how many ServiceSchedules to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ServiceSchedule without action
+   */
+  export type ServiceScheduleDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceSchedule
+     */
+    select?: ServiceScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceSchedule
+     */
+    omit?: ServiceScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceScheduleInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model ServiceBlockedDate
+   */
+
+  export type AggregateServiceBlockedDate = {
+    _count: ServiceBlockedDateCountAggregateOutputType | null
+    _min: ServiceBlockedDateMinAggregateOutputType | null
+    _max: ServiceBlockedDateMaxAggregateOutputType | null
+  }
+
+  export type ServiceBlockedDateMinAggregateOutputType = {
+    id: string | null
+    serviceId: string | null
+    date: Date | null
+    note: string | null
+    createdAt: Date | null
+  }
+
+  export type ServiceBlockedDateMaxAggregateOutputType = {
+    id: string | null
+    serviceId: string | null
+    date: Date | null
+    note: string | null
+    createdAt: Date | null
+  }
+
+  export type ServiceBlockedDateCountAggregateOutputType = {
+    id: number
+    serviceId: number
+    date: number
+    note: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type ServiceBlockedDateMinAggregateInputType = {
+    id?: true
+    serviceId?: true
+    date?: true
+    note?: true
+    createdAt?: true
+  }
+
+  export type ServiceBlockedDateMaxAggregateInputType = {
+    id?: true
+    serviceId?: true
+    date?: true
+    note?: true
+    createdAt?: true
+  }
+
+  export type ServiceBlockedDateCountAggregateInputType = {
+    id?: true
+    serviceId?: true
+    date?: true
+    note?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type ServiceBlockedDateAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ServiceBlockedDate to aggregate.
+     */
+    where?: ServiceBlockedDateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ServiceBlockedDates to fetch.
+     */
+    orderBy?: ServiceBlockedDateOrderByWithRelationInput | ServiceBlockedDateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ServiceBlockedDateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ServiceBlockedDates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ServiceBlockedDates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ServiceBlockedDates
+    **/
+    _count?: true | ServiceBlockedDateCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ServiceBlockedDateMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ServiceBlockedDateMaxAggregateInputType
+  }
+
+  export type GetServiceBlockedDateAggregateType<T extends ServiceBlockedDateAggregateArgs> = {
+        [P in keyof T & keyof AggregateServiceBlockedDate]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateServiceBlockedDate[P]>
+      : GetScalarType<T[P], AggregateServiceBlockedDate[P]>
+  }
+
+
+
+
+  export type ServiceBlockedDateGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ServiceBlockedDateWhereInput
+    orderBy?: ServiceBlockedDateOrderByWithAggregationInput | ServiceBlockedDateOrderByWithAggregationInput[]
+    by: ServiceBlockedDateScalarFieldEnum[] | ServiceBlockedDateScalarFieldEnum
+    having?: ServiceBlockedDateScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ServiceBlockedDateCountAggregateInputType | true
+    _min?: ServiceBlockedDateMinAggregateInputType
+    _max?: ServiceBlockedDateMaxAggregateInputType
+  }
+
+  export type ServiceBlockedDateGroupByOutputType = {
+    id: string
+    serviceId: string
+    date: Date
+    note: string | null
+    createdAt: Date
+    _count: ServiceBlockedDateCountAggregateOutputType | null
+    _min: ServiceBlockedDateMinAggregateOutputType | null
+    _max: ServiceBlockedDateMaxAggregateOutputType | null
+  }
+
+  type GetServiceBlockedDateGroupByPayload<T extends ServiceBlockedDateGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ServiceBlockedDateGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ServiceBlockedDateGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ServiceBlockedDateGroupByOutputType[P]>
+            : GetScalarType<T[P], ServiceBlockedDateGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ServiceBlockedDateSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    serviceId?: boolean
+    date?: boolean
+    note?: boolean
+    createdAt?: boolean
+    service?: boolean | ServiceDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["serviceBlockedDate"]>
+
+  export type ServiceBlockedDateSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    serviceId?: boolean
+    date?: boolean
+    note?: boolean
+    createdAt?: boolean
+    service?: boolean | ServiceDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["serviceBlockedDate"]>
+
+  export type ServiceBlockedDateSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    serviceId?: boolean
+    date?: boolean
+    note?: boolean
+    createdAt?: boolean
+    service?: boolean | ServiceDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["serviceBlockedDate"]>
+
+  export type ServiceBlockedDateSelectScalar = {
+    id?: boolean
+    serviceId?: boolean
+    date?: boolean
+    note?: boolean
+    createdAt?: boolean
+  }
+
+  export type ServiceBlockedDateOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "serviceId" | "date" | "note" | "createdAt", ExtArgs["result"]["serviceBlockedDate"]>
+  export type ServiceBlockedDateInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    service?: boolean | ServiceDefaultArgs<ExtArgs>
+  }
+  export type ServiceBlockedDateIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    service?: boolean | ServiceDefaultArgs<ExtArgs>
+  }
+  export type ServiceBlockedDateIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    service?: boolean | ServiceDefaultArgs<ExtArgs>
+  }
+
+  export type $ServiceBlockedDatePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ServiceBlockedDate"
+    objects: {
+      service: Prisma.$ServicePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      serviceId: string
+      date: Date
+      note: string | null
+      createdAt: Date
+    }, ExtArgs["result"]["serviceBlockedDate"]>
+    composites: {}
+  }
+
+  type ServiceBlockedDateGetPayload<S extends boolean | null | undefined | ServiceBlockedDateDefaultArgs> = $Result.GetResult<Prisma.$ServiceBlockedDatePayload, S>
+
+  type ServiceBlockedDateCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ServiceBlockedDateFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ServiceBlockedDateCountAggregateInputType | true
+    }
+
+  export interface ServiceBlockedDateDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ServiceBlockedDate'], meta: { name: 'ServiceBlockedDate' } }
+    /**
+     * Find zero or one ServiceBlockedDate that matches the filter.
+     * @param {ServiceBlockedDateFindUniqueArgs} args - Arguments to find a ServiceBlockedDate
+     * @example
+     * // Get one ServiceBlockedDate
+     * const serviceBlockedDate = await prisma.serviceBlockedDate.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ServiceBlockedDateFindUniqueArgs>(args: SelectSubset<T, ServiceBlockedDateFindUniqueArgs<ExtArgs>>): Prisma__ServiceBlockedDateClient<$Result.GetResult<Prisma.$ServiceBlockedDatePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ServiceBlockedDate that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ServiceBlockedDateFindUniqueOrThrowArgs} args - Arguments to find a ServiceBlockedDate
+     * @example
+     * // Get one ServiceBlockedDate
+     * const serviceBlockedDate = await prisma.serviceBlockedDate.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ServiceBlockedDateFindUniqueOrThrowArgs>(args: SelectSubset<T, ServiceBlockedDateFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ServiceBlockedDateClient<$Result.GetResult<Prisma.$ServiceBlockedDatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ServiceBlockedDate that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceBlockedDateFindFirstArgs} args - Arguments to find a ServiceBlockedDate
+     * @example
+     * // Get one ServiceBlockedDate
+     * const serviceBlockedDate = await prisma.serviceBlockedDate.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ServiceBlockedDateFindFirstArgs>(args?: SelectSubset<T, ServiceBlockedDateFindFirstArgs<ExtArgs>>): Prisma__ServiceBlockedDateClient<$Result.GetResult<Prisma.$ServiceBlockedDatePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ServiceBlockedDate that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceBlockedDateFindFirstOrThrowArgs} args - Arguments to find a ServiceBlockedDate
+     * @example
+     * // Get one ServiceBlockedDate
+     * const serviceBlockedDate = await prisma.serviceBlockedDate.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ServiceBlockedDateFindFirstOrThrowArgs>(args?: SelectSubset<T, ServiceBlockedDateFindFirstOrThrowArgs<ExtArgs>>): Prisma__ServiceBlockedDateClient<$Result.GetResult<Prisma.$ServiceBlockedDatePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ServiceBlockedDates that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceBlockedDateFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ServiceBlockedDates
+     * const serviceBlockedDates = await prisma.serviceBlockedDate.findMany()
+     * 
+     * // Get first 10 ServiceBlockedDates
+     * const serviceBlockedDates = await prisma.serviceBlockedDate.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const serviceBlockedDateWithIdOnly = await prisma.serviceBlockedDate.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ServiceBlockedDateFindManyArgs>(args?: SelectSubset<T, ServiceBlockedDateFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ServiceBlockedDatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ServiceBlockedDate.
+     * @param {ServiceBlockedDateCreateArgs} args - Arguments to create a ServiceBlockedDate.
+     * @example
+     * // Create one ServiceBlockedDate
+     * const ServiceBlockedDate = await prisma.serviceBlockedDate.create({
+     *   data: {
+     *     // ... data to create a ServiceBlockedDate
+     *   }
+     * })
+     * 
+     */
+    create<T extends ServiceBlockedDateCreateArgs>(args: SelectSubset<T, ServiceBlockedDateCreateArgs<ExtArgs>>): Prisma__ServiceBlockedDateClient<$Result.GetResult<Prisma.$ServiceBlockedDatePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ServiceBlockedDates.
+     * @param {ServiceBlockedDateCreateManyArgs} args - Arguments to create many ServiceBlockedDates.
+     * @example
+     * // Create many ServiceBlockedDates
+     * const serviceBlockedDate = await prisma.serviceBlockedDate.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ServiceBlockedDateCreateManyArgs>(args?: SelectSubset<T, ServiceBlockedDateCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ServiceBlockedDates and returns the data saved in the database.
+     * @param {ServiceBlockedDateCreateManyAndReturnArgs} args - Arguments to create many ServiceBlockedDates.
+     * @example
+     * // Create many ServiceBlockedDates
+     * const serviceBlockedDate = await prisma.serviceBlockedDate.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ServiceBlockedDates and only return the `id`
+     * const serviceBlockedDateWithIdOnly = await prisma.serviceBlockedDate.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ServiceBlockedDateCreateManyAndReturnArgs>(args?: SelectSubset<T, ServiceBlockedDateCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ServiceBlockedDatePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ServiceBlockedDate.
+     * @param {ServiceBlockedDateDeleteArgs} args - Arguments to delete one ServiceBlockedDate.
+     * @example
+     * // Delete one ServiceBlockedDate
+     * const ServiceBlockedDate = await prisma.serviceBlockedDate.delete({
+     *   where: {
+     *     // ... filter to delete one ServiceBlockedDate
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ServiceBlockedDateDeleteArgs>(args: SelectSubset<T, ServiceBlockedDateDeleteArgs<ExtArgs>>): Prisma__ServiceBlockedDateClient<$Result.GetResult<Prisma.$ServiceBlockedDatePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ServiceBlockedDate.
+     * @param {ServiceBlockedDateUpdateArgs} args - Arguments to update one ServiceBlockedDate.
+     * @example
+     * // Update one ServiceBlockedDate
+     * const serviceBlockedDate = await prisma.serviceBlockedDate.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ServiceBlockedDateUpdateArgs>(args: SelectSubset<T, ServiceBlockedDateUpdateArgs<ExtArgs>>): Prisma__ServiceBlockedDateClient<$Result.GetResult<Prisma.$ServiceBlockedDatePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ServiceBlockedDates.
+     * @param {ServiceBlockedDateDeleteManyArgs} args - Arguments to filter ServiceBlockedDates to delete.
+     * @example
+     * // Delete a few ServiceBlockedDates
+     * const { count } = await prisma.serviceBlockedDate.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ServiceBlockedDateDeleteManyArgs>(args?: SelectSubset<T, ServiceBlockedDateDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ServiceBlockedDates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceBlockedDateUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ServiceBlockedDates
+     * const serviceBlockedDate = await prisma.serviceBlockedDate.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ServiceBlockedDateUpdateManyArgs>(args: SelectSubset<T, ServiceBlockedDateUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ServiceBlockedDates and returns the data updated in the database.
+     * @param {ServiceBlockedDateUpdateManyAndReturnArgs} args - Arguments to update many ServiceBlockedDates.
+     * @example
+     * // Update many ServiceBlockedDates
+     * const serviceBlockedDate = await prisma.serviceBlockedDate.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ServiceBlockedDates and only return the `id`
+     * const serviceBlockedDateWithIdOnly = await prisma.serviceBlockedDate.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ServiceBlockedDateUpdateManyAndReturnArgs>(args: SelectSubset<T, ServiceBlockedDateUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ServiceBlockedDatePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ServiceBlockedDate.
+     * @param {ServiceBlockedDateUpsertArgs} args - Arguments to update or create a ServiceBlockedDate.
+     * @example
+     * // Update or create a ServiceBlockedDate
+     * const serviceBlockedDate = await prisma.serviceBlockedDate.upsert({
+     *   create: {
+     *     // ... data to create a ServiceBlockedDate
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ServiceBlockedDate we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ServiceBlockedDateUpsertArgs>(args: SelectSubset<T, ServiceBlockedDateUpsertArgs<ExtArgs>>): Prisma__ServiceBlockedDateClient<$Result.GetResult<Prisma.$ServiceBlockedDatePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ServiceBlockedDates.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceBlockedDateCountArgs} args - Arguments to filter ServiceBlockedDates to count.
+     * @example
+     * // Count the number of ServiceBlockedDates
+     * const count = await prisma.serviceBlockedDate.count({
+     *   where: {
+     *     // ... the filter for the ServiceBlockedDates we want to count
+     *   }
+     * })
+    **/
+    count<T extends ServiceBlockedDateCountArgs>(
+      args?: Subset<T, ServiceBlockedDateCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ServiceBlockedDateCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ServiceBlockedDate.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceBlockedDateAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ServiceBlockedDateAggregateArgs>(args: Subset<T, ServiceBlockedDateAggregateArgs>): Prisma.PrismaPromise<GetServiceBlockedDateAggregateType<T>>
+
+    /**
+     * Group by ServiceBlockedDate.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ServiceBlockedDateGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ServiceBlockedDateGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ServiceBlockedDateGroupByArgs['orderBy'] }
+        : { orderBy?: ServiceBlockedDateGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ServiceBlockedDateGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetServiceBlockedDateGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ServiceBlockedDate model
+   */
+  readonly fields: ServiceBlockedDateFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ServiceBlockedDate.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ServiceBlockedDateClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    service<T extends ServiceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ServiceDefaultArgs<ExtArgs>>): Prisma__ServiceClient<$Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ServiceBlockedDate model
+   */
+  interface ServiceBlockedDateFieldRefs {
+    readonly id: FieldRef<"ServiceBlockedDate", 'String'>
+    readonly serviceId: FieldRef<"ServiceBlockedDate", 'String'>
+    readonly date: FieldRef<"ServiceBlockedDate", 'DateTime'>
+    readonly note: FieldRef<"ServiceBlockedDate", 'String'>
+    readonly createdAt: FieldRef<"ServiceBlockedDate", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ServiceBlockedDate findUnique
+   */
+  export type ServiceBlockedDateFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceBlockedDate
+     */
+    select?: ServiceBlockedDateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceBlockedDate
+     */
+    omit?: ServiceBlockedDateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceBlockedDateInclude<ExtArgs> | null
+    /**
+     * Filter, which ServiceBlockedDate to fetch.
+     */
+    where: ServiceBlockedDateWhereUniqueInput
+  }
+
+  /**
+   * ServiceBlockedDate findUniqueOrThrow
+   */
+  export type ServiceBlockedDateFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceBlockedDate
+     */
+    select?: ServiceBlockedDateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceBlockedDate
+     */
+    omit?: ServiceBlockedDateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceBlockedDateInclude<ExtArgs> | null
+    /**
+     * Filter, which ServiceBlockedDate to fetch.
+     */
+    where: ServiceBlockedDateWhereUniqueInput
+  }
+
+  /**
+   * ServiceBlockedDate findFirst
+   */
+  export type ServiceBlockedDateFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceBlockedDate
+     */
+    select?: ServiceBlockedDateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceBlockedDate
+     */
+    omit?: ServiceBlockedDateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceBlockedDateInclude<ExtArgs> | null
+    /**
+     * Filter, which ServiceBlockedDate to fetch.
+     */
+    where?: ServiceBlockedDateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ServiceBlockedDates to fetch.
+     */
+    orderBy?: ServiceBlockedDateOrderByWithRelationInput | ServiceBlockedDateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ServiceBlockedDates.
+     */
+    cursor?: ServiceBlockedDateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ServiceBlockedDates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ServiceBlockedDates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ServiceBlockedDates.
+     */
+    distinct?: ServiceBlockedDateScalarFieldEnum | ServiceBlockedDateScalarFieldEnum[]
+  }
+
+  /**
+   * ServiceBlockedDate findFirstOrThrow
+   */
+  export type ServiceBlockedDateFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceBlockedDate
+     */
+    select?: ServiceBlockedDateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceBlockedDate
+     */
+    omit?: ServiceBlockedDateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceBlockedDateInclude<ExtArgs> | null
+    /**
+     * Filter, which ServiceBlockedDate to fetch.
+     */
+    where?: ServiceBlockedDateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ServiceBlockedDates to fetch.
+     */
+    orderBy?: ServiceBlockedDateOrderByWithRelationInput | ServiceBlockedDateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ServiceBlockedDates.
+     */
+    cursor?: ServiceBlockedDateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ServiceBlockedDates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ServiceBlockedDates.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ServiceBlockedDates.
+     */
+    distinct?: ServiceBlockedDateScalarFieldEnum | ServiceBlockedDateScalarFieldEnum[]
+  }
+
+  /**
+   * ServiceBlockedDate findMany
+   */
+  export type ServiceBlockedDateFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceBlockedDate
+     */
+    select?: ServiceBlockedDateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceBlockedDate
+     */
+    omit?: ServiceBlockedDateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceBlockedDateInclude<ExtArgs> | null
+    /**
+     * Filter, which ServiceBlockedDates to fetch.
+     */
+    where?: ServiceBlockedDateWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ServiceBlockedDates to fetch.
+     */
+    orderBy?: ServiceBlockedDateOrderByWithRelationInput | ServiceBlockedDateOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ServiceBlockedDates.
+     */
+    cursor?: ServiceBlockedDateWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ServiceBlockedDates from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ServiceBlockedDates.
+     */
+    skip?: number
+    distinct?: ServiceBlockedDateScalarFieldEnum | ServiceBlockedDateScalarFieldEnum[]
+  }
+
+  /**
+   * ServiceBlockedDate create
+   */
+  export type ServiceBlockedDateCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceBlockedDate
+     */
+    select?: ServiceBlockedDateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceBlockedDate
+     */
+    omit?: ServiceBlockedDateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceBlockedDateInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ServiceBlockedDate.
+     */
+    data: XOR<ServiceBlockedDateCreateInput, ServiceBlockedDateUncheckedCreateInput>
+  }
+
+  /**
+   * ServiceBlockedDate createMany
+   */
+  export type ServiceBlockedDateCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ServiceBlockedDates.
+     */
+    data: ServiceBlockedDateCreateManyInput | ServiceBlockedDateCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ServiceBlockedDate createManyAndReturn
+   */
+  export type ServiceBlockedDateCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceBlockedDate
+     */
+    select?: ServiceBlockedDateSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceBlockedDate
+     */
+    omit?: ServiceBlockedDateOmit<ExtArgs> | null
+    /**
+     * The data used to create many ServiceBlockedDates.
+     */
+    data: ServiceBlockedDateCreateManyInput | ServiceBlockedDateCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceBlockedDateIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ServiceBlockedDate update
+   */
+  export type ServiceBlockedDateUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceBlockedDate
+     */
+    select?: ServiceBlockedDateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceBlockedDate
+     */
+    omit?: ServiceBlockedDateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceBlockedDateInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ServiceBlockedDate.
+     */
+    data: XOR<ServiceBlockedDateUpdateInput, ServiceBlockedDateUncheckedUpdateInput>
+    /**
+     * Choose, which ServiceBlockedDate to update.
+     */
+    where: ServiceBlockedDateWhereUniqueInput
+  }
+
+  /**
+   * ServiceBlockedDate updateMany
+   */
+  export type ServiceBlockedDateUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ServiceBlockedDates.
+     */
+    data: XOR<ServiceBlockedDateUpdateManyMutationInput, ServiceBlockedDateUncheckedUpdateManyInput>
+    /**
+     * Filter which ServiceBlockedDates to update
+     */
+    where?: ServiceBlockedDateWhereInput
+    /**
+     * Limit how many ServiceBlockedDates to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ServiceBlockedDate updateManyAndReturn
+   */
+  export type ServiceBlockedDateUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceBlockedDate
+     */
+    select?: ServiceBlockedDateSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceBlockedDate
+     */
+    omit?: ServiceBlockedDateOmit<ExtArgs> | null
+    /**
+     * The data used to update ServiceBlockedDates.
+     */
+    data: XOR<ServiceBlockedDateUpdateManyMutationInput, ServiceBlockedDateUncheckedUpdateManyInput>
+    /**
+     * Filter which ServiceBlockedDates to update
+     */
+    where?: ServiceBlockedDateWhereInput
+    /**
+     * Limit how many ServiceBlockedDates to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceBlockedDateIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ServiceBlockedDate upsert
+   */
+  export type ServiceBlockedDateUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceBlockedDate
+     */
+    select?: ServiceBlockedDateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceBlockedDate
+     */
+    omit?: ServiceBlockedDateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceBlockedDateInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ServiceBlockedDate to update in case it exists.
+     */
+    where: ServiceBlockedDateWhereUniqueInput
+    /**
+     * In case the ServiceBlockedDate found by the `where` argument doesn't exist, create a new ServiceBlockedDate with this data.
+     */
+    create: XOR<ServiceBlockedDateCreateInput, ServiceBlockedDateUncheckedCreateInput>
+    /**
+     * In case the ServiceBlockedDate was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ServiceBlockedDateUpdateInput, ServiceBlockedDateUncheckedUpdateInput>
+  }
+
+  /**
+   * ServiceBlockedDate delete
+   */
+  export type ServiceBlockedDateDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceBlockedDate
+     */
+    select?: ServiceBlockedDateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceBlockedDate
+     */
+    omit?: ServiceBlockedDateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceBlockedDateInclude<ExtArgs> | null
+    /**
+     * Filter which ServiceBlockedDate to delete.
+     */
+    where: ServiceBlockedDateWhereUniqueInput
+  }
+
+  /**
+   * ServiceBlockedDate deleteMany
+   */
+  export type ServiceBlockedDateDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ServiceBlockedDates to delete
+     */
+    where?: ServiceBlockedDateWhereInput
+    /**
+     * Limit how many ServiceBlockedDates to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ServiceBlockedDate without action
+   */
+  export type ServiceBlockedDateDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceBlockedDate
+     */
+    select?: ServiceBlockedDateSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceBlockedDate
+     */
+    omit?: ServiceBlockedDateOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceBlockedDateInclude<ExtArgs> | null
   }
 
 
@@ -6036,6 +8459,33 @@ export namespace Prisma {
   export type ServiceScalarFieldEnum = (typeof ServiceScalarFieldEnum)[keyof typeof ServiceScalarFieldEnum]
 
 
+  export const ServiceScheduleScalarFieldEnum: {
+    id: 'id',
+    serviceId: 'serviceId',
+    mon: 'mon',
+    tue: 'tue',
+    wed: 'wed',
+    thu: 'thu',
+    fri: 'fri',
+    sat: 'sat',
+    sun: 'sun',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ServiceScheduleScalarFieldEnum = (typeof ServiceScheduleScalarFieldEnum)[keyof typeof ServiceScheduleScalarFieldEnum]
+
+
+  export const ServiceBlockedDateScalarFieldEnum: {
+    id: 'id',
+    serviceId: 'serviceId',
+    date: 'date',
+    note: 'note',
+    createdAt: 'createdAt'
+  };
+
+  export type ServiceBlockedDateScalarFieldEnum = (typeof ServiceBlockedDateScalarFieldEnum)[keyof typeof ServiceBlockedDateScalarFieldEnum]
+
+
   export const BookingScalarFieldEnum: {
     id: 'id',
     userId: 'userId',
@@ -6366,6 +8816,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Service"> | Date | string
     provider?: XOR<ProviderScalarRelationFilter, ProviderWhereInput>
     bookings?: BookingListRelationFilter
+    schedule?: XOR<ServiceScheduleNullableScalarRelationFilter, ServiceScheduleWhereInput> | null
+    blockedDates?: ServiceBlockedDateListRelationFilter
   }
 
   export type ServiceOrderByWithRelationInput = {
@@ -6385,6 +8837,8 @@ export namespace Prisma {
     updatedAt?: SortOrder
     provider?: ProviderOrderByWithRelationInput
     bookings?: BookingOrderByRelationAggregateInput
+    schedule?: ServiceScheduleOrderByWithRelationInput
+    blockedDates?: ServiceBlockedDateOrderByRelationAggregateInput
   }
 
   export type ServiceWhereUniqueInput = Prisma.AtLeast<{
@@ -6407,6 +8861,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Service"> | Date | string
     provider?: XOR<ProviderScalarRelationFilter, ProviderWhereInput>
     bookings?: BookingListRelationFilter
+    schedule?: XOR<ServiceScheduleNullableScalarRelationFilter, ServiceScheduleWhereInput> | null
+    blockedDates?: ServiceBlockedDateListRelationFilter
   }, "id">
 
   export type ServiceOrderByWithAggregationInput = {
@@ -6449,6 +8905,142 @@ export namespace Prisma {
     isAvailable?: BoolWithAggregatesFilter<"Service"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Service"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Service"> | Date | string
+  }
+
+  export type ServiceScheduleWhereInput = {
+    AND?: ServiceScheduleWhereInput | ServiceScheduleWhereInput[]
+    OR?: ServiceScheduleWhereInput[]
+    NOT?: ServiceScheduleWhereInput | ServiceScheduleWhereInput[]
+    id?: StringFilter<"ServiceSchedule"> | string
+    serviceId?: StringFilter<"ServiceSchedule"> | string
+    mon?: BoolFilter<"ServiceSchedule"> | boolean
+    tue?: BoolFilter<"ServiceSchedule"> | boolean
+    wed?: BoolFilter<"ServiceSchedule"> | boolean
+    thu?: BoolFilter<"ServiceSchedule"> | boolean
+    fri?: BoolFilter<"ServiceSchedule"> | boolean
+    sat?: BoolFilter<"ServiceSchedule"> | boolean
+    sun?: BoolFilter<"ServiceSchedule"> | boolean
+    updatedAt?: DateTimeFilter<"ServiceSchedule"> | Date | string
+    service?: XOR<ServiceScalarRelationFilter, ServiceWhereInput>
+  }
+
+  export type ServiceScheduleOrderByWithRelationInput = {
+    id?: SortOrder
+    serviceId?: SortOrder
+    mon?: SortOrder
+    tue?: SortOrder
+    wed?: SortOrder
+    thu?: SortOrder
+    fri?: SortOrder
+    sat?: SortOrder
+    sun?: SortOrder
+    updatedAt?: SortOrder
+    service?: ServiceOrderByWithRelationInput
+  }
+
+  export type ServiceScheduleWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    serviceId?: string
+    AND?: ServiceScheduleWhereInput | ServiceScheduleWhereInput[]
+    OR?: ServiceScheduleWhereInput[]
+    NOT?: ServiceScheduleWhereInput | ServiceScheduleWhereInput[]
+    mon?: BoolFilter<"ServiceSchedule"> | boolean
+    tue?: BoolFilter<"ServiceSchedule"> | boolean
+    wed?: BoolFilter<"ServiceSchedule"> | boolean
+    thu?: BoolFilter<"ServiceSchedule"> | boolean
+    fri?: BoolFilter<"ServiceSchedule"> | boolean
+    sat?: BoolFilter<"ServiceSchedule"> | boolean
+    sun?: BoolFilter<"ServiceSchedule"> | boolean
+    updatedAt?: DateTimeFilter<"ServiceSchedule"> | Date | string
+    service?: XOR<ServiceScalarRelationFilter, ServiceWhereInput>
+  }, "id" | "serviceId">
+
+  export type ServiceScheduleOrderByWithAggregationInput = {
+    id?: SortOrder
+    serviceId?: SortOrder
+    mon?: SortOrder
+    tue?: SortOrder
+    wed?: SortOrder
+    thu?: SortOrder
+    fri?: SortOrder
+    sat?: SortOrder
+    sun?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ServiceScheduleCountOrderByAggregateInput
+    _max?: ServiceScheduleMaxOrderByAggregateInput
+    _min?: ServiceScheduleMinOrderByAggregateInput
+  }
+
+  export type ServiceScheduleScalarWhereWithAggregatesInput = {
+    AND?: ServiceScheduleScalarWhereWithAggregatesInput | ServiceScheduleScalarWhereWithAggregatesInput[]
+    OR?: ServiceScheduleScalarWhereWithAggregatesInput[]
+    NOT?: ServiceScheduleScalarWhereWithAggregatesInput | ServiceScheduleScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ServiceSchedule"> | string
+    serviceId?: StringWithAggregatesFilter<"ServiceSchedule"> | string
+    mon?: BoolWithAggregatesFilter<"ServiceSchedule"> | boolean
+    tue?: BoolWithAggregatesFilter<"ServiceSchedule"> | boolean
+    wed?: BoolWithAggregatesFilter<"ServiceSchedule"> | boolean
+    thu?: BoolWithAggregatesFilter<"ServiceSchedule"> | boolean
+    fri?: BoolWithAggregatesFilter<"ServiceSchedule"> | boolean
+    sat?: BoolWithAggregatesFilter<"ServiceSchedule"> | boolean
+    sun?: BoolWithAggregatesFilter<"ServiceSchedule"> | boolean
+    updatedAt?: DateTimeWithAggregatesFilter<"ServiceSchedule"> | Date | string
+  }
+
+  export type ServiceBlockedDateWhereInput = {
+    AND?: ServiceBlockedDateWhereInput | ServiceBlockedDateWhereInput[]
+    OR?: ServiceBlockedDateWhereInput[]
+    NOT?: ServiceBlockedDateWhereInput | ServiceBlockedDateWhereInput[]
+    id?: StringFilter<"ServiceBlockedDate"> | string
+    serviceId?: StringFilter<"ServiceBlockedDate"> | string
+    date?: DateTimeFilter<"ServiceBlockedDate"> | Date | string
+    note?: StringNullableFilter<"ServiceBlockedDate"> | string | null
+    createdAt?: DateTimeFilter<"ServiceBlockedDate"> | Date | string
+    service?: XOR<ServiceScalarRelationFilter, ServiceWhereInput>
+  }
+
+  export type ServiceBlockedDateOrderByWithRelationInput = {
+    id?: SortOrder
+    serviceId?: SortOrder
+    date?: SortOrder
+    note?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    service?: ServiceOrderByWithRelationInput
+  }
+
+  export type ServiceBlockedDateWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    serviceId_date?: ServiceBlockedDateServiceIdDateCompoundUniqueInput
+    AND?: ServiceBlockedDateWhereInput | ServiceBlockedDateWhereInput[]
+    OR?: ServiceBlockedDateWhereInput[]
+    NOT?: ServiceBlockedDateWhereInput | ServiceBlockedDateWhereInput[]
+    serviceId?: StringFilter<"ServiceBlockedDate"> | string
+    date?: DateTimeFilter<"ServiceBlockedDate"> | Date | string
+    note?: StringNullableFilter<"ServiceBlockedDate"> | string | null
+    createdAt?: DateTimeFilter<"ServiceBlockedDate"> | Date | string
+    service?: XOR<ServiceScalarRelationFilter, ServiceWhereInput>
+  }, "id" | "serviceId_date">
+
+  export type ServiceBlockedDateOrderByWithAggregationInput = {
+    id?: SortOrder
+    serviceId?: SortOrder
+    date?: SortOrder
+    note?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: ServiceBlockedDateCountOrderByAggregateInput
+    _max?: ServiceBlockedDateMaxOrderByAggregateInput
+    _min?: ServiceBlockedDateMinOrderByAggregateInput
+  }
+
+  export type ServiceBlockedDateScalarWhereWithAggregatesInput = {
+    AND?: ServiceBlockedDateScalarWhereWithAggregatesInput | ServiceBlockedDateScalarWhereWithAggregatesInput[]
+    OR?: ServiceBlockedDateScalarWhereWithAggregatesInput[]
+    NOT?: ServiceBlockedDateScalarWhereWithAggregatesInput | ServiceBlockedDateScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ServiceBlockedDate"> | string
+    serviceId?: StringWithAggregatesFilter<"ServiceBlockedDate"> | string
+    date?: DateTimeWithAggregatesFilter<"ServiceBlockedDate"> | Date | string
+    note?: StringNullableWithAggregatesFilter<"ServiceBlockedDate"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"ServiceBlockedDate"> | Date | string
   }
 
   export type BookingWhereInput = {
@@ -6736,6 +9328,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     provider: ProviderCreateNestedOneWithoutServicesInput
     bookings?: BookingCreateNestedManyWithoutServiceInput
+    schedule?: ServiceScheduleCreateNestedOneWithoutServiceInput
+    blockedDates?: ServiceBlockedDateCreateNestedManyWithoutServiceInput
   }
 
   export type ServiceUncheckedCreateInput = {
@@ -6754,6 +9348,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     bookings?: BookingUncheckedCreateNestedManyWithoutServiceInput
+    schedule?: ServiceScheduleUncheckedCreateNestedOneWithoutServiceInput
+    blockedDates?: ServiceBlockedDateUncheckedCreateNestedManyWithoutServiceInput
   }
 
   export type ServiceUpdateInput = {
@@ -6772,6 +9368,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     provider?: ProviderUpdateOneRequiredWithoutServicesNestedInput
     bookings?: BookingUpdateManyWithoutServiceNestedInput
+    schedule?: ServiceScheduleUpdateOneWithoutServiceNestedInput
+    blockedDates?: ServiceBlockedDateUpdateManyWithoutServiceNestedInput
   }
 
   export type ServiceUncheckedUpdateInput = {
@@ -6790,6 +9388,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     bookings?: BookingUncheckedUpdateManyWithoutServiceNestedInput
+    schedule?: ServiceScheduleUncheckedUpdateOneWithoutServiceNestedInput
+    blockedDates?: ServiceBlockedDateUncheckedUpdateManyWithoutServiceNestedInput
   }
 
   export type ServiceCreateManyInput = {
@@ -6840,6 +9440,151 @@ export namespace Prisma {
     isAvailable?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ServiceScheduleCreateInput = {
+    id?: string
+    mon?: boolean
+    tue?: boolean
+    wed?: boolean
+    thu?: boolean
+    fri?: boolean
+    sat?: boolean
+    sun?: boolean
+    updatedAt?: Date | string
+    service: ServiceCreateNestedOneWithoutScheduleInput
+  }
+
+  export type ServiceScheduleUncheckedCreateInput = {
+    id?: string
+    serviceId: string
+    mon?: boolean
+    tue?: boolean
+    wed?: boolean
+    thu?: boolean
+    fri?: boolean
+    sat?: boolean
+    sun?: boolean
+    updatedAt?: Date | string
+  }
+
+  export type ServiceScheduleUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mon?: BoolFieldUpdateOperationsInput | boolean
+    tue?: BoolFieldUpdateOperationsInput | boolean
+    wed?: BoolFieldUpdateOperationsInput | boolean
+    thu?: BoolFieldUpdateOperationsInput | boolean
+    fri?: BoolFieldUpdateOperationsInput | boolean
+    sat?: BoolFieldUpdateOperationsInput | boolean
+    sun?: BoolFieldUpdateOperationsInput | boolean
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    service?: ServiceUpdateOneRequiredWithoutScheduleNestedInput
+  }
+
+  export type ServiceScheduleUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    serviceId?: StringFieldUpdateOperationsInput | string
+    mon?: BoolFieldUpdateOperationsInput | boolean
+    tue?: BoolFieldUpdateOperationsInput | boolean
+    wed?: BoolFieldUpdateOperationsInput | boolean
+    thu?: BoolFieldUpdateOperationsInput | boolean
+    fri?: BoolFieldUpdateOperationsInput | boolean
+    sat?: BoolFieldUpdateOperationsInput | boolean
+    sun?: BoolFieldUpdateOperationsInput | boolean
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ServiceScheduleCreateManyInput = {
+    id?: string
+    serviceId: string
+    mon?: boolean
+    tue?: boolean
+    wed?: boolean
+    thu?: boolean
+    fri?: boolean
+    sat?: boolean
+    sun?: boolean
+    updatedAt?: Date | string
+  }
+
+  export type ServiceScheduleUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mon?: BoolFieldUpdateOperationsInput | boolean
+    tue?: BoolFieldUpdateOperationsInput | boolean
+    wed?: BoolFieldUpdateOperationsInput | boolean
+    thu?: BoolFieldUpdateOperationsInput | boolean
+    fri?: BoolFieldUpdateOperationsInput | boolean
+    sat?: BoolFieldUpdateOperationsInput | boolean
+    sun?: BoolFieldUpdateOperationsInput | boolean
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ServiceScheduleUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    serviceId?: StringFieldUpdateOperationsInput | string
+    mon?: BoolFieldUpdateOperationsInput | boolean
+    tue?: BoolFieldUpdateOperationsInput | boolean
+    wed?: BoolFieldUpdateOperationsInput | boolean
+    thu?: BoolFieldUpdateOperationsInput | boolean
+    fri?: BoolFieldUpdateOperationsInput | boolean
+    sat?: BoolFieldUpdateOperationsInput | boolean
+    sun?: BoolFieldUpdateOperationsInput | boolean
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ServiceBlockedDateCreateInput = {
+    id?: string
+    date: Date | string
+    note?: string | null
+    createdAt?: Date | string
+    service: ServiceCreateNestedOneWithoutBlockedDatesInput
+  }
+
+  export type ServiceBlockedDateUncheckedCreateInput = {
+    id?: string
+    serviceId: string
+    date: Date | string
+    note?: string | null
+    createdAt?: Date | string
+  }
+
+  export type ServiceBlockedDateUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    service?: ServiceUpdateOneRequiredWithoutBlockedDatesNestedInput
+  }
+
+  export type ServiceBlockedDateUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    serviceId?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ServiceBlockedDateCreateManyInput = {
+    id?: string
+    serviceId: string
+    date: Date | string
+    note?: string | null
+    createdAt?: Date | string
+  }
+
+  export type ServiceBlockedDateUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ServiceBlockedDateUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    serviceId?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type BookingCreateInput = {
@@ -7211,6 +9956,21 @@ export namespace Prisma {
     isNot?: ProviderWhereInput
   }
 
+  export type ServiceScheduleNullableScalarRelationFilter = {
+    is?: ServiceScheduleWhereInput | null
+    isNot?: ServiceScheduleWhereInput | null
+  }
+
+  export type ServiceBlockedDateListRelationFilter = {
+    every?: ServiceBlockedDateWhereInput
+    some?: ServiceBlockedDateWhereInput
+    none?: ServiceBlockedDateWhereInput
+  }
+
+  export type ServiceBlockedDateOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type ServiceCountOrderByAggregateInput = {
     id?: SortOrder
     providerId?: SortOrder
@@ -7335,6 +10095,74 @@ export namespace Prisma {
   export type ServiceScalarRelationFilter = {
     is?: ServiceWhereInput
     isNot?: ServiceWhereInput
+  }
+
+  export type ServiceScheduleCountOrderByAggregateInput = {
+    id?: SortOrder
+    serviceId?: SortOrder
+    mon?: SortOrder
+    tue?: SortOrder
+    wed?: SortOrder
+    thu?: SortOrder
+    fri?: SortOrder
+    sat?: SortOrder
+    sun?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ServiceScheduleMaxOrderByAggregateInput = {
+    id?: SortOrder
+    serviceId?: SortOrder
+    mon?: SortOrder
+    tue?: SortOrder
+    wed?: SortOrder
+    thu?: SortOrder
+    fri?: SortOrder
+    sat?: SortOrder
+    sun?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ServiceScheduleMinOrderByAggregateInput = {
+    id?: SortOrder
+    serviceId?: SortOrder
+    mon?: SortOrder
+    tue?: SortOrder
+    wed?: SortOrder
+    thu?: SortOrder
+    fri?: SortOrder
+    sat?: SortOrder
+    sun?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ServiceBlockedDateServiceIdDateCompoundUniqueInput = {
+    serviceId: string
+    date: Date | string
+  }
+
+  export type ServiceBlockedDateCountOrderByAggregateInput = {
+    id?: SortOrder
+    serviceId?: SortOrder
+    date?: SortOrder
+    note?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ServiceBlockedDateMaxOrderByAggregateInput = {
+    id?: SortOrder
+    serviceId?: SortOrder
+    date?: SortOrder
+    note?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ServiceBlockedDateMinOrderByAggregateInput = {
+    id?: SortOrder
+    serviceId?: SortOrder
+    date?: SortOrder
+    note?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type BookingCountOrderByAggregateInput = {
@@ -7552,11 +10380,37 @@ export namespace Prisma {
     connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
   }
 
+  export type ServiceScheduleCreateNestedOneWithoutServiceInput = {
+    create?: XOR<ServiceScheduleCreateWithoutServiceInput, ServiceScheduleUncheckedCreateWithoutServiceInput>
+    connectOrCreate?: ServiceScheduleCreateOrConnectWithoutServiceInput
+    connect?: ServiceScheduleWhereUniqueInput
+  }
+
+  export type ServiceBlockedDateCreateNestedManyWithoutServiceInput = {
+    create?: XOR<ServiceBlockedDateCreateWithoutServiceInput, ServiceBlockedDateUncheckedCreateWithoutServiceInput> | ServiceBlockedDateCreateWithoutServiceInput[] | ServiceBlockedDateUncheckedCreateWithoutServiceInput[]
+    connectOrCreate?: ServiceBlockedDateCreateOrConnectWithoutServiceInput | ServiceBlockedDateCreateOrConnectWithoutServiceInput[]
+    createMany?: ServiceBlockedDateCreateManyServiceInputEnvelope
+    connect?: ServiceBlockedDateWhereUniqueInput | ServiceBlockedDateWhereUniqueInput[]
+  }
+
   export type BookingUncheckedCreateNestedManyWithoutServiceInput = {
     create?: XOR<BookingCreateWithoutServiceInput, BookingUncheckedCreateWithoutServiceInput> | BookingCreateWithoutServiceInput[] | BookingUncheckedCreateWithoutServiceInput[]
     connectOrCreate?: BookingCreateOrConnectWithoutServiceInput | BookingCreateOrConnectWithoutServiceInput[]
     createMany?: BookingCreateManyServiceInputEnvelope
     connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+  }
+
+  export type ServiceScheduleUncheckedCreateNestedOneWithoutServiceInput = {
+    create?: XOR<ServiceScheduleCreateWithoutServiceInput, ServiceScheduleUncheckedCreateWithoutServiceInput>
+    connectOrCreate?: ServiceScheduleCreateOrConnectWithoutServiceInput
+    connect?: ServiceScheduleWhereUniqueInput
+  }
+
+  export type ServiceBlockedDateUncheckedCreateNestedManyWithoutServiceInput = {
+    create?: XOR<ServiceBlockedDateCreateWithoutServiceInput, ServiceBlockedDateUncheckedCreateWithoutServiceInput> | ServiceBlockedDateCreateWithoutServiceInput[] | ServiceBlockedDateUncheckedCreateWithoutServiceInput[]
+    connectOrCreate?: ServiceBlockedDateCreateOrConnectWithoutServiceInput | ServiceBlockedDateCreateOrConnectWithoutServiceInput[]
+    createMany?: ServiceBlockedDateCreateManyServiceInputEnvelope
+    connect?: ServiceBlockedDateWhereUniqueInput | ServiceBlockedDateWhereUniqueInput[]
   }
 
   export type EnumVehicleCategoryFieldUpdateOperationsInput = {
@@ -7609,6 +10463,30 @@ export namespace Prisma {
     deleteMany?: BookingScalarWhereInput | BookingScalarWhereInput[]
   }
 
+  export type ServiceScheduleUpdateOneWithoutServiceNestedInput = {
+    create?: XOR<ServiceScheduleCreateWithoutServiceInput, ServiceScheduleUncheckedCreateWithoutServiceInput>
+    connectOrCreate?: ServiceScheduleCreateOrConnectWithoutServiceInput
+    upsert?: ServiceScheduleUpsertWithoutServiceInput
+    disconnect?: ServiceScheduleWhereInput | boolean
+    delete?: ServiceScheduleWhereInput | boolean
+    connect?: ServiceScheduleWhereUniqueInput
+    update?: XOR<XOR<ServiceScheduleUpdateToOneWithWhereWithoutServiceInput, ServiceScheduleUpdateWithoutServiceInput>, ServiceScheduleUncheckedUpdateWithoutServiceInput>
+  }
+
+  export type ServiceBlockedDateUpdateManyWithoutServiceNestedInput = {
+    create?: XOR<ServiceBlockedDateCreateWithoutServiceInput, ServiceBlockedDateUncheckedCreateWithoutServiceInput> | ServiceBlockedDateCreateWithoutServiceInput[] | ServiceBlockedDateUncheckedCreateWithoutServiceInput[]
+    connectOrCreate?: ServiceBlockedDateCreateOrConnectWithoutServiceInput | ServiceBlockedDateCreateOrConnectWithoutServiceInput[]
+    upsert?: ServiceBlockedDateUpsertWithWhereUniqueWithoutServiceInput | ServiceBlockedDateUpsertWithWhereUniqueWithoutServiceInput[]
+    createMany?: ServiceBlockedDateCreateManyServiceInputEnvelope
+    set?: ServiceBlockedDateWhereUniqueInput | ServiceBlockedDateWhereUniqueInput[]
+    disconnect?: ServiceBlockedDateWhereUniqueInput | ServiceBlockedDateWhereUniqueInput[]
+    delete?: ServiceBlockedDateWhereUniqueInput | ServiceBlockedDateWhereUniqueInput[]
+    connect?: ServiceBlockedDateWhereUniqueInput | ServiceBlockedDateWhereUniqueInput[]
+    update?: ServiceBlockedDateUpdateWithWhereUniqueWithoutServiceInput | ServiceBlockedDateUpdateWithWhereUniqueWithoutServiceInput[]
+    updateMany?: ServiceBlockedDateUpdateManyWithWhereWithoutServiceInput | ServiceBlockedDateUpdateManyWithWhereWithoutServiceInput[]
+    deleteMany?: ServiceBlockedDateScalarWhereInput | ServiceBlockedDateScalarWhereInput[]
+  }
+
   export type BookingUncheckedUpdateManyWithoutServiceNestedInput = {
     create?: XOR<BookingCreateWithoutServiceInput, BookingUncheckedCreateWithoutServiceInput> | BookingCreateWithoutServiceInput[] | BookingUncheckedCreateWithoutServiceInput[]
     connectOrCreate?: BookingCreateOrConnectWithoutServiceInput | BookingCreateOrConnectWithoutServiceInput[]
@@ -7621,6 +10499,58 @@ export namespace Prisma {
     update?: BookingUpdateWithWhereUniqueWithoutServiceInput | BookingUpdateWithWhereUniqueWithoutServiceInput[]
     updateMany?: BookingUpdateManyWithWhereWithoutServiceInput | BookingUpdateManyWithWhereWithoutServiceInput[]
     deleteMany?: BookingScalarWhereInput | BookingScalarWhereInput[]
+  }
+
+  export type ServiceScheduleUncheckedUpdateOneWithoutServiceNestedInput = {
+    create?: XOR<ServiceScheduleCreateWithoutServiceInput, ServiceScheduleUncheckedCreateWithoutServiceInput>
+    connectOrCreate?: ServiceScheduleCreateOrConnectWithoutServiceInput
+    upsert?: ServiceScheduleUpsertWithoutServiceInput
+    disconnect?: ServiceScheduleWhereInput | boolean
+    delete?: ServiceScheduleWhereInput | boolean
+    connect?: ServiceScheduleWhereUniqueInput
+    update?: XOR<XOR<ServiceScheduleUpdateToOneWithWhereWithoutServiceInput, ServiceScheduleUpdateWithoutServiceInput>, ServiceScheduleUncheckedUpdateWithoutServiceInput>
+  }
+
+  export type ServiceBlockedDateUncheckedUpdateManyWithoutServiceNestedInput = {
+    create?: XOR<ServiceBlockedDateCreateWithoutServiceInput, ServiceBlockedDateUncheckedCreateWithoutServiceInput> | ServiceBlockedDateCreateWithoutServiceInput[] | ServiceBlockedDateUncheckedCreateWithoutServiceInput[]
+    connectOrCreate?: ServiceBlockedDateCreateOrConnectWithoutServiceInput | ServiceBlockedDateCreateOrConnectWithoutServiceInput[]
+    upsert?: ServiceBlockedDateUpsertWithWhereUniqueWithoutServiceInput | ServiceBlockedDateUpsertWithWhereUniqueWithoutServiceInput[]
+    createMany?: ServiceBlockedDateCreateManyServiceInputEnvelope
+    set?: ServiceBlockedDateWhereUniqueInput | ServiceBlockedDateWhereUniqueInput[]
+    disconnect?: ServiceBlockedDateWhereUniqueInput | ServiceBlockedDateWhereUniqueInput[]
+    delete?: ServiceBlockedDateWhereUniqueInput | ServiceBlockedDateWhereUniqueInput[]
+    connect?: ServiceBlockedDateWhereUniqueInput | ServiceBlockedDateWhereUniqueInput[]
+    update?: ServiceBlockedDateUpdateWithWhereUniqueWithoutServiceInput | ServiceBlockedDateUpdateWithWhereUniqueWithoutServiceInput[]
+    updateMany?: ServiceBlockedDateUpdateManyWithWhereWithoutServiceInput | ServiceBlockedDateUpdateManyWithWhereWithoutServiceInput[]
+    deleteMany?: ServiceBlockedDateScalarWhereInput | ServiceBlockedDateScalarWhereInput[]
+  }
+
+  export type ServiceCreateNestedOneWithoutScheduleInput = {
+    create?: XOR<ServiceCreateWithoutScheduleInput, ServiceUncheckedCreateWithoutScheduleInput>
+    connectOrCreate?: ServiceCreateOrConnectWithoutScheduleInput
+    connect?: ServiceWhereUniqueInput
+  }
+
+  export type ServiceUpdateOneRequiredWithoutScheduleNestedInput = {
+    create?: XOR<ServiceCreateWithoutScheduleInput, ServiceUncheckedCreateWithoutScheduleInput>
+    connectOrCreate?: ServiceCreateOrConnectWithoutScheduleInput
+    upsert?: ServiceUpsertWithoutScheduleInput
+    connect?: ServiceWhereUniqueInput
+    update?: XOR<XOR<ServiceUpdateToOneWithWhereWithoutScheduleInput, ServiceUpdateWithoutScheduleInput>, ServiceUncheckedUpdateWithoutScheduleInput>
+  }
+
+  export type ServiceCreateNestedOneWithoutBlockedDatesInput = {
+    create?: XOR<ServiceCreateWithoutBlockedDatesInput, ServiceUncheckedCreateWithoutBlockedDatesInput>
+    connectOrCreate?: ServiceCreateOrConnectWithoutBlockedDatesInput
+    connect?: ServiceWhereUniqueInput
+  }
+
+  export type ServiceUpdateOneRequiredWithoutBlockedDatesNestedInput = {
+    create?: XOR<ServiceCreateWithoutBlockedDatesInput, ServiceUncheckedCreateWithoutBlockedDatesInput>
+    connectOrCreate?: ServiceCreateOrConnectWithoutBlockedDatesInput
+    upsert?: ServiceUpsertWithoutBlockedDatesInput
+    connect?: ServiceWhereUniqueInput
+    update?: XOR<XOR<ServiceUpdateToOneWithWhereWithoutBlockedDatesInput, ServiceUpdateWithoutBlockedDatesInput>, ServiceUncheckedUpdateWithoutBlockedDatesInput>
   }
 
   export type UserCreateNestedOneWithoutBookingsInput = {
@@ -8069,6 +10999,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     bookings?: BookingCreateNestedManyWithoutServiceInput
+    schedule?: ServiceScheduleCreateNestedOneWithoutServiceInput
+    blockedDates?: ServiceBlockedDateCreateNestedManyWithoutServiceInput
   }
 
   export type ServiceUncheckedCreateWithoutProviderInput = {
@@ -8086,6 +11018,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     bookings?: BookingUncheckedCreateNestedManyWithoutServiceInput
+    schedule?: ServiceScheduleUncheckedCreateNestedOneWithoutServiceInput
+    blockedDates?: ServiceBlockedDateUncheckedCreateNestedManyWithoutServiceInput
   }
 
   export type ServiceCreateOrConnectWithoutProviderInput = {
@@ -8236,6 +11170,59 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type ServiceScheduleCreateWithoutServiceInput = {
+    id?: string
+    mon?: boolean
+    tue?: boolean
+    wed?: boolean
+    thu?: boolean
+    fri?: boolean
+    sat?: boolean
+    sun?: boolean
+    updatedAt?: Date | string
+  }
+
+  export type ServiceScheduleUncheckedCreateWithoutServiceInput = {
+    id?: string
+    mon?: boolean
+    tue?: boolean
+    wed?: boolean
+    thu?: boolean
+    fri?: boolean
+    sat?: boolean
+    sun?: boolean
+    updatedAt?: Date | string
+  }
+
+  export type ServiceScheduleCreateOrConnectWithoutServiceInput = {
+    where: ServiceScheduleWhereUniqueInput
+    create: XOR<ServiceScheduleCreateWithoutServiceInput, ServiceScheduleUncheckedCreateWithoutServiceInput>
+  }
+
+  export type ServiceBlockedDateCreateWithoutServiceInput = {
+    id?: string
+    date: Date | string
+    note?: string | null
+    createdAt?: Date | string
+  }
+
+  export type ServiceBlockedDateUncheckedCreateWithoutServiceInput = {
+    id?: string
+    date: Date | string
+    note?: string | null
+    createdAt?: Date | string
+  }
+
+  export type ServiceBlockedDateCreateOrConnectWithoutServiceInput = {
+    where: ServiceBlockedDateWhereUniqueInput
+    create: XOR<ServiceBlockedDateCreateWithoutServiceInput, ServiceBlockedDateUncheckedCreateWithoutServiceInput>
+  }
+
+  export type ServiceBlockedDateCreateManyServiceInputEnvelope = {
+    data: ServiceBlockedDateCreateManyServiceInput | ServiceBlockedDateCreateManyServiceInput[]
+    skipDuplicates?: boolean
+  }
+
   export type ProviderUpsertWithoutServicesInput = {
     update: XOR<ProviderUpdateWithoutServicesInput, ProviderUncheckedUpdateWithoutServicesInput>
     create: XOR<ProviderCreateWithoutServicesInput, ProviderUncheckedCreateWithoutServicesInput>
@@ -8289,6 +11276,252 @@ export namespace Prisma {
     data: XOR<BookingUpdateManyMutationInput, BookingUncheckedUpdateManyWithoutServiceInput>
   }
 
+  export type ServiceScheduleUpsertWithoutServiceInput = {
+    update: XOR<ServiceScheduleUpdateWithoutServiceInput, ServiceScheduleUncheckedUpdateWithoutServiceInput>
+    create: XOR<ServiceScheduleCreateWithoutServiceInput, ServiceScheduleUncheckedCreateWithoutServiceInput>
+    where?: ServiceScheduleWhereInput
+  }
+
+  export type ServiceScheduleUpdateToOneWithWhereWithoutServiceInput = {
+    where?: ServiceScheduleWhereInput
+    data: XOR<ServiceScheduleUpdateWithoutServiceInput, ServiceScheduleUncheckedUpdateWithoutServiceInput>
+  }
+
+  export type ServiceScheduleUpdateWithoutServiceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mon?: BoolFieldUpdateOperationsInput | boolean
+    tue?: BoolFieldUpdateOperationsInput | boolean
+    wed?: BoolFieldUpdateOperationsInput | boolean
+    thu?: BoolFieldUpdateOperationsInput | boolean
+    fri?: BoolFieldUpdateOperationsInput | boolean
+    sat?: BoolFieldUpdateOperationsInput | boolean
+    sun?: BoolFieldUpdateOperationsInput | boolean
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ServiceScheduleUncheckedUpdateWithoutServiceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mon?: BoolFieldUpdateOperationsInput | boolean
+    tue?: BoolFieldUpdateOperationsInput | boolean
+    wed?: BoolFieldUpdateOperationsInput | boolean
+    thu?: BoolFieldUpdateOperationsInput | boolean
+    fri?: BoolFieldUpdateOperationsInput | boolean
+    sat?: BoolFieldUpdateOperationsInput | boolean
+    sun?: BoolFieldUpdateOperationsInput | boolean
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ServiceBlockedDateUpsertWithWhereUniqueWithoutServiceInput = {
+    where: ServiceBlockedDateWhereUniqueInput
+    update: XOR<ServiceBlockedDateUpdateWithoutServiceInput, ServiceBlockedDateUncheckedUpdateWithoutServiceInput>
+    create: XOR<ServiceBlockedDateCreateWithoutServiceInput, ServiceBlockedDateUncheckedCreateWithoutServiceInput>
+  }
+
+  export type ServiceBlockedDateUpdateWithWhereUniqueWithoutServiceInput = {
+    where: ServiceBlockedDateWhereUniqueInput
+    data: XOR<ServiceBlockedDateUpdateWithoutServiceInput, ServiceBlockedDateUncheckedUpdateWithoutServiceInput>
+  }
+
+  export type ServiceBlockedDateUpdateManyWithWhereWithoutServiceInput = {
+    where: ServiceBlockedDateScalarWhereInput
+    data: XOR<ServiceBlockedDateUpdateManyMutationInput, ServiceBlockedDateUncheckedUpdateManyWithoutServiceInput>
+  }
+
+  export type ServiceBlockedDateScalarWhereInput = {
+    AND?: ServiceBlockedDateScalarWhereInput | ServiceBlockedDateScalarWhereInput[]
+    OR?: ServiceBlockedDateScalarWhereInput[]
+    NOT?: ServiceBlockedDateScalarWhereInput | ServiceBlockedDateScalarWhereInput[]
+    id?: StringFilter<"ServiceBlockedDate"> | string
+    serviceId?: StringFilter<"ServiceBlockedDate"> | string
+    date?: DateTimeFilter<"ServiceBlockedDate"> | Date | string
+    note?: StringNullableFilter<"ServiceBlockedDate"> | string | null
+    createdAt?: DateTimeFilter<"ServiceBlockedDate"> | Date | string
+  }
+
+  export type ServiceCreateWithoutScheduleInput = {
+    id?: string
+    title: string
+    description?: string | null
+    category: $Enums.VehicleCategory
+    vehicleType: string
+    pricePerDay: Decimal | DecimalJsLike | number | string
+    minDuration?: number
+    maxDuration?: number | null
+    withDriver?: boolean
+    imageUrl?: string | null
+    isAvailable?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    provider: ProviderCreateNestedOneWithoutServicesInput
+    bookings?: BookingCreateNestedManyWithoutServiceInput
+    blockedDates?: ServiceBlockedDateCreateNestedManyWithoutServiceInput
+  }
+
+  export type ServiceUncheckedCreateWithoutScheduleInput = {
+    id?: string
+    providerId: string
+    title: string
+    description?: string | null
+    category: $Enums.VehicleCategory
+    vehicleType: string
+    pricePerDay: Decimal | DecimalJsLike | number | string
+    minDuration?: number
+    maxDuration?: number | null
+    withDriver?: boolean
+    imageUrl?: string | null
+    isAvailable?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bookings?: BookingUncheckedCreateNestedManyWithoutServiceInput
+    blockedDates?: ServiceBlockedDateUncheckedCreateNestedManyWithoutServiceInput
+  }
+
+  export type ServiceCreateOrConnectWithoutScheduleInput = {
+    where: ServiceWhereUniqueInput
+    create: XOR<ServiceCreateWithoutScheduleInput, ServiceUncheckedCreateWithoutScheduleInput>
+  }
+
+  export type ServiceUpsertWithoutScheduleInput = {
+    update: XOR<ServiceUpdateWithoutScheduleInput, ServiceUncheckedUpdateWithoutScheduleInput>
+    create: XOR<ServiceCreateWithoutScheduleInput, ServiceUncheckedCreateWithoutScheduleInput>
+    where?: ServiceWhereInput
+  }
+
+  export type ServiceUpdateToOneWithWhereWithoutScheduleInput = {
+    where?: ServiceWhereInput
+    data: XOR<ServiceUpdateWithoutScheduleInput, ServiceUncheckedUpdateWithoutScheduleInput>
+  }
+
+  export type ServiceUpdateWithoutScheduleInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    category?: EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+    vehicleType?: StringFieldUpdateOperationsInput | string
+    pricePerDay?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    minDuration?: IntFieldUpdateOperationsInput | number
+    maxDuration?: NullableIntFieldUpdateOperationsInput | number | null
+    withDriver?: BoolFieldUpdateOperationsInput | boolean
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isAvailable?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    provider?: ProviderUpdateOneRequiredWithoutServicesNestedInput
+    bookings?: BookingUpdateManyWithoutServiceNestedInput
+    blockedDates?: ServiceBlockedDateUpdateManyWithoutServiceNestedInput
+  }
+
+  export type ServiceUncheckedUpdateWithoutScheduleInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    providerId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    category?: EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+    vehicleType?: StringFieldUpdateOperationsInput | string
+    pricePerDay?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    minDuration?: IntFieldUpdateOperationsInput | number
+    maxDuration?: NullableIntFieldUpdateOperationsInput | number | null
+    withDriver?: BoolFieldUpdateOperationsInput | boolean
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isAvailable?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bookings?: BookingUncheckedUpdateManyWithoutServiceNestedInput
+    blockedDates?: ServiceBlockedDateUncheckedUpdateManyWithoutServiceNestedInput
+  }
+
+  export type ServiceCreateWithoutBlockedDatesInput = {
+    id?: string
+    title: string
+    description?: string | null
+    category: $Enums.VehicleCategory
+    vehicleType: string
+    pricePerDay: Decimal | DecimalJsLike | number | string
+    minDuration?: number
+    maxDuration?: number | null
+    withDriver?: boolean
+    imageUrl?: string | null
+    isAvailable?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    provider: ProviderCreateNestedOneWithoutServicesInput
+    bookings?: BookingCreateNestedManyWithoutServiceInput
+    schedule?: ServiceScheduleCreateNestedOneWithoutServiceInput
+  }
+
+  export type ServiceUncheckedCreateWithoutBlockedDatesInput = {
+    id?: string
+    providerId: string
+    title: string
+    description?: string | null
+    category: $Enums.VehicleCategory
+    vehicleType: string
+    pricePerDay: Decimal | DecimalJsLike | number | string
+    minDuration?: number
+    maxDuration?: number | null
+    withDriver?: boolean
+    imageUrl?: string | null
+    isAvailable?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    bookings?: BookingUncheckedCreateNestedManyWithoutServiceInput
+    schedule?: ServiceScheduleUncheckedCreateNestedOneWithoutServiceInput
+  }
+
+  export type ServiceCreateOrConnectWithoutBlockedDatesInput = {
+    where: ServiceWhereUniqueInput
+    create: XOR<ServiceCreateWithoutBlockedDatesInput, ServiceUncheckedCreateWithoutBlockedDatesInput>
+  }
+
+  export type ServiceUpsertWithoutBlockedDatesInput = {
+    update: XOR<ServiceUpdateWithoutBlockedDatesInput, ServiceUncheckedUpdateWithoutBlockedDatesInput>
+    create: XOR<ServiceCreateWithoutBlockedDatesInput, ServiceUncheckedCreateWithoutBlockedDatesInput>
+    where?: ServiceWhereInput
+  }
+
+  export type ServiceUpdateToOneWithWhereWithoutBlockedDatesInput = {
+    where?: ServiceWhereInput
+    data: XOR<ServiceUpdateWithoutBlockedDatesInput, ServiceUncheckedUpdateWithoutBlockedDatesInput>
+  }
+
+  export type ServiceUpdateWithoutBlockedDatesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    category?: EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+    vehicleType?: StringFieldUpdateOperationsInput | string
+    pricePerDay?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    minDuration?: IntFieldUpdateOperationsInput | number
+    maxDuration?: NullableIntFieldUpdateOperationsInput | number | null
+    withDriver?: BoolFieldUpdateOperationsInput | boolean
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isAvailable?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    provider?: ProviderUpdateOneRequiredWithoutServicesNestedInput
+    bookings?: BookingUpdateManyWithoutServiceNestedInput
+    schedule?: ServiceScheduleUpdateOneWithoutServiceNestedInput
+  }
+
+  export type ServiceUncheckedUpdateWithoutBlockedDatesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    providerId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    category?: EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+    vehicleType?: StringFieldUpdateOperationsInput | string
+    pricePerDay?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    minDuration?: IntFieldUpdateOperationsInput | number
+    maxDuration?: NullableIntFieldUpdateOperationsInput | number | null
+    withDriver?: BoolFieldUpdateOperationsInput | boolean
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isAvailable?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    bookings?: BookingUncheckedUpdateManyWithoutServiceNestedInput
+    schedule?: ServiceScheduleUncheckedUpdateOneWithoutServiceNestedInput
+  }
+
   export type UserCreateWithoutBookingsInput = {
     id?: string
     name: string
@@ -8333,6 +11566,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     provider: ProviderCreateNestedOneWithoutServicesInput
+    schedule?: ServiceScheduleCreateNestedOneWithoutServiceInput
+    blockedDates?: ServiceBlockedDateCreateNestedManyWithoutServiceInput
   }
 
   export type ServiceUncheckedCreateWithoutBookingsInput = {
@@ -8350,6 +11585,8 @@ export namespace Prisma {
     isAvailable?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    schedule?: ServiceScheduleUncheckedCreateNestedOneWithoutServiceInput
+    blockedDates?: ServiceBlockedDateUncheckedCreateNestedManyWithoutServiceInput
   }
 
   export type ServiceCreateOrConnectWithoutBookingsInput = {
@@ -8418,6 +11655,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     provider?: ProviderUpdateOneRequiredWithoutServicesNestedInput
+    schedule?: ServiceScheduleUpdateOneWithoutServiceNestedInput
+    blockedDates?: ServiceBlockedDateUpdateManyWithoutServiceNestedInput
   }
 
   export type ServiceUncheckedUpdateWithoutBookingsInput = {
@@ -8435,6 +11674,8 @@ export namespace Prisma {
     isAvailable?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    schedule?: ServiceScheduleUncheckedUpdateOneWithoutServiceNestedInput
+    blockedDates?: ServiceBlockedDateUncheckedUpdateManyWithoutServiceNestedInput
   }
 
   export type BookingCreateManyUserInput = {
@@ -8520,6 +11761,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     bookings?: BookingUpdateManyWithoutServiceNestedInput
+    schedule?: ServiceScheduleUpdateOneWithoutServiceNestedInput
+    blockedDates?: ServiceBlockedDateUpdateManyWithoutServiceNestedInput
   }
 
   export type ServiceUncheckedUpdateWithoutProviderInput = {
@@ -8537,6 +11780,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     bookings?: BookingUncheckedUpdateManyWithoutServiceNestedInput
+    schedule?: ServiceScheduleUncheckedUpdateOneWithoutServiceNestedInput
+    blockedDates?: ServiceBlockedDateUncheckedUpdateManyWithoutServiceNestedInput
   }
 
   export type ServiceUncheckedUpdateManyWithoutProviderInput = {
@@ -8566,6 +11811,13 @@ export namespace Prisma {
     notes?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+  }
+
+  export type ServiceBlockedDateCreateManyServiceInput = {
+    id?: string
+    date: Date | string
+    note?: string | null
+    createdAt?: Date | string
   }
 
   export type BookingUpdateWithoutServiceInput = {
@@ -8605,6 +11857,27 @@ export namespace Prisma {
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ServiceBlockedDateUpdateWithoutServiceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ServiceBlockedDateUncheckedUpdateWithoutServiceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ServiceBlockedDateUncheckedUpdateManyWithoutServiceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 
