@@ -38,6 +38,32 @@ export interface Service {
   isAvailable: boolean;
 }
 
+export interface ServiceSchedule {
+  id?: string;
+  serviceId?: string;
+  mon: boolean;
+  tue: boolean;
+  wed: boolean;
+  thu: boolean;
+  fri: boolean;
+  sat: boolean;
+  sun: boolean;
+}
+
+export interface ServiceBlockedDate {
+  id: string;
+  serviceId: string;
+  date: string;
+  note?: string;
+  createdAt?: string;
+}
+
+export interface ScheduleResponse {
+  schedule: ServiceSchedule;
+  blockedDates: ServiceBlockedDate[];
+  service: Service;
+}
+
 export interface AuthResponse {
   token: string;
   user: User;

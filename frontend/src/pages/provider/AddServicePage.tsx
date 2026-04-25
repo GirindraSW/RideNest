@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import {
   Car, Bike, Bus, Navigation, Plus, Trash2, LogOut,
-  CheckCircle2, XCircle, AlertCircle, ChevronDown, ChevronUp,
+  CheckCircle2, XCircle, AlertCircle, ChevronDown, ChevronUp, CalendarDays,
 } from "lucide-react";
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
@@ -440,16 +440,30 @@ export default function AddServicePage() {
                       }
                     </button>
 
-                    {/* Hapus */}
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="text-red-500 hover:text-red-600 hover:bg-red-50 h-8 w-8 p-0"
-                      onClick={() => handleDelete(service.id)}
-                      disabled={deletingId === service.id}
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </Button>
+                    <div className="flex items-center gap-1">
+                      {/* Kelola Jadwal */}
+                      <Link to={`/provider/services/${service.id}/schedule`}>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="text-blue-500 hover:text-blue-600 hover:bg-blue-50 h-8 w-8 p-0"
+                          title="Kelola Jadwal"
+                        >
+                          <CalendarDays className="w-4 h-4" />
+                        </Button>
+                      </Link>
+
+                      {/* Hapus */}
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="text-red-500 hover:text-red-600 hover:bg-red-50 h-8 w-8 p-0"
+                        onClick={() => handleDelete(service.id)}
+                        disabled={deletingId === service.id}
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </Button>
+                    </div>
                   </div>
                 </div>
               );
