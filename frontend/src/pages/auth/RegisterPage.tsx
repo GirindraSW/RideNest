@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { flushSync } from "react-dom";
 import { useNavigate, Link } from "react-router-dom";
 import api from "@/api/axiosInstance";
 import { Button } from "@/components/ui/button";
@@ -36,8 +37,7 @@ export default function RegisterPage() {
     setError("");
     try {
       await api.post("/auth/register", form);
-      // Reset loading sebelum navigate agar tidak ada state update pada unmounted component
-      setLoading(false);
+      flushSync(() => setLoading(false));
       navigate("/login");
     } catch (err: any) {
       setError(err.response?.data?.message || "Registrasi gagal, coba lagi");

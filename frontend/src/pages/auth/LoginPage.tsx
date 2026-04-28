@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { flushSync } from "react-dom";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuthStore } from "@/store/authStore";
 import api from "@/api/axiosInstance";
@@ -23,7 +24,7 @@ export default function LoginPage() {
     try {
       const res = await api.post<AuthResponse>("/auth/login", form);
       setAuth(res.data.user, res.data.token);
-      setLoading(false);
+      flushSync(() => setLoading(false));
       if (res.data.user.role === "PROVIDER") {
         navigate("/provider/services");
       } else {

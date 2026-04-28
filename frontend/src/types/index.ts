@@ -64,6 +64,52 @@ export interface ScheduleResponse {
   service: Service;
 }
 
+export interface PublicService extends Service {
+  provider: {
+    companyName: string;
+    description?: string;
+    address?: string;
+    phone?: string;
+    logoUrl?: string;
+    isVerified: boolean;
+  };
+}
+
+export interface BookingRange {
+  startDate: string;
+  endDate: string;
+}
+
+export interface ServiceDetailResponse {
+  service: PublicService;
+  schedule: ServiceSchedule;
+  blockedDates: ServiceBlockedDate[];
+  existingBookings: BookingRange[];
+}
+
+export type BookingStatus = "PENDING" | "CONFIRMED" | "CANCELLED" | "DONE";
+
+export interface Booking {
+  id: string;
+  userId: string;
+  serviceId: string;
+  startDate: string;
+  endDate: string;
+  totalDays: number;
+  totalPrice: number;
+  status: BookingStatus;
+  notes?: string;
+  createdAt: string;
+  service?: {
+    title: string;
+    vehicleType: string;
+    category: VehicleCategory;
+    pricePerDay: number;
+    imageUrl?: string;
+    provider?: { companyName: string; isVerified: boolean };
+  };
+}
+
 export interface AuthResponse {
   token: string;
   user: User;

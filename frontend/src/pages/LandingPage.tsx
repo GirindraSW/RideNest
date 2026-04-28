@@ -4,12 +4,14 @@ import {
   ArrowRight, MapPin, Shield, Clock,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import UserNavbar from "@/components/layout/UserNavbar";
 import heroImage from "@/assets/hero.png";
 
 const categories = [
   {
     icon: Bike,
     title: "Motor",
+    value: "MOTOR",
     desc: "Sewa motor harian yang nyaman dan hemat untuk mobilitas sehari-hari.",
     colorBg: "bg-orange-50",
     colorText: "text-orange-600",
@@ -18,6 +20,7 @@ const categories = [
   {
     icon: Car,
     title: "Mobil",
+    value: "MOBIL",
     desc: "Pilih dari berbagai tipe mulai dari Brio, Avanza hingga SUV premium.",
     colorBg: "bg-blue-50",
     colorText: "text-blue-600",
@@ -26,6 +29,7 @@ const categories = [
   {
     icon: Navigation,
     title: "Travel",
+    value: "TRAVEL",
     desc: "Perjalanan antar kota dengan driver berpengalaman dan armada nyaman.",
     colorBg: "bg-green-50",
     colorText: "text-green-600",
@@ -34,6 +38,7 @@ const categories = [
   {
     icon: Bus,
     title: "Bus",
+    value: "BUS",
     desc: "Sewa bus untuk rombongan wisata, acara kantor, atau perjalanan jauh.",
     colorBg: "bg-purple-50",
     colorText: "text-purple-600",
@@ -71,37 +76,7 @@ const badges = [
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Navbar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/80">
-        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-              <Car className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-xl font-bold text-slate-900">RideNest</span>
-          </Link>
-
-          <div className="hidden md:flex items-center gap-8">
-            <a href="#services" className="text-sm text-slate-600 hover:text-blue-600 transition-colors">
-              Layanan
-            </a>
-            <a href="#how" className="text-sm text-slate-600 hover:text-blue-600 transition-colors">
-              Cara Kerja
-            </a>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <Link to="/login">
-              <Button variant="ghost" size="sm">
-                Masuk
-              </Button>
-            </Link>
-            <Link to="/register">
-              <Button size="sm">Daftar Gratis</Button>
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <UserNavbar />
 
       {/* Hero */}
       <section className="pt-16 min-h-screen flex items-center bg-linear-to-br from-blue-50 via-white to-indigo-50">
@@ -174,8 +149,8 @@ export default function LandingPage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {categories.map(({ icon: Icon, title, desc, colorBg, colorText, border }) => (
-              <Link to="/register" key={title}>
+            {categories.map(({ icon: Icon, title, value, desc, colorBg, colorText, border }) => (
+              <Link to={`/browse?category=${value}`} key={title}>
                 <div
                   className={`group p-6 rounded-2xl border-2 ${border} transition-all duration-200 hover:shadow-lg h-full cursor-pointer`}
                 >
