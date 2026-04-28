@@ -1,6 +1,3 @@
--- CreateSchema
-CREATE SCHEMA IF NOT EXISTS "public";
-
 -- CreateEnum
 CREATE TYPE "Role" AS ENUM ('USER', 'PROVIDER', 'ADMIN');
 
@@ -58,33 +55,6 @@ CREATE TABLE "services" (
 );
 
 -- CreateTable
-CREATE TABLE "service_schedules" (
-    "id" TEXT NOT NULL,
-    "serviceId" TEXT NOT NULL,
-    "mon" BOOLEAN NOT NULL DEFAULT true,
-    "tue" BOOLEAN NOT NULL DEFAULT true,
-    "wed" BOOLEAN NOT NULL DEFAULT true,
-    "thu" BOOLEAN NOT NULL DEFAULT true,
-    "fri" BOOLEAN NOT NULL DEFAULT true,
-    "sat" BOOLEAN NOT NULL DEFAULT true,
-    "sun" BOOLEAN NOT NULL DEFAULT true,
-    "updatedAt" TIMESTAMP(3) NOT NULL,
-
-    CONSTRAINT "service_schedules_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
-CREATE TABLE "service_blocked_dates" (
-    "id" TEXT NOT NULL,
-    "serviceId" TEXT NOT NULL,
-    "date" DATE NOT NULL,
-    "note" TEXT,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
-    CONSTRAINT "service_blocked_dates_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
 CREATE TABLE "bookings" (
     "id" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
@@ -107,12 +77,6 @@ CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
 -- CreateIndex
 CREATE UNIQUE INDEX "providers_userId_key" ON "providers"("userId");
 
--- CreateIndex
-CREATE UNIQUE INDEX "service_schedules_serviceId_key" ON "service_schedules"("serviceId");
-
--- CreateIndex
-CREATE UNIQUE INDEX "service_blocked_dates_serviceId_date_key" ON "service_blocked_dates"("serviceId", "date");
-
 -- AddForeignKey
 ALTER TABLE "providers" ADD CONSTRAINT "providers_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
@@ -120,14 +84,7 @@ ALTER TABLE "providers" ADD CONSTRAINT "providers_userId_fkey" FOREIGN KEY ("use
 ALTER TABLE "services" ADD CONSTRAINT "services_providerId_fkey" FOREIGN KEY ("providerId") REFERENCES "providers"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "service_schedules" ADD CONSTRAINT "service_schedules_serviceId_fkey" FOREIGN KEY ("serviceId") REFERENCES "services"("id") ON DELETE CASCADE ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "service_blocked_dates" ADD CONSTRAINT "service_blocked_dates_serviceId_fkey" FOREIGN KEY ("serviceId") REFERENCES "services"("id") ON DELETE CASCADE ON UPDATE CASCADE;
-
--- AddForeignKey
 ALTER TABLE "bookings" ADD CONSTRAINT "bookings_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "bookings" ADD CONSTRAINT "bookings_serviceId_fkey" FOREIGN KEY ("serviceId") REFERENCES "services"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-

@@ -4,6 +4,7 @@ import cors from "cors";
 import authRoutes from "./routes/auth";
 import serviceRoutes from "./routes/service";
 import availabilityRoutes from "./routes/availability";
+import bookingRoutes from "./routes/booking";
 import { authMiddleware } from "./middleware/auth";
 
 const app = express();
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/services", serviceRoutes);
 app.use("/api/availability", availabilityRoutes);
+app.use("/api/bookings", bookingRoutes);
 
 app.get("/api/me", authMiddleware, (req: any, res: any) => {
   res.json(req.user);
