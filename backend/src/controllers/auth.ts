@@ -10,8 +10,8 @@ export const register = async (req: Request, res: Response) => {
   try {
     const { name, email, password, phone, role, companyName, address } = req.body;
 
-    if (!name || !email || !password) {
-      return res.status(400).json({ message: "Nama, email, dan password wajib diisi" });
+    if (!name || !email || !password || !phone) {
+      return res.status(400).json({ message: "Nama, email, password, dan nomor HP wajib diisi" });
     }
 
     const existing = await prisma.user.findUnique({ where: { email } });
@@ -22,8 +22,8 @@ export const register = async (req: Request, res: Response) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     if (role === "PROVIDER") {
-      if (!companyName) {
-        return res.status(400).json({ message: "Nama perusahaan wajib diisi untuk penyedia layanan" });
+      if (!companyName || !address) {
+        return res.status(400).json({ message: "Nama perusahaan dan alamat wajib diisi untuk penyedia layanan" });
       }
 
       const user = await prisma.user.create({

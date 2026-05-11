@@ -1,9 +1,7 @@
 import { Request, Response } from "express";
 import { prisma } from "../lib/prisma";
 
-// ===============================
-// GET /api/services (public)
-// ===============================
+// GET /api/services — daftar layanan publik (tanpa auth)
 export const getPublicServices = async (req: Request, res: Response) => {
   try {
     const { category, search } = req.query;
@@ -11,7 +9,7 @@ export const getPublicServices = async (req: Request, res: Response) => {
     const services = await prisma.service.findMany({
       where: {
         isAvailable: true,
-        ...(category ? { category: String(category) as any } : {}),
+        ...(category ? { category: category as any } : {}),
         ...(search
           ? {
               OR: [
@@ -36,27 +34,19 @@ export const getPublicServices = async (req: Request, res: Response) => {
   }
 };
 
-// ===============================
-// GET /api/services/:id/detail
-// ===============================
-export const getPublicServiceById = async (
-  req: Request<{ id: string }>,
-  res: Response
-) => {
+// GET /api/services/:id/detail — detail layanan + jadwal + blocked dates (tanpa auth)
+export const getPublicServiceById = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
+    const id = String(req.params.id);
 
     const service = await prisma.service.findUnique({
       where: { id },
       include: {
         provider: {
           select: {
-            companyName: true,
-            description: true,
-            address: true,
-            phone: true,
-            logoUrl: true,
-            isVerified: true,
+            companyName: true, description: true,
+            address: true, phone: true,
+            logoUrl: true, isVerified: true,
           },
         },
       },
@@ -66,9 +56,7 @@ export const getPublicServiceById = async (
       return res.status(404).json({ message: "Layanan tidak ditemukan" });
     }
 
-    const schedule = await prisma.serviceSchedule.findUnique({
-      where: { serviceId: id },
-    });
+    const schedule = await prisma.serviceSchedule.findUnique({ where: { serviceId: id } });
 
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -78,6 +66,7 @@ export const getPublicServiceById = async (
       orderBy: { date: "asc" },
     });
 
+    // Ambil tanggal yang sudah ada booking PENDING/CONFIRMED
     const existingBookings = await prisma.booking.findMany({
       where: {
         serviceId: id,
@@ -90,13 +79,8 @@ export const getPublicServiceById = async (
     res.json({
       service,
       schedule: schedule ?? {
-        mon: true,
-        tue: true,
-        wed: true,
-        thu: true,
-        fri: true,
-        sat: true,
-        sun: true,
+        mon: true, tue: true, wed: true, thu: true,
+        fri: true, sat: true, sun: true,
       },
       blockedDates,
       existingBookings,
@@ -107,45 +91,26 @@ export const getPublicServiceById = async (
   }
 };
 
-// ===============================
-// Helper: get provider
-// ===============================
+// Helper: ambil provider dari userId JWT
 async function getProvider(userId: string, res: Response) {
-  const provider = await prisma.provider.findUnique({
-    where: { userId },
-  });
-
+  const provider = await prisma.provider.findUnique({ where: { userId } });
   if (!provider) {
     res.status(403).json({ message: "Akun ini bukan provider" });
     return null;
   }
-
   return provider;
 }
 
-// ===============================
-// POST /api/services
-// ===============================
+// POST /api/services — tambah layanan baru
 export const createService = async (req: any, res: Response) => {
   try {
     const provider = await getProvider(req.user.id, res);
     if (!provider) return;
 
-    const {
-      title,
-      description,
-      category,
-      vehicleType,
-      pricePerDay,
-      minDuration,
-      maxDuration,
-      withDriver,
-    } = req.body;
+    const { title, description, category, vehicleType, pricePerDay, minDuration, maxDuration, withDriver } = req.body;
 
     if (!title || !category || !vehicleType || !pricePerDay) {
-      return res.status(400).json({
-        message: "Judul, kategori, tipe kendaraan, dan harga wajib diisi",
-      });
+      return res.status(400).json({ message: "Judul, kategori, tipe kendaraan, dan harga wajib diisi" });
     }
 
     const validCategories = ["MOTOR", "MOBIL", "TRAVEL", "BUS"];
@@ -153,8 +118,8 @@ export const createService = async (req: any, res: Response) => {
       return res.status(400).json({ message: "Kategori tidak valid" });
     }
 
-    const mustHaveDriver =
-      category === "TRAVEL" || category === "BUS";
+    // Travel & Bus wajib dengan supir
+    const mustHaveDriver = category === "TRAVEL" || category === "BUS";
 
     const service = await prisma.service.create({
       data: {
@@ -165,25 +130,19 @@ export const createService = async (req: any, res: Response) => {
         vehicleType,
         pricePerDay: parseFloat(String(pricePerDay)),
         minDuration: parseInt(String(minDuration)) || 1,
-        maxDuration: maxDuration
-          ? parseInt(String(maxDuration))
-          : null,
+        maxDuration: maxDuration ? parseInt(String(maxDuration)) : null,
         withDriver: mustHaveDriver ? true : Boolean(withDriver),
       },
     });
 
-    res
-      .status(201)
-      .json({ message: "Layanan berhasil ditambahkan", service });
+    res.status(201).json({ message: "Layanan berhasil ditambahkan", service });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error", error });
   }
 };
 
-// ===============================
-// GET /api/services/my
-// ===============================
+// GET /api/services/my — daftar layanan milik provider yang login
 export const getMyServices = async (req: any, res: Response) => {
   try {
     const provider = await getProvider(req.user.id, res);
@@ -201,110 +160,60 @@ export const getMyServices = async (req: any, res: Response) => {
   }
 };
 
-// ===============================
-// PUT /api/services/:id
-// ===============================
-export const updateService = async (
-  req: Request<{ id: string }> & { user: any },
-  res: Response
-) => {
+// PUT /api/services/:id — update layanan
+export const updateService = async (req: any, res: Response) => {
   try {
     const provider = await getProvider(req.user.id, res);
     if (!provider) return;
 
     const { id } = req.params;
-
-    const existing = await prisma.service.findUnique({
-      where: { id },
-    });
+    const existing = await prisma.service.findUnique({ where: { id } });
 
     if (!existing || existing.providerId !== provider.id) {
       return res.status(404).json({ message: "Layanan tidak ditemukan" });
     }
 
-    const {
-      title,
-      description,
-      category,
-      vehicleType,
-      pricePerDay,
-      minDuration,
-      maxDuration,
-      withDriver,
-      isAvailable,
-    } = req.body;
+    const { title, description, category, vehicleType, pricePerDay, minDuration, maxDuration, withDriver, isAvailable, imageUrl } = req.body;
 
-    const mustHaveDriver =
-      (category || existing.category) === "TRAVEL" ||
-      (category || existing.category) === "BUS";
+    const mustHaveDriver = (category || existing.category) === "TRAVEL" || (category || existing.category) === "BUS";
 
     const updated = await prisma.service.update({
       where: { id },
       data: {
-        title: title ?? existing.title,
-        description: description ?? existing.description,
-        category: category ?? existing.category,
-        vehicleType: vehicleType ?? existing.vehicleType,
-        pricePerDay:
-          pricePerDay !== undefined
-            ? parseFloat(String(pricePerDay))
-            : existing.pricePerDay,
-        minDuration:
-          minDuration !== undefined
-            ? parseInt(String(minDuration))
-            : existing.minDuration,
-        maxDuration:
-          maxDuration !== undefined
-            ? maxDuration
-              ? parseInt(String(maxDuration))
-              : null
-            : existing.maxDuration,
-        withDriver: mustHaveDriver
-          ? true
-          : withDriver !== undefined
-          ? Boolean(withDriver)
-          : existing.withDriver,
-        isAvailable:
-          isAvailable !== undefined
-            ? Boolean(isAvailable)
-            : existing.isAvailable,
+        title:        title        ?? existing.title,
+        description:  description  ?? existing.description,
+        category:     category     ?? existing.category,
+        vehicleType:  vehicleType  ?? existing.vehicleType,
+        pricePerDay:  pricePerDay  !== undefined ? parseFloat(String(pricePerDay)) : existing.pricePerDay,
+        minDuration:  minDuration  !== undefined ? parseInt(String(minDuration))   : existing.minDuration,
+        maxDuration:  maxDuration  !== undefined ? (maxDuration ? parseInt(String(maxDuration)) : null) : existing.maxDuration,
+        withDriver:   mustHaveDriver ? true : (withDriver !== undefined ? Boolean(withDriver) : existing.withDriver),
+        isAvailable:  isAvailable  !== undefined ? Boolean(isAvailable) : existing.isAvailable,
+        imageUrl:     imageUrl     !== undefined ? (imageUrl || null) : existing.imageUrl,
       },
     });
 
-    res.json({
-      message: "Layanan berhasil diperbarui",
-      service: updated,
-    });
+    res.json({ message: "Layanan berhasil diperbarui", service: updated });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error", error });
   }
 };
 
-// ===============================
-// DELETE /api/services/:id
-// ===============================
-export const deleteService = async (
-  req: Request<{ id: string }> & { user: any },
-  res: Response
-) => {
+// DELETE /api/services/:id — hapus layanan
+export const deleteService = async (req: any, res: Response) => {
   try {
     const provider = await getProvider(req.user.id, res);
     if (!provider) return;
 
     const { id } = req.params;
-
-    const existing = await prisma.service.findUnique({
-      where: { id },
-    });
+    const existing = await prisma.service.findUnique({ where: { id } });
 
     if (!existing || existing.providerId !== provider.id) {
       return res.status(404).json({ message: "Layanan tidak ditemukan" });
     }
 
-    await prisma.service.delete({
-      where: { id },
-    });
+    await prisma.service.delete({ where: { id } });
 
     res.json({ message: "Layanan berhasil dihapus" });
   } catch (error) {

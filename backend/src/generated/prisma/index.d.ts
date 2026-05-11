@@ -1637,8 +1637,8 @@ export namespace Prisma {
     role?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    provider?: boolean | User$providerArgs<ExtArgs>
     bookings?: boolean | User$bookingsArgs<ExtArgs>
+    provider?: boolean | User$providerArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1677,8 +1677,8 @@ export namespace Prisma {
 
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "password" | "phone" | "role" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    provider?: boolean | User$providerArgs<ExtArgs>
     bookings?: boolean | User$bookingsArgs<ExtArgs>
+    provider?: boolean | User$providerArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1687,8 +1687,8 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      provider: Prisma.$ProviderPayload<ExtArgs> | null
       bookings: Prisma.$BookingPayload<ExtArgs>[]
+      provider: Prisma.$ProviderPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2093,8 +2093,8 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    provider<T extends User$providerArgs<ExtArgs> = {}>(args?: Subset<T, User$providerArgs<ExtArgs>>): Prisma__ProviderClient<$Result.GetResult<Prisma.$ProviderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     bookings<T extends User$bookingsArgs<ExtArgs> = {}>(args?: Subset<T, User$bookingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    provider<T extends User$providerArgs<ExtArgs> = {}>(args?: Subset<T, User$providerArgs<ExtArgs>>): Prisma__ProviderClient<$Result.GetResult<Prisma.$ProviderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2520,25 +2520,6 @@ export namespace Prisma {
   }
 
   /**
-   * User.provider
-   */
-  export type User$providerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Provider
-     */
-    select?: ProviderSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Provider
-     */
-    omit?: ProviderOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProviderInclude<ExtArgs> | null
-    where?: ProviderWhereInput
-  }
-
-  /**
    * User.bookings
    */
   export type User$bookingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2560,6 +2541,25 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: BookingScalarFieldEnum | BookingScalarFieldEnum[]
+  }
+
+  /**
+   * User.provider
+   */
+  export type User$providerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Provider
+     */
+    select?: ProviderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Provider
+     */
+    omit?: ProviderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProviderInclude<ExtArgs> | null
+    where?: ProviderWhereInput
   }
 
   /**
@@ -4012,10 +4012,10 @@ export namespace Prisma {
     isAvailable?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    provider?: boolean | ProviderDefaultArgs<ExtArgs>
     bookings?: boolean | Service$bookingsArgs<ExtArgs>
-    schedule?: boolean | Service$scheduleArgs<ExtArgs>
     blockedDates?: boolean | Service$blockedDatesArgs<ExtArgs>
+    schedule?: boolean | Service$scheduleArgs<ExtArgs>
+    provider?: boolean | ProviderDefaultArgs<ExtArgs>
     _count?: boolean | ServiceCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["service"]>
 
@@ -4074,10 +4074,10 @@ export namespace Prisma {
 
   export type ServiceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "providerId" | "title" | "description" | "category" | "vehicleType" | "pricePerDay" | "minDuration" | "maxDuration" | "withDriver" | "imageUrl" | "isAvailable" | "createdAt" | "updatedAt", ExtArgs["result"]["service"]>
   export type ServiceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    provider?: boolean | ProviderDefaultArgs<ExtArgs>
     bookings?: boolean | Service$bookingsArgs<ExtArgs>
-    schedule?: boolean | Service$scheduleArgs<ExtArgs>
     blockedDates?: boolean | Service$blockedDatesArgs<ExtArgs>
+    schedule?: boolean | Service$scheduleArgs<ExtArgs>
+    provider?: boolean | ProviderDefaultArgs<ExtArgs>
     _count?: boolean | ServiceCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ServiceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4090,10 +4090,10 @@ export namespace Prisma {
   export type $ServicePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Service"
     objects: {
-      provider: Prisma.$ProviderPayload<ExtArgs>
       bookings: Prisma.$BookingPayload<ExtArgs>[]
-      schedule: Prisma.$ServiceSchedulePayload<ExtArgs> | null
       blockedDates: Prisma.$ServiceBlockedDatePayload<ExtArgs>[]
+      schedule: Prisma.$ServiceSchedulePayload<ExtArgs> | null
+      provider: Prisma.$ProviderPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -4504,10 +4504,10 @@ export namespace Prisma {
    */
   export interface Prisma__ServiceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    provider<T extends ProviderDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProviderDefaultArgs<ExtArgs>>): Prisma__ProviderClient<$Result.GetResult<Prisma.$ProviderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     bookings<T extends Service$bookingsArgs<ExtArgs> = {}>(args?: Subset<T, Service$bookingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    schedule<T extends Service$scheduleArgs<ExtArgs> = {}>(args?: Subset<T, Service$scheduleArgs<ExtArgs>>): Prisma__ServiceScheduleClient<$Result.GetResult<Prisma.$ServiceSchedulePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     blockedDates<T extends Service$blockedDatesArgs<ExtArgs> = {}>(args?: Subset<T, Service$blockedDatesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ServiceBlockedDatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    schedule<T extends Service$scheduleArgs<ExtArgs> = {}>(args?: Subset<T, Service$scheduleArgs<ExtArgs>>): Prisma__ServiceScheduleClient<$Result.GetResult<Prisma.$ServiceSchedulePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    provider<T extends ProviderDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProviderDefaultArgs<ExtArgs>>): Prisma__ProviderClient<$Result.GetResult<Prisma.$ProviderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4971,25 +4971,6 @@ export namespace Prisma {
   }
 
   /**
-   * Service.schedule
-   */
-  export type Service$scheduleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ServiceSchedule
-     */
-    select?: ServiceScheduleSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the ServiceSchedule
-     */
-    omit?: ServiceScheduleOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ServiceScheduleInclude<ExtArgs> | null
-    where?: ServiceScheduleWhereInput
-  }
-
-  /**
    * Service.blockedDates
    */
   export type Service$blockedDatesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5011,6 +4992,25 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ServiceBlockedDateScalarFieldEnum | ServiceBlockedDateScalarFieldEnum[]
+  }
+
+  /**
+   * Service.schedule
+   */
+  export type Service$scheduleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ServiceSchedule
+     */
+    select?: ServiceScheduleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ServiceSchedule
+     */
+    omit?: ServiceScheduleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ServiceScheduleInclude<ExtArgs> | null
+    where?: ServiceScheduleWhereInput
   }
 
   /**
@@ -7463,8 +7463,8 @@ export namespace Prisma {
     notes?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
     service?: boolean | ServiceDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["booking"]>
 
   export type BookingSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7479,8 +7479,8 @@ export namespace Prisma {
     notes?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
     service?: boolean | ServiceDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["booking"]>
 
   export type BookingSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7495,8 +7495,8 @@ export namespace Prisma {
     notes?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
     service?: boolean | ServiceDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["booking"]>
 
   export type BookingSelectScalar = {
@@ -7515,23 +7515,23 @@ export namespace Prisma {
 
   export type BookingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "serviceId" | "startDate" | "endDate" | "totalDays" | "totalPrice" | "status" | "notes" | "createdAt" | "updatedAt", ExtArgs["result"]["booking"]>
   export type BookingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
     service?: boolean | ServiceDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type BookingIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
     service?: boolean | ServiceDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type BookingIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
     service?: boolean | ServiceDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
   export type $BookingPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Booking"
     objects: {
-      user: Prisma.$UserPayload<ExtArgs>
       service: Prisma.$ServicePayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -7939,8 +7939,8 @@ export namespace Prisma {
    */
   export interface Prisma__BookingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     service<T extends ServiceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ServiceDefaultArgs<ExtArgs>>): Prisma__ServiceClient<$Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8652,8 +8652,8 @@ export namespace Prisma {
     role?: EnumRoleFilter<"User"> | $Enums.Role
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    provider?: XOR<ProviderNullableScalarRelationFilter, ProviderWhereInput> | null
     bookings?: BookingListRelationFilter
+    provider?: XOR<ProviderNullableScalarRelationFilter, ProviderWhereInput> | null
   }
 
   export type UserOrderByWithRelationInput = {
@@ -8665,8 +8665,8 @@ export namespace Prisma {
     role?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    provider?: ProviderOrderByWithRelationInput
     bookings?: BookingOrderByRelationAggregateInput
+    provider?: ProviderOrderByWithRelationInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -8681,8 +8681,8 @@ export namespace Prisma {
     role?: EnumRoleFilter<"User"> | $Enums.Role
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    provider?: XOR<ProviderNullableScalarRelationFilter, ProviderWhereInput> | null
     bookings?: BookingListRelationFilter
+    provider?: XOR<ProviderNullableScalarRelationFilter, ProviderWhereInput> | null
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -8814,10 +8814,10 @@ export namespace Prisma {
     isAvailable?: BoolFilter<"Service"> | boolean
     createdAt?: DateTimeFilter<"Service"> | Date | string
     updatedAt?: DateTimeFilter<"Service"> | Date | string
-    provider?: XOR<ProviderScalarRelationFilter, ProviderWhereInput>
     bookings?: BookingListRelationFilter
-    schedule?: XOR<ServiceScheduleNullableScalarRelationFilter, ServiceScheduleWhereInput> | null
     blockedDates?: ServiceBlockedDateListRelationFilter
+    schedule?: XOR<ServiceScheduleNullableScalarRelationFilter, ServiceScheduleWhereInput> | null
+    provider?: XOR<ProviderScalarRelationFilter, ProviderWhereInput>
   }
 
   export type ServiceOrderByWithRelationInput = {
@@ -8835,10 +8835,10 @@ export namespace Prisma {
     isAvailable?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    provider?: ProviderOrderByWithRelationInput
     bookings?: BookingOrderByRelationAggregateInput
-    schedule?: ServiceScheduleOrderByWithRelationInput
     blockedDates?: ServiceBlockedDateOrderByRelationAggregateInput
+    schedule?: ServiceScheduleOrderByWithRelationInput
+    provider?: ProviderOrderByWithRelationInput
   }
 
   export type ServiceWhereUniqueInput = Prisma.AtLeast<{
@@ -8859,10 +8859,10 @@ export namespace Prisma {
     isAvailable?: BoolFilter<"Service"> | boolean
     createdAt?: DateTimeFilter<"Service"> | Date | string
     updatedAt?: DateTimeFilter<"Service"> | Date | string
-    provider?: XOR<ProviderScalarRelationFilter, ProviderWhereInput>
     bookings?: BookingListRelationFilter
-    schedule?: XOR<ServiceScheduleNullableScalarRelationFilter, ServiceScheduleWhereInput> | null
     blockedDates?: ServiceBlockedDateListRelationFilter
+    schedule?: XOR<ServiceScheduleNullableScalarRelationFilter, ServiceScheduleWhereInput> | null
+    provider?: XOR<ProviderScalarRelationFilter, ProviderWhereInput>
   }, "id">
 
   export type ServiceOrderByWithAggregationInput = {
@@ -9058,8 +9058,8 @@ export namespace Prisma {
     notes?: StringNullableFilter<"Booking"> | string | null
     createdAt?: DateTimeFilter<"Booking"> | Date | string
     updatedAt?: DateTimeFilter<"Booking"> | Date | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
     service?: XOR<ServiceScalarRelationFilter, ServiceWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type BookingOrderByWithRelationInput = {
@@ -9074,8 +9074,8 @@ export namespace Prisma {
     notes?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    user?: UserOrderByWithRelationInput
     service?: ServiceOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
   }
 
   export type BookingWhereUniqueInput = Prisma.AtLeast<{
@@ -9093,8 +9093,8 @@ export namespace Prisma {
     notes?: StringNullableFilter<"Booking"> | string | null
     createdAt?: DateTimeFilter<"Booking"> | Date | string
     updatedAt?: DateTimeFilter<"Booking"> | Date | string
-    user?: XOR<UserScalarRelationFilter, UserWhereInput>
     service?: XOR<ServiceScalarRelationFilter, ServiceWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
   export type BookingOrderByWithAggregationInput = {
@@ -9142,8 +9142,8 @@ export namespace Prisma {
     role?: $Enums.Role
     createdAt?: Date | string
     updatedAt?: Date | string
-    provider?: ProviderCreateNestedOneWithoutUserInput
     bookings?: BookingCreateNestedManyWithoutUserInput
+    provider?: ProviderCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -9155,8 +9155,8 @@ export namespace Prisma {
     role?: $Enums.Role
     createdAt?: Date | string
     updatedAt?: Date | string
-    provider?: ProviderUncheckedCreateNestedOneWithoutUserInput
     bookings?: BookingUncheckedCreateNestedManyWithoutUserInput
+    provider?: ProviderUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -9168,8 +9168,8 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    provider?: ProviderUpdateOneWithoutUserNestedInput
     bookings?: BookingUpdateManyWithoutUserNestedInput
+    provider?: ProviderUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -9181,8 +9181,8 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    provider?: ProviderUncheckedUpdateOneWithoutUserNestedInput
     bookings?: BookingUncheckedUpdateManyWithoutUserNestedInput
+    provider?: ProviderUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -9326,10 +9326,10 @@ export namespace Prisma {
     isAvailable?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    provider: ProviderCreateNestedOneWithoutServicesInput
     bookings?: BookingCreateNestedManyWithoutServiceInput
-    schedule?: ServiceScheduleCreateNestedOneWithoutServiceInput
     blockedDates?: ServiceBlockedDateCreateNestedManyWithoutServiceInput
+    schedule?: ServiceScheduleCreateNestedOneWithoutServiceInput
+    provider: ProviderCreateNestedOneWithoutServicesInput
   }
 
   export type ServiceUncheckedCreateInput = {
@@ -9348,8 +9348,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     bookings?: BookingUncheckedCreateNestedManyWithoutServiceInput
-    schedule?: ServiceScheduleUncheckedCreateNestedOneWithoutServiceInput
     blockedDates?: ServiceBlockedDateUncheckedCreateNestedManyWithoutServiceInput
+    schedule?: ServiceScheduleUncheckedCreateNestedOneWithoutServiceInput
   }
 
   export type ServiceUpdateInput = {
@@ -9366,10 +9366,10 @@ export namespace Prisma {
     isAvailable?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    provider?: ProviderUpdateOneRequiredWithoutServicesNestedInput
     bookings?: BookingUpdateManyWithoutServiceNestedInput
-    schedule?: ServiceScheduleUpdateOneWithoutServiceNestedInput
     blockedDates?: ServiceBlockedDateUpdateManyWithoutServiceNestedInput
+    schedule?: ServiceScheduleUpdateOneWithoutServiceNestedInput
+    provider?: ProviderUpdateOneRequiredWithoutServicesNestedInput
   }
 
   export type ServiceUncheckedUpdateInput = {
@@ -9388,8 +9388,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     bookings?: BookingUncheckedUpdateManyWithoutServiceNestedInput
-    schedule?: ServiceScheduleUncheckedUpdateOneWithoutServiceNestedInput
     blockedDates?: ServiceBlockedDateUncheckedUpdateManyWithoutServiceNestedInput
+    schedule?: ServiceScheduleUncheckedUpdateOneWithoutServiceNestedInput
   }
 
   export type ServiceCreateManyInput = {
@@ -9597,8 +9597,8 @@ export namespace Prisma {
     notes?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutBookingsInput
     service: ServiceCreateNestedOneWithoutBookingsInput
+    user: UserCreateNestedOneWithoutBookingsInput
   }
 
   export type BookingUncheckedCreateInput = {
@@ -9625,8 +9625,8 @@ export namespace Prisma {
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutBookingsNestedInput
     service?: ServiceUpdateOneRequiredWithoutBookingsNestedInput
+    user?: UserUpdateOneRequiredWithoutBookingsNestedInput
   }
 
   export type BookingUncheckedUpdateInput = {
@@ -9731,15 +9731,15 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type ProviderNullableScalarRelationFilter = {
-    is?: ProviderWhereInput | null
-    isNot?: ProviderWhereInput | null
-  }
-
   export type BookingListRelationFilter = {
     every?: BookingWhereInput
     some?: BookingWhereInput
     none?: BookingWhereInput
+  }
+
+  export type ProviderNullableScalarRelationFilter = {
+    is?: ProviderWhereInput | null
+    isNot?: ProviderWhereInput | null
   }
 
   export type SortOrderInput = {
@@ -9951,9 +9951,10 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type ProviderScalarRelationFilter = {
-    is?: ProviderWhereInput
-    isNot?: ProviderWhereInput
+  export type ServiceBlockedDateListRelationFilter = {
+    every?: ServiceBlockedDateWhereInput
+    some?: ServiceBlockedDateWhereInput
+    none?: ServiceBlockedDateWhereInput
   }
 
   export type ServiceScheduleNullableScalarRelationFilter = {
@@ -9961,10 +9962,9 @@ export namespace Prisma {
     isNot?: ServiceScheduleWhereInput | null
   }
 
-  export type ServiceBlockedDateListRelationFilter = {
-    every?: ServiceBlockedDateWhereInput
-    some?: ServiceBlockedDateWhereInput
-    none?: ServiceBlockedDateWhereInput
+  export type ProviderScalarRelationFilter = {
+    is?: ProviderWhereInput
+    isNot?: ProviderWhereInput
   }
 
   export type ServiceBlockedDateOrderByRelationAggregateInput = {
@@ -10217,12 +10217,6 @@ export namespace Prisma {
     totalPrice?: SortOrder
   }
 
-  export type ProviderCreateNestedOneWithoutUserInput = {
-    create?: XOR<ProviderCreateWithoutUserInput, ProviderUncheckedCreateWithoutUserInput>
-    connectOrCreate?: ProviderCreateOrConnectWithoutUserInput
-    connect?: ProviderWhereUniqueInput
-  }
-
   export type BookingCreateNestedManyWithoutUserInput = {
     create?: XOR<BookingCreateWithoutUserInput, BookingUncheckedCreateWithoutUserInput> | BookingCreateWithoutUserInput[] | BookingUncheckedCreateWithoutUserInput[]
     connectOrCreate?: BookingCreateOrConnectWithoutUserInput | BookingCreateOrConnectWithoutUserInput[]
@@ -10230,7 +10224,7 @@ export namespace Prisma {
     connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
   }
 
-  export type ProviderUncheckedCreateNestedOneWithoutUserInput = {
+  export type ProviderCreateNestedOneWithoutUserInput = {
     create?: XOR<ProviderCreateWithoutUserInput, ProviderUncheckedCreateWithoutUserInput>
     connectOrCreate?: ProviderCreateOrConnectWithoutUserInput
     connect?: ProviderWhereUniqueInput
@@ -10241,6 +10235,12 @@ export namespace Prisma {
     connectOrCreate?: BookingCreateOrConnectWithoutUserInput | BookingCreateOrConnectWithoutUserInput[]
     createMany?: BookingCreateManyUserInputEnvelope
     connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+  }
+
+  export type ProviderUncheckedCreateNestedOneWithoutUserInput = {
+    create?: XOR<ProviderCreateWithoutUserInput, ProviderUncheckedCreateWithoutUserInput>
+    connectOrCreate?: ProviderCreateOrConnectWithoutUserInput
+    connect?: ProviderWhereUniqueInput
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -10259,16 +10259,6 @@ export namespace Prisma {
     set?: Date | string
   }
 
-  export type ProviderUpdateOneWithoutUserNestedInput = {
-    create?: XOR<ProviderCreateWithoutUserInput, ProviderUncheckedCreateWithoutUserInput>
-    connectOrCreate?: ProviderCreateOrConnectWithoutUserInput
-    upsert?: ProviderUpsertWithoutUserInput
-    disconnect?: ProviderWhereInput | boolean
-    delete?: ProviderWhereInput | boolean
-    connect?: ProviderWhereUniqueInput
-    update?: XOR<XOR<ProviderUpdateToOneWithWhereWithoutUserInput, ProviderUpdateWithoutUserInput>, ProviderUncheckedUpdateWithoutUserInput>
-  }
-
   export type BookingUpdateManyWithoutUserNestedInput = {
     create?: XOR<BookingCreateWithoutUserInput, BookingUncheckedCreateWithoutUserInput> | BookingCreateWithoutUserInput[] | BookingUncheckedCreateWithoutUserInput[]
     connectOrCreate?: BookingCreateOrConnectWithoutUserInput | BookingCreateOrConnectWithoutUserInput[]
@@ -10283,7 +10273,7 @@ export namespace Prisma {
     deleteMany?: BookingScalarWhereInput | BookingScalarWhereInput[]
   }
 
-  export type ProviderUncheckedUpdateOneWithoutUserNestedInput = {
+  export type ProviderUpdateOneWithoutUserNestedInput = {
     create?: XOR<ProviderCreateWithoutUserInput, ProviderUncheckedCreateWithoutUserInput>
     connectOrCreate?: ProviderCreateOrConnectWithoutUserInput
     upsert?: ProviderUpsertWithoutUserInput
@@ -10305,6 +10295,16 @@ export namespace Prisma {
     update?: BookingUpdateWithWhereUniqueWithoutUserInput | BookingUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: BookingUpdateManyWithWhereWithoutUserInput | BookingUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: BookingScalarWhereInput | BookingScalarWhereInput[]
+  }
+
+  export type ProviderUncheckedUpdateOneWithoutUserNestedInput = {
+    create?: XOR<ProviderCreateWithoutUserInput, ProviderUncheckedCreateWithoutUserInput>
+    connectOrCreate?: ProviderCreateOrConnectWithoutUserInput
+    upsert?: ProviderUpsertWithoutUserInput
+    disconnect?: ProviderWhereInput | boolean
+    delete?: ProviderWhereInput | boolean
+    connect?: ProviderWhereUniqueInput
+    update?: XOR<XOR<ProviderUpdateToOneWithWhereWithoutUserInput, ProviderUpdateWithoutUserInput>, ProviderUncheckedUpdateWithoutUserInput>
   }
 
   export type UserCreateNestedOneWithoutProviderInput = {
@@ -10367,23 +10367,11 @@ export namespace Prisma {
     deleteMany?: ServiceScalarWhereInput | ServiceScalarWhereInput[]
   }
 
-  export type ProviderCreateNestedOneWithoutServicesInput = {
-    create?: XOR<ProviderCreateWithoutServicesInput, ProviderUncheckedCreateWithoutServicesInput>
-    connectOrCreate?: ProviderCreateOrConnectWithoutServicesInput
-    connect?: ProviderWhereUniqueInput
-  }
-
   export type BookingCreateNestedManyWithoutServiceInput = {
     create?: XOR<BookingCreateWithoutServiceInput, BookingUncheckedCreateWithoutServiceInput> | BookingCreateWithoutServiceInput[] | BookingUncheckedCreateWithoutServiceInput[]
     connectOrCreate?: BookingCreateOrConnectWithoutServiceInput | BookingCreateOrConnectWithoutServiceInput[]
     createMany?: BookingCreateManyServiceInputEnvelope
     connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
-  }
-
-  export type ServiceScheduleCreateNestedOneWithoutServiceInput = {
-    create?: XOR<ServiceScheduleCreateWithoutServiceInput, ServiceScheduleUncheckedCreateWithoutServiceInput>
-    connectOrCreate?: ServiceScheduleCreateOrConnectWithoutServiceInput
-    connect?: ServiceScheduleWhereUniqueInput
   }
 
   export type ServiceBlockedDateCreateNestedManyWithoutServiceInput = {
@@ -10393,6 +10381,18 @@ export namespace Prisma {
     connect?: ServiceBlockedDateWhereUniqueInput | ServiceBlockedDateWhereUniqueInput[]
   }
 
+  export type ServiceScheduleCreateNestedOneWithoutServiceInput = {
+    create?: XOR<ServiceScheduleCreateWithoutServiceInput, ServiceScheduleUncheckedCreateWithoutServiceInput>
+    connectOrCreate?: ServiceScheduleCreateOrConnectWithoutServiceInput
+    connect?: ServiceScheduleWhereUniqueInput
+  }
+
+  export type ProviderCreateNestedOneWithoutServicesInput = {
+    create?: XOR<ProviderCreateWithoutServicesInput, ProviderUncheckedCreateWithoutServicesInput>
+    connectOrCreate?: ProviderCreateOrConnectWithoutServicesInput
+    connect?: ProviderWhereUniqueInput
+  }
+
   export type BookingUncheckedCreateNestedManyWithoutServiceInput = {
     create?: XOR<BookingCreateWithoutServiceInput, BookingUncheckedCreateWithoutServiceInput> | BookingCreateWithoutServiceInput[] | BookingUncheckedCreateWithoutServiceInput[]
     connectOrCreate?: BookingCreateOrConnectWithoutServiceInput | BookingCreateOrConnectWithoutServiceInput[]
@@ -10400,17 +10400,17 @@ export namespace Prisma {
     connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
   }
 
-  export type ServiceScheduleUncheckedCreateNestedOneWithoutServiceInput = {
-    create?: XOR<ServiceScheduleCreateWithoutServiceInput, ServiceScheduleUncheckedCreateWithoutServiceInput>
-    connectOrCreate?: ServiceScheduleCreateOrConnectWithoutServiceInput
-    connect?: ServiceScheduleWhereUniqueInput
-  }
-
   export type ServiceBlockedDateUncheckedCreateNestedManyWithoutServiceInput = {
     create?: XOR<ServiceBlockedDateCreateWithoutServiceInput, ServiceBlockedDateUncheckedCreateWithoutServiceInput> | ServiceBlockedDateCreateWithoutServiceInput[] | ServiceBlockedDateUncheckedCreateWithoutServiceInput[]
     connectOrCreate?: ServiceBlockedDateCreateOrConnectWithoutServiceInput | ServiceBlockedDateCreateOrConnectWithoutServiceInput[]
     createMany?: ServiceBlockedDateCreateManyServiceInputEnvelope
     connect?: ServiceBlockedDateWhereUniqueInput | ServiceBlockedDateWhereUniqueInput[]
+  }
+
+  export type ServiceScheduleUncheckedCreateNestedOneWithoutServiceInput = {
+    create?: XOR<ServiceScheduleCreateWithoutServiceInput, ServiceScheduleUncheckedCreateWithoutServiceInput>
+    connectOrCreate?: ServiceScheduleCreateOrConnectWithoutServiceInput
+    connect?: ServiceScheduleWhereUniqueInput
   }
 
   export type EnumVehicleCategoryFieldUpdateOperationsInput = {
@@ -10441,14 +10441,6 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type ProviderUpdateOneRequiredWithoutServicesNestedInput = {
-    create?: XOR<ProviderCreateWithoutServicesInput, ProviderUncheckedCreateWithoutServicesInput>
-    connectOrCreate?: ProviderCreateOrConnectWithoutServicesInput
-    upsert?: ProviderUpsertWithoutServicesInput
-    connect?: ProviderWhereUniqueInput
-    update?: XOR<XOR<ProviderUpdateToOneWithWhereWithoutServicesInput, ProviderUpdateWithoutServicesInput>, ProviderUncheckedUpdateWithoutServicesInput>
-  }
-
   export type BookingUpdateManyWithoutServiceNestedInput = {
     create?: XOR<BookingCreateWithoutServiceInput, BookingUncheckedCreateWithoutServiceInput> | BookingCreateWithoutServiceInput[] | BookingUncheckedCreateWithoutServiceInput[]
     connectOrCreate?: BookingCreateOrConnectWithoutServiceInput | BookingCreateOrConnectWithoutServiceInput[]
@@ -10461,16 +10453,6 @@ export namespace Prisma {
     update?: BookingUpdateWithWhereUniqueWithoutServiceInput | BookingUpdateWithWhereUniqueWithoutServiceInput[]
     updateMany?: BookingUpdateManyWithWhereWithoutServiceInput | BookingUpdateManyWithWhereWithoutServiceInput[]
     deleteMany?: BookingScalarWhereInput | BookingScalarWhereInput[]
-  }
-
-  export type ServiceScheduleUpdateOneWithoutServiceNestedInput = {
-    create?: XOR<ServiceScheduleCreateWithoutServiceInput, ServiceScheduleUncheckedCreateWithoutServiceInput>
-    connectOrCreate?: ServiceScheduleCreateOrConnectWithoutServiceInput
-    upsert?: ServiceScheduleUpsertWithoutServiceInput
-    disconnect?: ServiceScheduleWhereInput | boolean
-    delete?: ServiceScheduleWhereInput | boolean
-    connect?: ServiceScheduleWhereUniqueInput
-    update?: XOR<XOR<ServiceScheduleUpdateToOneWithWhereWithoutServiceInput, ServiceScheduleUpdateWithoutServiceInput>, ServiceScheduleUncheckedUpdateWithoutServiceInput>
   }
 
   export type ServiceBlockedDateUpdateManyWithoutServiceNestedInput = {
@@ -10487,6 +10469,24 @@ export namespace Prisma {
     deleteMany?: ServiceBlockedDateScalarWhereInput | ServiceBlockedDateScalarWhereInput[]
   }
 
+  export type ServiceScheduleUpdateOneWithoutServiceNestedInput = {
+    create?: XOR<ServiceScheduleCreateWithoutServiceInput, ServiceScheduleUncheckedCreateWithoutServiceInput>
+    connectOrCreate?: ServiceScheduleCreateOrConnectWithoutServiceInput
+    upsert?: ServiceScheduleUpsertWithoutServiceInput
+    disconnect?: ServiceScheduleWhereInput | boolean
+    delete?: ServiceScheduleWhereInput | boolean
+    connect?: ServiceScheduleWhereUniqueInput
+    update?: XOR<XOR<ServiceScheduleUpdateToOneWithWhereWithoutServiceInput, ServiceScheduleUpdateWithoutServiceInput>, ServiceScheduleUncheckedUpdateWithoutServiceInput>
+  }
+
+  export type ProviderUpdateOneRequiredWithoutServicesNestedInput = {
+    create?: XOR<ProviderCreateWithoutServicesInput, ProviderUncheckedCreateWithoutServicesInput>
+    connectOrCreate?: ProviderCreateOrConnectWithoutServicesInput
+    upsert?: ProviderUpsertWithoutServicesInput
+    connect?: ProviderWhereUniqueInput
+    update?: XOR<XOR<ProviderUpdateToOneWithWhereWithoutServicesInput, ProviderUpdateWithoutServicesInput>, ProviderUncheckedUpdateWithoutServicesInput>
+  }
+
   export type BookingUncheckedUpdateManyWithoutServiceNestedInput = {
     create?: XOR<BookingCreateWithoutServiceInput, BookingUncheckedCreateWithoutServiceInput> | BookingCreateWithoutServiceInput[] | BookingUncheckedCreateWithoutServiceInput[]
     connectOrCreate?: BookingCreateOrConnectWithoutServiceInput | BookingCreateOrConnectWithoutServiceInput[]
@@ -10501,16 +10501,6 @@ export namespace Prisma {
     deleteMany?: BookingScalarWhereInput | BookingScalarWhereInput[]
   }
 
-  export type ServiceScheduleUncheckedUpdateOneWithoutServiceNestedInput = {
-    create?: XOR<ServiceScheduleCreateWithoutServiceInput, ServiceScheduleUncheckedCreateWithoutServiceInput>
-    connectOrCreate?: ServiceScheduleCreateOrConnectWithoutServiceInput
-    upsert?: ServiceScheduleUpsertWithoutServiceInput
-    disconnect?: ServiceScheduleWhereInput | boolean
-    delete?: ServiceScheduleWhereInput | boolean
-    connect?: ServiceScheduleWhereUniqueInput
-    update?: XOR<XOR<ServiceScheduleUpdateToOneWithWhereWithoutServiceInput, ServiceScheduleUpdateWithoutServiceInput>, ServiceScheduleUncheckedUpdateWithoutServiceInput>
-  }
-
   export type ServiceBlockedDateUncheckedUpdateManyWithoutServiceNestedInput = {
     create?: XOR<ServiceBlockedDateCreateWithoutServiceInput, ServiceBlockedDateUncheckedCreateWithoutServiceInput> | ServiceBlockedDateCreateWithoutServiceInput[] | ServiceBlockedDateUncheckedCreateWithoutServiceInput[]
     connectOrCreate?: ServiceBlockedDateCreateOrConnectWithoutServiceInput | ServiceBlockedDateCreateOrConnectWithoutServiceInput[]
@@ -10523,6 +10513,16 @@ export namespace Prisma {
     update?: ServiceBlockedDateUpdateWithWhereUniqueWithoutServiceInput | ServiceBlockedDateUpdateWithWhereUniqueWithoutServiceInput[]
     updateMany?: ServiceBlockedDateUpdateManyWithWhereWithoutServiceInput | ServiceBlockedDateUpdateManyWithWhereWithoutServiceInput[]
     deleteMany?: ServiceBlockedDateScalarWhereInput | ServiceBlockedDateScalarWhereInput[]
+  }
+
+  export type ServiceScheduleUncheckedUpdateOneWithoutServiceNestedInput = {
+    create?: XOR<ServiceScheduleCreateWithoutServiceInput, ServiceScheduleUncheckedCreateWithoutServiceInput>
+    connectOrCreate?: ServiceScheduleCreateOrConnectWithoutServiceInput
+    upsert?: ServiceScheduleUpsertWithoutServiceInput
+    disconnect?: ServiceScheduleWhereInput | boolean
+    delete?: ServiceScheduleWhereInput | boolean
+    connect?: ServiceScheduleWhereUniqueInput
+    update?: XOR<XOR<ServiceScheduleUpdateToOneWithWhereWithoutServiceInput, ServiceScheduleUpdateWithoutServiceInput>, ServiceScheduleUncheckedUpdateWithoutServiceInput>
   }
 
   export type ServiceCreateNestedOneWithoutScheduleInput = {
@@ -10553,24 +10553,16 @@ export namespace Prisma {
     update?: XOR<XOR<ServiceUpdateToOneWithWhereWithoutBlockedDatesInput, ServiceUpdateWithoutBlockedDatesInput>, ServiceUncheckedUpdateWithoutBlockedDatesInput>
   }
 
-  export type UserCreateNestedOneWithoutBookingsInput = {
-    create?: XOR<UserCreateWithoutBookingsInput, UserUncheckedCreateWithoutBookingsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutBookingsInput
-    connect?: UserWhereUniqueInput
-  }
-
   export type ServiceCreateNestedOneWithoutBookingsInput = {
     create?: XOR<ServiceCreateWithoutBookingsInput, ServiceUncheckedCreateWithoutBookingsInput>
     connectOrCreate?: ServiceCreateOrConnectWithoutBookingsInput
     connect?: ServiceWhereUniqueInput
   }
 
-  export type UserUpdateOneRequiredWithoutBookingsNestedInput = {
+  export type UserCreateNestedOneWithoutBookingsInput = {
     create?: XOR<UserCreateWithoutBookingsInput, UserUncheckedCreateWithoutBookingsInput>
     connectOrCreate?: UserCreateOrConnectWithoutBookingsInput
-    upsert?: UserUpsertWithoutBookingsInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutBookingsInput, UserUpdateWithoutBookingsInput>, UserUncheckedUpdateWithoutBookingsInput>
   }
 
   export type ServiceUpdateOneRequiredWithoutBookingsNestedInput = {
@@ -10579,6 +10571,14 @@ export namespace Prisma {
     upsert?: ServiceUpsertWithoutBookingsInput
     connect?: ServiceWhereUniqueInput
     update?: XOR<XOR<ServiceUpdateToOneWithWhereWithoutBookingsInput, ServiceUpdateWithoutBookingsInput>, ServiceUncheckedUpdateWithoutBookingsInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutBookingsNestedInput = {
+    create?: XOR<UserCreateWithoutBookingsInput, UserUncheckedCreateWithoutBookingsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutBookingsInput
+    upsert?: UserUpsertWithoutBookingsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutBookingsInput, UserUpdateWithoutBookingsInput>, UserUncheckedUpdateWithoutBookingsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -10818,37 +10818,6 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
-  export type ProviderCreateWithoutUserInput = {
-    id?: string
-    companyName: string
-    description?: string | null
-    address?: string | null
-    phone?: string | null
-    logoUrl?: string | null
-    isVerified?: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    services?: ServiceCreateNestedManyWithoutProviderInput
-  }
-
-  export type ProviderUncheckedCreateWithoutUserInput = {
-    id?: string
-    companyName: string
-    description?: string | null
-    address?: string | null
-    phone?: string | null
-    logoUrl?: string | null
-    isVerified?: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    services?: ServiceUncheckedCreateNestedManyWithoutProviderInput
-  }
-
-  export type ProviderCreateOrConnectWithoutUserInput = {
-    where: ProviderWhereUniqueInput
-    create: XOR<ProviderCreateWithoutUserInput, ProviderUncheckedCreateWithoutUserInput>
-  }
-
   export type BookingCreateWithoutUserInput = {
     id?: string
     startDate: Date | string
@@ -10883,6 +10852,70 @@ export namespace Prisma {
   export type BookingCreateManyUserInputEnvelope = {
     data: BookingCreateManyUserInput | BookingCreateManyUserInput[]
     skipDuplicates?: boolean
+  }
+
+  export type ProviderCreateWithoutUserInput = {
+    id?: string
+    companyName: string
+    description?: string | null
+    address?: string | null
+    phone?: string | null
+    logoUrl?: string | null
+    isVerified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    services?: ServiceCreateNestedManyWithoutProviderInput
+  }
+
+  export type ProviderUncheckedCreateWithoutUserInput = {
+    id?: string
+    companyName: string
+    description?: string | null
+    address?: string | null
+    phone?: string | null
+    logoUrl?: string | null
+    isVerified?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    services?: ServiceUncheckedCreateNestedManyWithoutProviderInput
+  }
+
+  export type ProviderCreateOrConnectWithoutUserInput = {
+    where: ProviderWhereUniqueInput
+    create: XOR<ProviderCreateWithoutUserInput, ProviderUncheckedCreateWithoutUserInput>
+  }
+
+  export type BookingUpsertWithWhereUniqueWithoutUserInput = {
+    where: BookingWhereUniqueInput
+    update: XOR<BookingUpdateWithoutUserInput, BookingUncheckedUpdateWithoutUserInput>
+    create: XOR<BookingCreateWithoutUserInput, BookingUncheckedCreateWithoutUserInput>
+  }
+
+  export type BookingUpdateWithWhereUniqueWithoutUserInput = {
+    where: BookingWhereUniqueInput
+    data: XOR<BookingUpdateWithoutUserInput, BookingUncheckedUpdateWithoutUserInput>
+  }
+
+  export type BookingUpdateManyWithWhereWithoutUserInput = {
+    where: BookingScalarWhereInput
+    data: XOR<BookingUpdateManyMutationInput, BookingUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type BookingScalarWhereInput = {
+    AND?: BookingScalarWhereInput | BookingScalarWhereInput[]
+    OR?: BookingScalarWhereInput[]
+    NOT?: BookingScalarWhereInput | BookingScalarWhereInput[]
+    id?: StringFilter<"Booking"> | string
+    userId?: StringFilter<"Booking"> | string
+    serviceId?: StringFilter<"Booking"> | string
+    startDate?: DateTimeFilter<"Booking"> | Date | string
+    endDate?: DateTimeFilter<"Booking"> | Date | string
+    totalDays?: IntFilter<"Booking"> | number
+    totalPrice?: DecimalFilter<"Booking"> | Decimal | DecimalJsLike | number | string
+    status?: StringFilter<"Booking"> | string
+    notes?: StringNullableFilter<"Booking"> | string | null
+    createdAt?: DateTimeFilter<"Booking"> | Date | string
+    updatedAt?: DateTimeFilter<"Booking"> | Date | string
   }
 
   export type ProviderUpsertWithoutUserInput = {
@@ -10920,39 +10953,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     services?: ServiceUncheckedUpdateManyWithoutProviderNestedInput
-  }
-
-  export type BookingUpsertWithWhereUniqueWithoutUserInput = {
-    where: BookingWhereUniqueInput
-    update: XOR<BookingUpdateWithoutUserInput, BookingUncheckedUpdateWithoutUserInput>
-    create: XOR<BookingCreateWithoutUserInput, BookingUncheckedCreateWithoutUserInput>
-  }
-
-  export type BookingUpdateWithWhereUniqueWithoutUserInput = {
-    where: BookingWhereUniqueInput
-    data: XOR<BookingUpdateWithoutUserInput, BookingUncheckedUpdateWithoutUserInput>
-  }
-
-  export type BookingUpdateManyWithWhereWithoutUserInput = {
-    where: BookingScalarWhereInput
-    data: XOR<BookingUpdateManyMutationInput, BookingUncheckedUpdateManyWithoutUserInput>
-  }
-
-  export type BookingScalarWhereInput = {
-    AND?: BookingScalarWhereInput | BookingScalarWhereInput[]
-    OR?: BookingScalarWhereInput[]
-    NOT?: BookingScalarWhereInput | BookingScalarWhereInput[]
-    id?: StringFilter<"Booking"> | string
-    userId?: StringFilter<"Booking"> | string
-    serviceId?: StringFilter<"Booking"> | string
-    startDate?: DateTimeFilter<"Booking"> | Date | string
-    endDate?: DateTimeFilter<"Booking"> | Date | string
-    totalDays?: IntFilter<"Booking"> | number
-    totalPrice?: DecimalFilter<"Booking"> | Decimal | DecimalJsLike | number | string
-    status?: StringFilter<"Booking"> | string
-    notes?: StringNullableFilter<"Booking"> | string | null
-    createdAt?: DateTimeFilter<"Booking"> | Date | string
-    updatedAt?: DateTimeFilter<"Booking"> | Date | string
   }
 
   export type UserCreateWithoutProviderInput = {
@@ -10999,8 +10999,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     bookings?: BookingCreateNestedManyWithoutServiceInput
-    schedule?: ServiceScheduleCreateNestedOneWithoutServiceInput
     blockedDates?: ServiceBlockedDateCreateNestedManyWithoutServiceInput
+    schedule?: ServiceScheduleCreateNestedOneWithoutServiceInput
   }
 
   export type ServiceUncheckedCreateWithoutProviderInput = {
@@ -11018,8 +11018,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     bookings?: BookingUncheckedCreateNestedManyWithoutServiceInput
-    schedule?: ServiceScheduleUncheckedCreateNestedOneWithoutServiceInput
     blockedDates?: ServiceBlockedDateUncheckedCreateNestedManyWithoutServiceInput
+    schedule?: ServiceScheduleUncheckedCreateNestedOneWithoutServiceInput
   }
 
   export type ServiceCreateOrConnectWithoutProviderInput = {
@@ -11103,37 +11103,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Service"> | Date | string
   }
 
-  export type ProviderCreateWithoutServicesInput = {
-    id?: string
-    companyName: string
-    description?: string | null
-    address?: string | null
-    phone?: string | null
-    logoUrl?: string | null
-    isVerified?: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutProviderInput
-  }
-
-  export type ProviderUncheckedCreateWithoutServicesInput = {
-    id?: string
-    userId: string
-    companyName: string
-    description?: string | null
-    address?: string | null
-    phone?: string | null
-    logoUrl?: string | null
-    isVerified?: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type ProviderCreateOrConnectWithoutServicesInput = {
-    where: ProviderWhereUniqueInput
-    create: XOR<ProviderCreateWithoutServicesInput, ProviderUncheckedCreateWithoutServicesInput>
-  }
-
   export type BookingCreateWithoutServiceInput = {
     id?: string
     startDate: Date | string
@@ -11170,6 +11139,30 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type ServiceBlockedDateCreateWithoutServiceInput = {
+    id?: string
+    date: Date | string
+    note?: string | null
+    createdAt?: Date | string
+  }
+
+  export type ServiceBlockedDateUncheckedCreateWithoutServiceInput = {
+    id?: string
+    date: Date | string
+    note?: string | null
+    createdAt?: Date | string
+  }
+
+  export type ServiceBlockedDateCreateOrConnectWithoutServiceInput = {
+    where: ServiceBlockedDateWhereUniqueInput
+    create: XOR<ServiceBlockedDateCreateWithoutServiceInput, ServiceBlockedDateUncheckedCreateWithoutServiceInput>
+  }
+
+  export type ServiceBlockedDateCreateManyServiceInputEnvelope = {
+    data: ServiceBlockedDateCreateManyServiceInput | ServiceBlockedDateCreateManyServiceInput[]
+    skipDuplicates?: boolean
+  }
+
   export type ServiceScheduleCreateWithoutServiceInput = {
     id?: string
     mon?: boolean
@@ -11199,28 +11192,113 @@ export namespace Prisma {
     create: XOR<ServiceScheduleCreateWithoutServiceInput, ServiceScheduleUncheckedCreateWithoutServiceInput>
   }
 
-  export type ServiceBlockedDateCreateWithoutServiceInput = {
+  export type ProviderCreateWithoutServicesInput = {
     id?: string
-    date: Date | string
-    note?: string | null
+    companyName: string
+    description?: string | null
+    address?: string | null
+    phone?: string | null
+    logoUrl?: string | null
+    isVerified?: boolean
     createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutProviderInput
   }
 
-  export type ServiceBlockedDateUncheckedCreateWithoutServiceInput = {
+  export type ProviderUncheckedCreateWithoutServicesInput = {
     id?: string
-    date: Date | string
-    note?: string | null
+    userId: string
+    companyName: string
+    description?: string | null
+    address?: string | null
+    phone?: string | null
+    logoUrl?: string | null
+    isVerified?: boolean
     createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
-  export type ServiceBlockedDateCreateOrConnectWithoutServiceInput = {
+  export type ProviderCreateOrConnectWithoutServicesInput = {
+    where: ProviderWhereUniqueInput
+    create: XOR<ProviderCreateWithoutServicesInput, ProviderUncheckedCreateWithoutServicesInput>
+  }
+
+  export type BookingUpsertWithWhereUniqueWithoutServiceInput = {
+    where: BookingWhereUniqueInput
+    update: XOR<BookingUpdateWithoutServiceInput, BookingUncheckedUpdateWithoutServiceInput>
+    create: XOR<BookingCreateWithoutServiceInput, BookingUncheckedCreateWithoutServiceInput>
+  }
+
+  export type BookingUpdateWithWhereUniqueWithoutServiceInput = {
+    where: BookingWhereUniqueInput
+    data: XOR<BookingUpdateWithoutServiceInput, BookingUncheckedUpdateWithoutServiceInput>
+  }
+
+  export type BookingUpdateManyWithWhereWithoutServiceInput = {
+    where: BookingScalarWhereInput
+    data: XOR<BookingUpdateManyMutationInput, BookingUncheckedUpdateManyWithoutServiceInput>
+  }
+
+  export type ServiceBlockedDateUpsertWithWhereUniqueWithoutServiceInput = {
     where: ServiceBlockedDateWhereUniqueInput
+    update: XOR<ServiceBlockedDateUpdateWithoutServiceInput, ServiceBlockedDateUncheckedUpdateWithoutServiceInput>
     create: XOR<ServiceBlockedDateCreateWithoutServiceInput, ServiceBlockedDateUncheckedCreateWithoutServiceInput>
   }
 
-  export type ServiceBlockedDateCreateManyServiceInputEnvelope = {
-    data: ServiceBlockedDateCreateManyServiceInput | ServiceBlockedDateCreateManyServiceInput[]
-    skipDuplicates?: boolean
+  export type ServiceBlockedDateUpdateWithWhereUniqueWithoutServiceInput = {
+    where: ServiceBlockedDateWhereUniqueInput
+    data: XOR<ServiceBlockedDateUpdateWithoutServiceInput, ServiceBlockedDateUncheckedUpdateWithoutServiceInput>
+  }
+
+  export type ServiceBlockedDateUpdateManyWithWhereWithoutServiceInput = {
+    where: ServiceBlockedDateScalarWhereInput
+    data: XOR<ServiceBlockedDateUpdateManyMutationInput, ServiceBlockedDateUncheckedUpdateManyWithoutServiceInput>
+  }
+
+  export type ServiceBlockedDateScalarWhereInput = {
+    AND?: ServiceBlockedDateScalarWhereInput | ServiceBlockedDateScalarWhereInput[]
+    OR?: ServiceBlockedDateScalarWhereInput[]
+    NOT?: ServiceBlockedDateScalarWhereInput | ServiceBlockedDateScalarWhereInput[]
+    id?: StringFilter<"ServiceBlockedDate"> | string
+    serviceId?: StringFilter<"ServiceBlockedDate"> | string
+    date?: DateTimeFilter<"ServiceBlockedDate"> | Date | string
+    note?: StringNullableFilter<"ServiceBlockedDate"> | string | null
+    createdAt?: DateTimeFilter<"ServiceBlockedDate"> | Date | string
+  }
+
+  export type ServiceScheduleUpsertWithoutServiceInput = {
+    update: XOR<ServiceScheduleUpdateWithoutServiceInput, ServiceScheduleUncheckedUpdateWithoutServiceInput>
+    create: XOR<ServiceScheduleCreateWithoutServiceInput, ServiceScheduleUncheckedCreateWithoutServiceInput>
+    where?: ServiceScheduleWhereInput
+  }
+
+  export type ServiceScheduleUpdateToOneWithWhereWithoutServiceInput = {
+    where?: ServiceScheduleWhereInput
+    data: XOR<ServiceScheduleUpdateWithoutServiceInput, ServiceScheduleUncheckedUpdateWithoutServiceInput>
+  }
+
+  export type ServiceScheduleUpdateWithoutServiceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mon?: BoolFieldUpdateOperationsInput | boolean
+    tue?: BoolFieldUpdateOperationsInput | boolean
+    wed?: BoolFieldUpdateOperationsInput | boolean
+    thu?: BoolFieldUpdateOperationsInput | boolean
+    fri?: BoolFieldUpdateOperationsInput | boolean
+    sat?: BoolFieldUpdateOperationsInput | boolean
+    sun?: BoolFieldUpdateOperationsInput | boolean
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ServiceScheduleUncheckedUpdateWithoutServiceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mon?: BoolFieldUpdateOperationsInput | boolean
+    tue?: BoolFieldUpdateOperationsInput | boolean
+    wed?: BoolFieldUpdateOperationsInput | boolean
+    thu?: BoolFieldUpdateOperationsInput | boolean
+    fri?: BoolFieldUpdateOperationsInput | boolean
+    sat?: BoolFieldUpdateOperationsInput | boolean
+    sun?: BoolFieldUpdateOperationsInput | boolean
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProviderUpsertWithoutServicesInput = {
@@ -11260,84 +11338,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type BookingUpsertWithWhereUniqueWithoutServiceInput = {
-    where: BookingWhereUniqueInput
-    update: XOR<BookingUpdateWithoutServiceInput, BookingUncheckedUpdateWithoutServiceInput>
-    create: XOR<BookingCreateWithoutServiceInput, BookingUncheckedCreateWithoutServiceInput>
-  }
-
-  export type BookingUpdateWithWhereUniqueWithoutServiceInput = {
-    where: BookingWhereUniqueInput
-    data: XOR<BookingUpdateWithoutServiceInput, BookingUncheckedUpdateWithoutServiceInput>
-  }
-
-  export type BookingUpdateManyWithWhereWithoutServiceInput = {
-    where: BookingScalarWhereInput
-    data: XOR<BookingUpdateManyMutationInput, BookingUncheckedUpdateManyWithoutServiceInput>
-  }
-
-  export type ServiceScheduleUpsertWithoutServiceInput = {
-    update: XOR<ServiceScheduleUpdateWithoutServiceInput, ServiceScheduleUncheckedUpdateWithoutServiceInput>
-    create: XOR<ServiceScheduleCreateWithoutServiceInput, ServiceScheduleUncheckedCreateWithoutServiceInput>
-    where?: ServiceScheduleWhereInput
-  }
-
-  export type ServiceScheduleUpdateToOneWithWhereWithoutServiceInput = {
-    where?: ServiceScheduleWhereInput
-    data: XOR<ServiceScheduleUpdateWithoutServiceInput, ServiceScheduleUncheckedUpdateWithoutServiceInput>
-  }
-
-  export type ServiceScheduleUpdateWithoutServiceInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    mon?: BoolFieldUpdateOperationsInput | boolean
-    tue?: BoolFieldUpdateOperationsInput | boolean
-    wed?: BoolFieldUpdateOperationsInput | boolean
-    thu?: BoolFieldUpdateOperationsInput | boolean
-    fri?: BoolFieldUpdateOperationsInput | boolean
-    sat?: BoolFieldUpdateOperationsInput | boolean
-    sun?: BoolFieldUpdateOperationsInput | boolean
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ServiceScheduleUncheckedUpdateWithoutServiceInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    mon?: BoolFieldUpdateOperationsInput | boolean
-    tue?: BoolFieldUpdateOperationsInput | boolean
-    wed?: BoolFieldUpdateOperationsInput | boolean
-    thu?: BoolFieldUpdateOperationsInput | boolean
-    fri?: BoolFieldUpdateOperationsInput | boolean
-    sat?: BoolFieldUpdateOperationsInput | boolean
-    sun?: BoolFieldUpdateOperationsInput | boolean
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ServiceBlockedDateUpsertWithWhereUniqueWithoutServiceInput = {
-    where: ServiceBlockedDateWhereUniqueInput
-    update: XOR<ServiceBlockedDateUpdateWithoutServiceInput, ServiceBlockedDateUncheckedUpdateWithoutServiceInput>
-    create: XOR<ServiceBlockedDateCreateWithoutServiceInput, ServiceBlockedDateUncheckedCreateWithoutServiceInput>
-  }
-
-  export type ServiceBlockedDateUpdateWithWhereUniqueWithoutServiceInput = {
-    where: ServiceBlockedDateWhereUniqueInput
-    data: XOR<ServiceBlockedDateUpdateWithoutServiceInput, ServiceBlockedDateUncheckedUpdateWithoutServiceInput>
-  }
-
-  export type ServiceBlockedDateUpdateManyWithWhereWithoutServiceInput = {
-    where: ServiceBlockedDateScalarWhereInput
-    data: XOR<ServiceBlockedDateUpdateManyMutationInput, ServiceBlockedDateUncheckedUpdateManyWithoutServiceInput>
-  }
-
-  export type ServiceBlockedDateScalarWhereInput = {
-    AND?: ServiceBlockedDateScalarWhereInput | ServiceBlockedDateScalarWhereInput[]
-    OR?: ServiceBlockedDateScalarWhereInput[]
-    NOT?: ServiceBlockedDateScalarWhereInput | ServiceBlockedDateScalarWhereInput[]
-    id?: StringFilter<"ServiceBlockedDate"> | string
-    serviceId?: StringFilter<"ServiceBlockedDate"> | string
-    date?: DateTimeFilter<"ServiceBlockedDate"> | Date | string
-    note?: StringNullableFilter<"ServiceBlockedDate"> | string | null
-    createdAt?: DateTimeFilter<"ServiceBlockedDate"> | Date | string
-  }
-
   export type ServiceCreateWithoutScheduleInput = {
     id?: string
     title: string
@@ -11352,9 +11352,9 @@ export namespace Prisma {
     isAvailable?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    provider: ProviderCreateNestedOneWithoutServicesInput
     bookings?: BookingCreateNestedManyWithoutServiceInput
     blockedDates?: ServiceBlockedDateCreateNestedManyWithoutServiceInput
+    provider: ProviderCreateNestedOneWithoutServicesInput
   }
 
   export type ServiceUncheckedCreateWithoutScheduleInput = {
@@ -11406,9 +11406,9 @@ export namespace Prisma {
     isAvailable?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    provider?: ProviderUpdateOneRequiredWithoutServicesNestedInput
     bookings?: BookingUpdateManyWithoutServiceNestedInput
     blockedDates?: ServiceBlockedDateUpdateManyWithoutServiceNestedInput
+    provider?: ProviderUpdateOneRequiredWithoutServicesNestedInput
   }
 
   export type ServiceUncheckedUpdateWithoutScheduleInput = {
@@ -11444,9 +11444,9 @@ export namespace Prisma {
     isAvailable?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    provider: ProviderCreateNestedOneWithoutServicesInput
     bookings?: BookingCreateNestedManyWithoutServiceInput
     schedule?: ServiceScheduleCreateNestedOneWithoutServiceInput
+    provider: ProviderCreateNestedOneWithoutServicesInput
   }
 
   export type ServiceUncheckedCreateWithoutBlockedDatesInput = {
@@ -11498,9 +11498,9 @@ export namespace Prisma {
     isAvailable?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    provider?: ProviderUpdateOneRequiredWithoutServicesNestedInput
     bookings?: BookingUpdateManyWithoutServiceNestedInput
     schedule?: ServiceScheduleUpdateOneWithoutServiceNestedInput
+    provider?: ProviderUpdateOneRequiredWithoutServicesNestedInput
   }
 
   export type ServiceUncheckedUpdateWithoutBlockedDatesInput = {
@@ -11520,6 +11520,49 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     bookings?: BookingUncheckedUpdateManyWithoutServiceNestedInput
     schedule?: ServiceScheduleUncheckedUpdateOneWithoutServiceNestedInput
+  }
+
+  export type ServiceCreateWithoutBookingsInput = {
+    id?: string
+    title: string
+    description?: string | null
+    category: $Enums.VehicleCategory
+    vehicleType: string
+    pricePerDay: Decimal | DecimalJsLike | number | string
+    minDuration?: number
+    maxDuration?: number | null
+    withDriver?: boolean
+    imageUrl?: string | null
+    isAvailable?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blockedDates?: ServiceBlockedDateCreateNestedManyWithoutServiceInput
+    schedule?: ServiceScheduleCreateNestedOneWithoutServiceInput
+    provider: ProviderCreateNestedOneWithoutServicesInput
+  }
+
+  export type ServiceUncheckedCreateWithoutBookingsInput = {
+    id?: string
+    providerId: string
+    title: string
+    description?: string | null
+    category: $Enums.VehicleCategory
+    vehicleType: string
+    pricePerDay: Decimal | DecimalJsLike | number | string
+    minDuration?: number
+    maxDuration?: number | null
+    withDriver?: boolean
+    imageUrl?: string | null
+    isAvailable?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    blockedDates?: ServiceBlockedDateUncheckedCreateNestedManyWithoutServiceInput
+    schedule?: ServiceScheduleUncheckedCreateNestedOneWithoutServiceInput
+  }
+
+  export type ServiceCreateOrConnectWithoutBookingsInput = {
+    where: ServiceWhereUniqueInput
+    create: XOR<ServiceCreateWithoutBookingsInput, ServiceUncheckedCreateWithoutBookingsInput>
   }
 
   export type UserCreateWithoutBookingsInput = {
@@ -11551,47 +11594,53 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutBookingsInput, UserUncheckedCreateWithoutBookingsInput>
   }
 
-  export type ServiceCreateWithoutBookingsInput = {
-    id?: string
-    title: string
-    description?: string | null
-    category: $Enums.VehicleCategory
-    vehicleType: string
-    pricePerDay: Decimal | DecimalJsLike | number | string
-    minDuration?: number
-    maxDuration?: number | null
-    withDriver?: boolean
-    imageUrl?: string | null
-    isAvailable?: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    provider: ProviderCreateNestedOneWithoutServicesInput
-    schedule?: ServiceScheduleCreateNestedOneWithoutServiceInput
-    blockedDates?: ServiceBlockedDateCreateNestedManyWithoutServiceInput
-  }
-
-  export type ServiceUncheckedCreateWithoutBookingsInput = {
-    id?: string
-    providerId: string
-    title: string
-    description?: string | null
-    category: $Enums.VehicleCategory
-    vehicleType: string
-    pricePerDay: Decimal | DecimalJsLike | number | string
-    minDuration?: number
-    maxDuration?: number | null
-    withDriver?: boolean
-    imageUrl?: string | null
-    isAvailable?: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    schedule?: ServiceScheduleUncheckedCreateNestedOneWithoutServiceInput
-    blockedDates?: ServiceBlockedDateUncheckedCreateNestedManyWithoutServiceInput
-  }
-
-  export type ServiceCreateOrConnectWithoutBookingsInput = {
-    where: ServiceWhereUniqueInput
+  export type ServiceUpsertWithoutBookingsInput = {
+    update: XOR<ServiceUpdateWithoutBookingsInput, ServiceUncheckedUpdateWithoutBookingsInput>
     create: XOR<ServiceCreateWithoutBookingsInput, ServiceUncheckedCreateWithoutBookingsInput>
+    where?: ServiceWhereInput
+  }
+
+  export type ServiceUpdateToOneWithWhereWithoutBookingsInput = {
+    where?: ServiceWhereInput
+    data: XOR<ServiceUpdateWithoutBookingsInput, ServiceUncheckedUpdateWithoutBookingsInput>
+  }
+
+  export type ServiceUpdateWithoutBookingsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    category?: EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+    vehicleType?: StringFieldUpdateOperationsInput | string
+    pricePerDay?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    minDuration?: IntFieldUpdateOperationsInput | number
+    maxDuration?: NullableIntFieldUpdateOperationsInput | number | null
+    withDriver?: BoolFieldUpdateOperationsInput | boolean
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isAvailable?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blockedDates?: ServiceBlockedDateUpdateManyWithoutServiceNestedInput
+    schedule?: ServiceScheduleUpdateOneWithoutServiceNestedInput
+    provider?: ProviderUpdateOneRequiredWithoutServicesNestedInput
+  }
+
+  export type ServiceUncheckedUpdateWithoutBookingsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    providerId?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    category?: EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
+    vehicleType?: StringFieldUpdateOperationsInput | string
+    pricePerDay?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    minDuration?: IntFieldUpdateOperationsInput | number
+    maxDuration?: NullableIntFieldUpdateOperationsInput | number | null
+    withDriver?: BoolFieldUpdateOperationsInput | boolean
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isAvailable?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    blockedDates?: ServiceBlockedDateUncheckedUpdateManyWithoutServiceNestedInput
+    schedule?: ServiceScheduleUncheckedUpdateOneWithoutServiceNestedInput
   }
 
   export type UserUpsertWithoutBookingsInput = {
@@ -11627,55 +11676,6 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     provider?: ProviderUncheckedUpdateOneWithoutUserNestedInput
-  }
-
-  export type ServiceUpsertWithoutBookingsInput = {
-    update: XOR<ServiceUpdateWithoutBookingsInput, ServiceUncheckedUpdateWithoutBookingsInput>
-    create: XOR<ServiceCreateWithoutBookingsInput, ServiceUncheckedCreateWithoutBookingsInput>
-    where?: ServiceWhereInput
-  }
-
-  export type ServiceUpdateToOneWithWhereWithoutBookingsInput = {
-    where?: ServiceWhereInput
-    data: XOR<ServiceUpdateWithoutBookingsInput, ServiceUncheckedUpdateWithoutBookingsInput>
-  }
-
-  export type ServiceUpdateWithoutBookingsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    category?: EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
-    vehicleType?: StringFieldUpdateOperationsInput | string
-    pricePerDay?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    minDuration?: IntFieldUpdateOperationsInput | number
-    maxDuration?: NullableIntFieldUpdateOperationsInput | number | null
-    withDriver?: BoolFieldUpdateOperationsInput | boolean
-    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    isAvailable?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    provider?: ProviderUpdateOneRequiredWithoutServicesNestedInput
-    schedule?: ServiceScheduleUpdateOneWithoutServiceNestedInput
-    blockedDates?: ServiceBlockedDateUpdateManyWithoutServiceNestedInput
-  }
-
-  export type ServiceUncheckedUpdateWithoutBookingsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    providerId?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    category?: EnumVehicleCategoryFieldUpdateOperationsInput | $Enums.VehicleCategory
-    vehicleType?: StringFieldUpdateOperationsInput | string
-    pricePerDay?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    minDuration?: IntFieldUpdateOperationsInput | number
-    maxDuration?: NullableIntFieldUpdateOperationsInput | number | null
-    withDriver?: BoolFieldUpdateOperationsInput | boolean
-    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    isAvailable?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    schedule?: ServiceScheduleUncheckedUpdateOneWithoutServiceNestedInput
-    blockedDates?: ServiceBlockedDateUncheckedUpdateManyWithoutServiceNestedInput
   }
 
   export type BookingCreateManyUserInput = {
@@ -11761,8 +11761,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     bookings?: BookingUpdateManyWithoutServiceNestedInput
-    schedule?: ServiceScheduleUpdateOneWithoutServiceNestedInput
     blockedDates?: ServiceBlockedDateUpdateManyWithoutServiceNestedInput
+    schedule?: ServiceScheduleUpdateOneWithoutServiceNestedInput
   }
 
   export type ServiceUncheckedUpdateWithoutProviderInput = {
@@ -11780,8 +11780,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     bookings?: BookingUncheckedUpdateManyWithoutServiceNestedInput
-    schedule?: ServiceScheduleUncheckedUpdateOneWithoutServiceNestedInput
     blockedDates?: ServiceBlockedDateUncheckedUpdateManyWithoutServiceNestedInput
+    schedule?: ServiceScheduleUncheckedUpdateOneWithoutServiceNestedInput
   }
 
   export type ServiceUncheckedUpdateManyWithoutProviderInput = {
