@@ -128,13 +128,12 @@ export default function RegisterPage() {
             </div>
 
             <div className="space-y-2">
-              <Label className="text-slate-700 font-medium">
-                No. HP <span className="text-slate-400 font-normal">(opsional)</span>
-              </Label>
+              <Label className="text-slate-700 font-medium">No. HP</Label>
               <Input
                 placeholder="08xxxxxxxxxx"
                 value={form.phone}
                 onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                required
                 className="h-11"
               />
             </div>
@@ -176,13 +175,12 @@ export default function RegisterPage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label className="text-slate-700 font-medium">
-                    Alamat <span className="text-slate-400 font-normal">(opsional)</span>
-                  </Label>
+                  <Label className="text-slate-700 font-medium">Alamat</Label>
                   <Input
                     placeholder="Jl. Merdeka No. 1, Jakarta"
                     value={form.address}
                     onChange={(e) => setForm({ ...form, address: e.target.value })}
+                    required
                     className="h-11"
                   />
                 </div>

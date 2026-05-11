@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthStore } from "@/store/authStore";
 import { Button } from "@/components/ui/button";
-import { Car, LogOut, LayoutDashboard, CalendarCheck } from "lucide-react";
+import { Car, LogOut, LayoutDashboard, CalendarCheck, UserCircle } from "lucide-react";
 
 export default function UserNavbar() {
   const { user, isAuthenticated, logout } = useAuthStore();
@@ -23,10 +23,7 @@ export default function UserNavbar() {
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
-          <Link
-            to="/browse"
-            className="text-sm text-slate-600 hover:text-blue-600 transition-colors"
-          >
+          <Link to="/browse" className="text-sm text-slate-600 hover:text-blue-600 transition-colors">
             Cari Kendaraan
           </Link>
         </div>
@@ -35,7 +32,7 @@ export default function UserNavbar() {
           {isAuthenticated() && user ? (
             <>
               {user.role === "PROVIDER" ? (
-                <Link to="/provider/services">
+                <Link to="/provider/dashboard">
                   <Button variant="ghost" size="sm" className="gap-1.5 hidden sm:flex">
                     <LayoutDashboard className="w-4 h-4" />
                     Dashboard
@@ -49,16 +46,23 @@ export default function UserNavbar() {
                   </Button>
                 </Link>
               )}
+
+              {/* Link profil — tampil nama user */}
+              <Link to="/profile">
+                <Button variant="ghost" size="sm" className="gap-1.5 text-slate-700">
+                  <UserCircle className="w-4 h-4" />
+                  <span className="hidden sm:block text-sm">{user.name.split(" ")[0]}</span>
+                </Button>
+              </Link>
+
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={handleLogout}
-                className="gap-1.5 text-slate-600"
+                className="text-slate-500 hover:text-slate-700 px-2"
+                title="Keluar"
               >
                 <LogOut className="w-4 h-4" />
-                <span className="hidden sm:block text-sm">
-                  {user.name.split(" ")[0]}
-                </span>
               </Button>
             </>
           ) : (

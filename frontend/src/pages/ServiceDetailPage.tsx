@@ -329,9 +329,12 @@ export default function ServiceDetailPage() {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
           {/* ── Kolom kiri: info layanan ── */}
           <div className="lg:col-span-3 space-y-5">
-            {/* Foto placeholder */}
-            <div className="bg-linear-to-br from-slate-100 to-slate-200 rounded-2xl h-56 flex items-center justify-center">
-              <Icon className="w-24 h-24 text-slate-300" />
+            {/* Foto kendaraan */}
+            <div className="bg-linear-to-br from-slate-100 to-slate-200 rounded-2xl h-56 flex items-center justify-center overflow-hidden">
+              {service.imageUrl
+                ? <img src={service.imageUrl} alt={service.title} className="w-full h-full object-cover" />
+                : <Icon className="w-24 h-24 text-slate-300" />
+              }
             </div>
 
             {/* Info utama */}

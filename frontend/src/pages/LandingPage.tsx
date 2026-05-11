@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
+import { useAuthStore } from "@/store/authStore";
 import {
   Car, Bike, Bus, Navigation, Search, Calendar, CheckCircle2,
   ArrowRight, MapPin, Shield, Clock,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import UserNavbar from "@/components/layout/UserNavbar";
-import heroImage from "@/assets/hero.png";
+import heroImage from "@/assets/brio.png";
 
 const categories = [
   {
@@ -74,6 +75,9 @@ const badges = [
 ];
 
 export default function LandingPage() {
+  const { isAuthenticated } = useAuthStore();
+  const loggedIn = isAuthenticated();
+
   return (
     <div className="min-h-screen bg-white">
       <UserNavbar />
@@ -101,9 +105,9 @@ export default function LandingPage() {
               </p>
 
               <div className="flex flex-wrap gap-4">
-                <Link to="/register">
+                <Link to={loggedIn ? "/browse" : "/register"}>
                   <Button size="lg" className="gap-2 shadow-lg shadow-blue-200">
-                    Mulai Sekarang
+                    {loggedIn ? "Cari Kendaraan" : "Mulai Sekarang"}
                     <ArrowRight className="w-4 h-4" />
                   </Button>
                 </Link>
@@ -204,19 +208,29 @@ export default function LandingPage() {
             Daftar sekarang dan dapatkan pengalaman rental yang mudah, transparan, dan terpercaya.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/register">
-              <Button size="lg" variant="secondary" className="shadow-lg">
-                Daftar Sebagai Pengguna
-              </Button>
-            </Link>
-            <Link to="/register">
-              <Button
-                size="lg"
-                className="bg-white/10 text-white hover:bg-white/20 border border-white/30 shadow-lg"
-              >
-                Daftar Sebagai Penyedia
-              </Button>
-            </Link>
+            {loggedIn ? (
+              <Link to="/browse">
+                <Button size="lg" variant="secondary" className="shadow-lg">
+                  Cari Kendaraan Sekarang
+                </Button>
+              </Link>
+            ) : (
+              <>
+                <Link to="/register">
+                  <Button size="lg" variant="secondary" className="shadow-lg">
+                    Daftar Sebagai Pengguna
+                  </Button>
+                </Link>
+                <Link to="/register">
+                  <Button
+                    size="lg"
+                    className="bg-white/10 text-white hover:bg-white/20 border border-white/30 shadow-lg"
+                  >
+                    Daftar Sebagai Penyedia
+                  </Button>
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </section>

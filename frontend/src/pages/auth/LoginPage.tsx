@@ -26,7 +26,7 @@ export default function LoginPage() {
       setAuth(res.data.user, res.data.token);
       flushSync(() => setLoading(false));
       if (res.data.user.role === "PROVIDER") {
-        navigate("/provider/services");
+        navigate("/provider/dashboard");
       } else {
         navigate("/");
       }

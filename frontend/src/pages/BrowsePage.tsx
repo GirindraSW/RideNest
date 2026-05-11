@@ -41,9 +41,12 @@ function ServiceCard({ service }: { service: PublicService }) {
   return (
     <Link to={`/services/${service.id}`}>
       <div className="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden flex flex-col h-full">
-        {/* Placeholder gambar */}
-        <div className="h-40 bg-linear-to-br from-slate-100 to-slate-200 flex items-center justify-center">
-          <Icon className="w-16 h-16 text-slate-300" />
+        {/* Foto kendaraan */}
+        <div className="h-40 bg-linear-to-br from-slate-100 to-slate-200 flex items-center justify-center overflow-hidden">
+          {service.imageUrl
+            ? <img src={service.imageUrl} alt={service.title} className="w-full h-full object-cover" />
+            : <Icon className="w-16 h-16 text-slate-300" />
+          }
         </div>
 
         <div className="p-5 flex flex-col gap-3 flex-1">
