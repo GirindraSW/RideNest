@@ -9,12 +9,12 @@
 Sewa motor, mobil, travel, hingga bus — tersedia dengan harga transparan.\
 Booking mudah, berangkat nyaman.
 
-[![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react)](https://react.dev)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
-[![Vite](https://img.shields.io/badge/Vite-5-646CFF?style=flat-square&logo=vite)](https://vitejs.dev)
-[![TailwindCSS](https://img.shields.io/badge/Tailwind-3-06B6D4?style=flat-square&logo=tailwindcss)](https://tailwindcss.com)
-[![Express](https://img.shields.io/badge/Express-4-000000?style=flat-square&logo=express)](https://expressjs.com)
-[![Prisma](https://img.shields.io/badge/Prisma-5-2D3748?style=flat-square&logo=prisma)](https://prisma.io)
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-6-3178C6?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
+[![Vite](https://img.shields.io/badge/Vite-8-646CFF?style=flat-square&logo=vite)](https://vitejs.dev)
+[![TailwindCSS](https://img.shields.io/badge/Tailwind-4-06B6D4?style=flat-square&logo=tailwindcss)](https://tailwindcss.com)
+[![Express](https://img.shields.io/badge/Express-5-000000?style=flat-square&logo=express)](https://expressjs.com)
+[![Prisma](https://img.shields.io/badge/Prisma-6-2D3748?style=flat-square&logo=prisma)](https://prisma.io)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Supabase-4169E1?style=flat-square&logo=postgresql)](https://supabase.com)
 
 </div>
@@ -100,60 +100,131 @@ Booking mudah, berangkat nyaman.
 
 ```
 RideNest/
-├── frontend/          # ReactJS + Vite + TypeScript + Tailwind
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── store/         # Zustand state management
-│   │   ├── lib/           # Axios API client
-│   │   └── types/         # TypeScript interfaces
-│   └── package.json
-│
-├── backend/           # ExpressJS + TypeScript + Prisma
-│   ├── src/
-│   │   ├── controllers/
-│   │   ├── routes/
-│   │   ├── middleware/    # JWT auth & role guard
-│   │   ├── lib/           # Prisma client
-│   │   └── types/
+├── backend/
 │   ├── prisma/
-│   │   └── schema.prisma
+│   │   └── schema.prisma        # Definisi semua tabel DB
+│   ├── src/
+│   │   ├── app.ts               # Entry point — inisialisasi server
+│   │   ├── lib/
+│   │   │   └── prisma.ts        # Instance Prisma (koneksi DB)
+│   │   ├── middleware/
+│   │   │   └── auth.ts          # Verifikasi JWT token
+│   │   ├── controllers/         # Logika bisnis per fitur
+│   │   │   ├── auth.ts          # Register & Login
+│   │   │   ├── service.ts       # CRUD layanan kendaraan
+│   │   │   ├── availability.ts  # Jadwal & blokir tanggal
+│   │   │   ├── booking.ts       # Buat & kelola booking
+│   │   │   └── profile.ts       # Edit profil
+│   │   └── routes/              # Daftar URL endpoint
+│   │       ├── auth.ts
+│   │       ├── service.ts
+│   │       ├── availability.ts
+│   │       ├── booking.ts
+│   │       └── profile.ts
+│   ├── .env                     # Konfigurasi (DB, JWT, PORT)
 │   └── package.json
 │
-└── docs/              # Screenshot & dokumentasi visual
+├── frontend/
+│   ├── src/
+│   │   ├── App.tsx              # Daftar semua route halaman
+│   │   ├── main.tsx             # Entry point React
+│   │   ├── api/
+│   │   │   └── axiosInstance.ts # Setup HTTP client + auto sisip token
+│   │   ├── store/
+│   │   │   └── authStore.ts     # State global login (Zustand)
+│   │   ├── types/
+│   │   │   └── index.ts         # TypeScript types/interfaces
+│   │   ├── components/
+│   │   │   ├── layout/
+│   │   │   │   ├── UserNavbar.tsx     # Navbar user (browse, profil)
+│   │   │   │   └── ProtectedRoute.tsx # Guard halaman yang butuh login
+│   │   │   └── ui/              # Komponen UI shadcn (Button, Input, dll)
+│   │   └── pages/
+│   │       ├── LandingPage.tsx        # Halaman utama (/)
+│   │       ├── BrowsePage.tsx         # Cari kendaraan (/browse)
+│   │       ├── ServiceDetailPage.tsx  # Detail + booking (/services/:id)
+│   │       ├── BookingsPage.tsx       # Riwayat booking user (/bookings)
+│   │       ├── ProfilePage.tsx        # Edit profil (/profile)
+│   │       ├── auth/
+│   │       │   ├── LoginPage.tsx      # (/login)
+│   │       │   └── RegisterPage.tsx   # (/register)
+│   │       └── provider/
+│   │           ├── ProviderDashboardPage.tsx  # Dashboard (/provider/dashboard)
+│   │           ├── AddServicePage.tsx         # Kelola layanan (/provider/services)
+│   │           ├── EditServicePage.tsx        # Edit layanan (/provider/services/:id/edit)
+│   │           └── SchedulePage.tsx           # Jadwal (/provider/services/:id/schedule)
+│   ├── .env                     # VITE_API_URL
+│   └── package.json
+│
+├── docs/                        # Screenshot & dokumentasi visual
+└── README.md
 ```
 
 ---
 
 ## 🛠️ Tech Stack
 
+### Backend
+
+| Teknologi | Versi | Kegunaan |
+|-----------|-------|----------|
+| **Express.js** | v5 | Web framework — handle HTTP request/response |
+| **TypeScript** | v6 | Typing statis agar kode lebih aman |
+| **Prisma ORM** | v6 | Query database, migrasi, generate client |
+| **PostgreSQL** | — | Database relasional |
+| **bcrypt** | v6 | Hash password sebelum disimpan ke DB |
+| **jsonwebtoken** | v9 | Generate & verifikasi JWT token autentikasi |
+| **cors** | v2 | Izinkan request dari frontend (cross-origin) |
+| **dotenv** | v17 | Load variabel dari file `.env` |
+| **tsx** | v4 | Jalankan TypeScript langsung tanpa compile (dev mode) |
+
+### Frontend
+
+| Teknologi | Versi | Kegunaan |
+|-----------|-------|----------|
+| **React** | v19 | UI framework berbasis komponen |
+| **TypeScript** | v6 | Typing statis |
+| **Vite** | v8 | Build tool & dev server (sangat cepat) |
+| **React Router DOM** | v7 | Routing SPA (`/browse`, `/login`, dll) |
+| **Axios** | v1 | HTTP client untuk komunikasi ke backend |
+| **Zustand** | v5 | State management global (auth store) |
+| **Tailwind CSS** | v4 | Utility-first CSS framework |
+| **shadcn/ui** | v4 | Komponen UI siap pakai (Button, Input, Card, dll) |
+| **Radix UI** | v1 | Komponen primitif headless (dasar shadcn) |
+| **Lucide React** | v1 | Library ikon SVG |
+| **tw-animate-css** | — | Animasi Tailwind (animate-pulse, dll) |
+| **Geist Variable** | — | Font yang dipakai (`@fontsource-variable/geist`) |
+
+### Infrastruktur & Deploy
+
 | Layer | Teknologi |
 |-------|-----------|
-| **Frontend** | React 18, TypeScript, Vite, Tailwind CSS, shadcn/ui |
-| **State Management** | Zustand |
-| **HTTP Client** | Axios |
-| **Backend** | Express.js, TypeScript |
-| **ORM** | Prisma |
-| **Database** | PostgreSQL (Supabase) |
-| **Auth** | JWT (jsonwebtoken) |
-| **Deploy FE** | Vercel |
-| **Deploy BE** | Railway |
+| **Deploy Frontend** | Vercel |
+| **Deploy Backend** | Railway |
+| **Database Host** | Supabase (PostgreSQL) |
 
 ---
 
 ## 🚀 Cara Menjalankan Lokal
 
 ### Prasyarat
-- Node.js >= 18
-- npm >= 9
-- Akun [Supabase](https://supabase.com) untuk database
 
-### 1. Clone repo
+Pastikan tools berikut sudah terinstall:
+
+- **Node.js** >= 18 — [Download](https://nodejs.org)
+- **npm** >= 9 (sudah termasuk dalam Node.js)
+- **Akun Supabase** — [Daftar gratis](https://supabase.com) untuk mendapatkan `DATABASE_URL`
+
+---
+
+### 1. Clone Repository
 
 ```bash
 git clone https://github.com/GirindraSW/RideNest.git
 cd RideNest
 ```
+
+---
 
 ### 2. Setup Backend
 
@@ -163,38 +234,59 @@ npm install
 cp .env.example .env
 ```
 
-Isi `.env`:
+Buka file `.env` dan isi variabel berikut:
+
 ```env
-DATABASE_URL="postgresql://..."
-JWT_SECRET="your-secret-key"
+DATABASE_URL="postgresql://user:password@host:port/dbname"
+JWT_SECRET="isi-dengan-string-acak-yang-kuat"
 JWT_EXPIRES_IN="7d"
 PORT=5000
 FRONTEND_URL=http://localhost:5173
 ```
 
+> 💡 `DATABASE_URL` bisa didapat dari dashboard Supabase → **Project Settings → Database → Connection String (URI mode)**
+
+Jalankan migrasi database dan start server:
+
 ```bash
-npx prisma db push
-npm run dev
-# Server berjalan di http://localhost:5000
+npx prisma db push     # Sinkronkan schema ke database
+npm run dev            # Server berjalan di http://localhost:5000
 ```
+
+---
 
 ### 3. Setup Frontend
 
+Buka terminal baru, lalu:
+
 ```bash
-cd ../frontend
+cd frontend
 npm install
 cp .env.example .env
 ```
 
-Isi `.env`:
+Buka file `.env` dan isi:
+
 ```env
 VITE_API_URL=http://localhost:5000/api
 ```
 
+Jalankan dev server:
+
 ```bash
-npm run dev
-# App berjalan di http://localhost:5173
+npm run dev            # App berjalan di http://localhost:5173
 ```
+
+---
+
+### ✅ Verifikasi
+
+Setelah kedua server berjalan:
+
+| Service | URL |
+|---------|-----|
+| Frontend | http://localhost:5173 |
+| Backend API | http://localhost:5000/api |
 
 ---
 
