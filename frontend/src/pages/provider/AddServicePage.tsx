@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import {
   Car, Bike, Bus, Navigation, Plus, Trash2, LogOut,
-  CheckCircle2, XCircle, AlertCircle, ChevronDown, ChevronUp, CalendarDays,
+  CheckCircle2, XCircle, AlertCircle, ChevronDown, ChevronUp, CalendarDays, LayoutDashboard,
 } from "lucide-react";
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
@@ -149,14 +149,19 @@ export default function AddServicePage() {
             <span className="text-slate-400 text-sm ml-1">/ Dashboard Penyedia</span>
           </Link>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
+            <Link to="/provider/dashboard">
+              <Button variant="ghost" size="sm" className="gap-1.5 text-slate-600">
+                <LayoutDashboard className="w-4 h-4" />
+                <span className="hidden sm:block">Dashboard</span>
+              </Button>
+            </Link>
             <div className="text-right hidden sm:block">
               <p className="text-sm font-medium text-slate-900">{user?.name}</p>
               <p className="text-xs text-slate-500">{user?.email}</p>
             </div>
-            <Button variant="ghost" size="sm" onClick={handleLogout} className="gap-2 text-slate-600">
+            <Button variant="ghost" size="sm" onClick={handleLogout} className="gap-1.5 text-slate-600">
               <LogOut className="w-4 h-4" />
-              Keluar
             </Button>
           </div>
         </div>
@@ -372,8 +377,17 @@ export default function AddServicePage() {
               return (
                 <div
                   key={service.id}
-                  className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 flex flex-col gap-4"
+                  className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col gap-0"
                 >
+                  {/* Foto kendaraan */}
+                  <div className="h-36 bg-linear-to-br from-slate-100 to-slate-200 flex items-center justify-center overflow-hidden">
+                    {service.imageUrl
+                      ? <img src={service.imageUrl} alt={service.title} className="w-full h-full object-cover" />
+                      : <Icon className="w-14 h-14 text-slate-300" />
+                    }
+                  </div>
+
+                  <div className="p-4 flex flex-col gap-3 flex-1">
                   {/* Header kartu */}
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex-1 min-w-0">
@@ -441,6 +455,18 @@ export default function AddServicePage() {
                     </button>
 
                     <div className="flex items-center gap-1">
+                      {/* Edit */}
+                      <Link to={`/provider/services/${service.id}/edit`}>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="text-slate-500 hover:text-slate-700 hover:bg-slate-100 h-8 w-8 p-0"
+                          title="Edit Layanan"
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                        </Button>
+                      </Link>
+
                       {/* Kelola Jadwal */}
                       <Link to={`/provider/services/${service.id}/schedule`}>
                         <Button
@@ -464,6 +490,7 @@ export default function AddServicePage() {
                         <Trash2 className="w-4 h-4" />
                       </Button>
                     </div>
+                  </div>
                   </div>
                 </div>
               );
