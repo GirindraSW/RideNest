@@ -10,8 +10,25 @@ import { authMiddleware } from "./middleware/auth";
 
 const app = express();
 
+function getAllowedOrigins() {
+  const rawFrontendUrl = process.env.FRONTEND_URL || "http://localhost:5173";
+  const frontendUrl = rawFrontendUrl.replace(/^FRONTEND_URL=/, "").trim();
+
+  return [
+    frontendUrl,
+    "http://localhost:5173",
+  ].filter(Boolean);
+}
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL || "http://localhost:5173",
+  origin(origin, callback) {
+    if (!origin || getAllowedOrigins().includes(origin)) {
+      callback(null, true);
+      return;
+    }
+
+    callback(new Error(`Origin ${origin} is not allowed by CORS`));
+  },
   credentials: true,
 }));
 app.use(express.json({ limit: "10mb" }));       // naikan limit untuk base64 image upload
