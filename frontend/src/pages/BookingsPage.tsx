@@ -6,7 +6,7 @@ import UserNavbar from "@/components/layout/UserNavbar";
 import { Button } from "@/components/ui/button";
 import {
   Car, Bike, Bus, Navigation,
-  CalendarDays, CheckCircle2, XCircle, Clock, RotateCcw, AlertCircle,
+  CalendarDays, CheckCircle2, XCircle, Clock, RotateCcw,
 } from "lucide-react";
 
 // ─── Helpers ────────────────────────────────────────────────────

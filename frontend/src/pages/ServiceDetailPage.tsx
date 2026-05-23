@@ -16,7 +16,6 @@ const MONTH_NAMES = ["Januari","Februari","Maret","April","Mei","Juni",
   "Juli","Agustus","September","Oktober","November","Desember"];
 
 const DAY_KEYS = ["sun","mon","tue","wed","thu","fri","sat"] as const;
-type DayKey = typeof DAY_KEYS[number];
 
 const CAT_ICON = { MOTOR: Bike, MOBIL: Car, TRAVEL: Navigation, BUS: Bus };
 const CAT_COLOR: Record<string, { bg: string; text: string }> = {

@@ -184,7 +184,7 @@ export default function LandingPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-            {steps.map(({ icon: Icon, step, title, desc }, idx) => (
+            {steps.map(({ icon: Icon, step, title, desc }) => (
               <div key={step} className="relative text-center p-8 bg-white rounded-2xl shadow-sm border border-slate-100">
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 bg-blue-600 text-white text-xs font-bold rounded-full flex items-center justify-center shadow-md">
                   {step}

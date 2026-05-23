@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import {
   Car, Bike, Bus, Navigation, Plus, Trash2, LogOut,
-  CheckCircle2, XCircle, AlertCircle, ChevronDown, ChevronUp, CalendarDays, LayoutDashboard,
+  CheckCircle2, XCircle, AlertCircle, ChevronUp, CalendarDays, LayoutDashboard,
 } from "lucide-react";
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
